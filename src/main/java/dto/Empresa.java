@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.Date;
 
-public class Empresa {
+public abstract class Empresa {
 
     public static final String _CUIT = "cuit";
     public static final String _RAZON_SOCIAL = "razonSocial";
@@ -15,19 +15,19 @@ public class Empresa {
     public static final String _DIRECCION = "direccion";
     public static final String _TELEFONO = "telefono";
     public static final String _CORREO_ELECTRONICO = "correoElectronico";
-    private String cuit;
-    private String razonSocial;
-    private Date fechaInicio;
-    private String tipo;
-    private String actividadPrincipal;
-    private String direccion;
-    private Integer telefono;
-    private String correoElectronico;
+    protected Integer cuit;
+    protected String razonSocial;
+    protected Date fechaInicio;
+    protected String tipo;
+    protected String actividadPrincipal;
+    protected String direccion;
+    protected Integer telefono;
+    protected String correoElectronico;
 
-    private Empresa() {
+    protected Empresa() {
     }
 
-    public String getCuit() {
+    public Integer getCuit() {
         return cuit;
     }
 
@@ -107,73 +107,4 @@ public class Empresa {
                 .toString();
     }
 
-    public static final class Builder {
-        private String cuit;
-        private String razonSocial;
-        private Date fechaInicio;
-        private String tipo;
-        private String actividadPrincipal;
-        private String direccion;
-        private Integer telefono;
-        private String correoElectronico;
-
-        private Builder() {
-        }
-
-        public static Builder newBuilder() {
-            return new Builder();
-        }
-
-        public Builder withCuit(String cuit) {
-            this.cuit = cuit;
-            return this;
-        }
-
-        public Builder withRazonSocial(String razonSocial) {
-            this.razonSocial = razonSocial;
-            return this;
-        }
-
-        public Builder withFechaInicio(Date fechaInicio) {
-            this.fechaInicio = fechaInicio;
-            return this;
-        }
-
-        public Builder withTipo(String tipo) {
-            this.tipo = tipo;
-            return this;
-        }
-
-        public Builder withActividadPrincipal(String actividadPrincipal) {
-            this.actividadPrincipal = actividadPrincipal;
-            return this;
-        }
-
-        public Builder withDireccion(String direccion) {
-            this.direccion = direccion;
-            return this;
-        }
-
-        public Builder withTelefono(Integer telefono) {
-            this.telefono = telefono;
-            return this;
-        }
-
-        public Builder withCorreoElectronico(String correoElectronico) {
-            this.correoElectronico = correoElectronico;
-            return this;
-        }
-        public Empresa build() {
-            Empresa empresa = new Empresa();
-            empresa.cuit = cuit;
-            empresa.razonSocial = razonSocial;
-            empresa.fechaInicio = fechaInicio;
-            empresa.tipo = tipo;
-            empresa.actividadPrincipal = actividadPrincipal;
-            empresa.direccion = direccion;
-            empresa.telefono = telefono;
-            empresa.correoElectronico = correoElectronico;
-            return empresa;
-        }
-    }
 }
