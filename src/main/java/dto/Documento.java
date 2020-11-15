@@ -13,6 +13,8 @@ public class Documento {
     private Date fechaDeRecepcion;
     private String estado;
     private String usuario;
+    private Boolean aprobado = false;
+
 
     private Documento() {
     }
@@ -33,6 +35,14 @@ public class Documento {
         return usuario;
     }
 
+    public Boolean getAprobado() {
+        return aprobado;
+    }
+
+    public void aprobarDocumento() {
+        aprobado = true;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,16 +56,18 @@ public class Documento {
                 .append(getFechaDeRecepcion(), documento.getFechaDeRecepcion())
                 .append(getEstado(), documento.getEstado())
                 .append(getUsuario(), documento.getUsuario())
+                .append(getAprobado(), documento.getAprobado())
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        return new HashCodeBuilder()
                 .append(getTipo())
                 .append(getFechaDeRecepcion())
                 .append(getEstado())
                 .append(getUsuario())
+                .append(getAprobado())
                 .toHashCode();
     }
 
@@ -66,16 +78,16 @@ public class Documento {
                 .append("fechaDeRecepcion", fechaDeRecepcion)
                 .append("estado", estado)
                 .append("usuario", usuario)
+                .append("aprobado", aprobado)
                 .toString();
     }
-
 
     public static final class Builder {
         private String tipo;
         private Date fechaDeRecepcion;
         private String estado;
         private String usuario;
-
+        private Boolean aprobado;
 
         private Builder() {
         }
@@ -84,23 +96,28 @@ public class Documento {
             return new Builder();
         }
 
-        public Builder withTipo(String tipo) {
+        public Builder withTipo(final String tipo) {
             this.tipo = tipo;
             return this;
         }
 
-        public Builder withFechaDeRecepcion(Date fechaDeRecepcion) {
+        public Builder withFechaDeRecepcion(final Date fechaDeRecepcion) {
             this.fechaDeRecepcion = fechaDeRecepcion;
             return this;
         }
 
-        public Builder withEstado(String estado) {
+        public Builder withEstado(final String estado) {
             this.estado = estado;
             return this;
         }
 
-        public Builder withUsuario(String usuario) {
+        public Builder withUsuario(final String usuario) {
             this.usuario = usuario;
+            return this;
+        }
+
+        public Builder withAprobado(final Boolean aprobado) {
+            this.aprobado = aprobado;
             return this;
         }
 
@@ -110,6 +127,7 @@ public class Documento {
             documento.estado = this.estado;
             documento.fechaDeRecepcion = this.fechaDeRecepcion;
             documento.usuario = this.usuario;
+            documento.aprobado = this.aprobado;
             return documento;
         }
     }
