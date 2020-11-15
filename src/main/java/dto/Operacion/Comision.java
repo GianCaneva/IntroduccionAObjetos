@@ -3,12 +3,16 @@ package dto.Operacion;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import utils.Utils;
+
+import java.util.Date;
 
 public class Comision {
 
     private Integer tipoOperacion;
     private Float porcentaje;
     private String estado;
+    private Date fechaComision;
 
     public Integer getTipoOperacion() {
         return tipoOperacion;
@@ -20,6 +24,10 @@ public class Comision {
 
     public String getEstado() {
         return estado;
+    }
+
+    public Date getFechaComision() {
+        return fechaComision;
     }
 
     @Override
@@ -34,15 +42,17 @@ public class Comision {
                 .append(getTipoOperacion(), comision.getTipoOperacion())
                 .append(getPorcentaje(), comision.getPorcentaje())
                 .append(getEstado(), comision.getEstado())
+                .append(getFechaComision(), comision.getFechaComision())
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder()
+        return new HashCodeBuilder(17, 37)
                 .append(getTipoOperacion())
                 .append(getPorcentaje())
                 .append(getEstado())
+                .append(getFechaComision())
                 .toHashCode();
     }
 
@@ -52,9 +62,9 @@ public class Comision {
                 .append("tipoOperacion", tipoOperacion)
                 .append("porcentaje", porcentaje)
                 .append("estado", estado)
+                .append("fechaComision", fechaComision)
                 .toString();
     }
-
 
     public static final class Builder {
         private Integer tipoOperacion;
@@ -88,6 +98,7 @@ public class Comision {
             comision.estado = this.estado;
             comision.porcentaje = this.porcentaje;
             comision.tipoOperacion = this.tipoOperacion;
+            comision.fechaComision = Utils.getDate();
             return comision;
         }
     }
