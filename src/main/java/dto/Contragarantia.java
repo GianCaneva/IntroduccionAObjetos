@@ -4,13 +4,13 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class contragarantia {
+public class Contragarantia {
     public static final String _TIPO = "tipo";
     public static final String _IMPORTE_ASEGURADO = "importeAsegurado";
     private String tipo;
     private Integer importeAsegurado;
 
-    public contragarantia() {
+    public Contragarantia() {
     }
 
     public String getTipo() {
@@ -27,7 +27,7 @@ public class contragarantia {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        contragarantia that = (contragarantia) o;
+        Contragarantia that = (Contragarantia) o;
 
         return new EqualsBuilder()
                 .append(getTipo(), that.getTipo())
@@ -37,7 +37,7 @@ public class contragarantia {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        return new HashCodeBuilder()
                 .append(getTipo())
                 .append(getImporteAsegurado())
                 .toHashCode();
@@ -57,22 +57,22 @@ public class contragarantia {
 
         private Builder() {}
 
-        public static contragarantia.Builder newBuilder() {
-            return new contragarantia.Builder();
+        public static Contragarantia.Builder newBuilder() {
+            return new Contragarantia.Builder();
         }
 
-        public contragarantia.Builder withTipo(String tipo){
+        public Contragarantia.Builder withTipo(String tipo){
             this.tipo = tipo;
             return this;
         }
 
-        public contragarantia.Builder withImporteAsegurado(Integer importeAsegurado){
+        public Contragarantia.Builder withImporteAsegurado(Integer importeAsegurado){
             this.importeAsegurado = importeAsegurado;
             return this;
         }
 
-        public contragarantia build() {
-            contragarantia Contragarantias = new contragarantia();
+        public Contragarantia build() {
+            Contragarantia Contragarantias = new Contragarantia();
             Contragarantias.tipo = this.tipo;
             Contragarantias.importeAsegurado = this.importeAsegurado;
             return Contragarantias;

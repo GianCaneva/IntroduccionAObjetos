@@ -1,6 +1,7 @@
 package dto.Empresa;
 
 import dto.*;
+import dto.Operacion.CertificadoDeGarantia;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -72,6 +73,7 @@ public class SocioParticipe extends Empresa {
                 .append("lineaDeCredito", lineaDeCredito)
                 .toString();
     }
+
 
     public static final class Builder {
         private static Integer cuit;

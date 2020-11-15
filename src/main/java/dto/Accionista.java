@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 
-public class accionistas {
+public class Accionista {
     public static final String _CUIT = "cuit";
     public static final String _RAZON_SOCIAL = "razonSocial";
     public static final String _PARTICIPACION = "participacion";
@@ -13,7 +13,7 @@ public class accionistas {
     private String razonSocial;
     private Float participacion;
 
-    private accionistas() {
+    private Accionista() {
     }
 
     public Integer getCuit() {
@@ -34,7 +34,7 @@ public class accionistas {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        accionistas that = (accionistas) o;
+        Accionista that = (Accionista) o;
 
         return new EqualsBuilder()
                 .append(getCuit(), that.getCuit())
@@ -45,7 +45,7 @@ public class accionistas {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        return new HashCodeBuilder()
                 .append(getCuit())
                 .append(getRazonSocial())
                 .append(getParticipacion())
@@ -87,12 +87,12 @@ public class accionistas {
             return this;
         }
 
-        public accionistas build() {
-            accionistas Accionistas = new accionistas();
-            Accionistas.cuit = this.cuit;
-            Accionistas.razonSocial = this.razonSocial;
-            Accionistas.participacion = this.participacion;
-            return Accionistas;
+        public Accionista build() {
+            Accionista Accionista = new Accionista();
+            Accionista.cuit = this.cuit;
+            Accionista.razonSocial = this.razonSocial;
+            Accionista.participacion = this.participacion;
+            return Accionista;
         }
     }
 }

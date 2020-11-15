@@ -4,6 +4,10 @@ import dto.*;
 import dto.Empresa.Empresa;
 import dto.Empresa.SocioParticipe;
 import dto.Empresa.SocioProtector;
+import dto.Operacion.*;
+import dto.enumeration.CtaCorriente;
+import dto.enumeration.Prestamo;
+import dto.enumeration.TipoCheque;
 import utils.Utils;
 
 import java.util.Date;
@@ -42,6 +46,151 @@ public class ControladorSocio {
     }
 
     private boolean habilitaOperacion() {
+
+    }
+
+    public void operacionProsperada(
+            final Integer cuit,
+            final String operacionId) {
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+        List<Operacion> operaciones = empresa.getLineaDeCredito().getOperaciones();
+        Operacion operacion = buscarOperacion(operaciones, operacionId);
+
+        if (operacion.getClass() == Tipo1.class) {
+            operacion.crearComision((float) 3, 1);
+        } else if (operacion.getClass() == Tipo2.class) {
+            operacion.crearComision((float) 3, 2);
+        } else if (operacion.getClass() == Tipo3.class) {
+            operacion.crearComision((float) 4, 3);
+        }
+    }
+
+
+    private Operacion buscarOperacion(final List<Operacion> operaciones, final String numOperacion) {
+
+        Operacion operacionDeRetorno = null;
+        for (int i = 0; i < operaciones.size(); i++) {
+            Operacion operacion = operaciones.get(i);
+            if (operacion.getId() == numOperacion) {
+                operacionDeRetorno = operacion;
+            }
+        }
+        return operacionDeRetorno;
+    }
+
+
+    public String solicitarOperacionCheque(
+            final Integer cuit,
+            final TipoCheque tipo,
+            final String bancoDelCheque,
+            final Integer numeroDelCheque,
+            final Date fechaDeVencimiento,
+            final Integer cuitDelFirmante,
+            final Float importe
+    ) {
+
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        if (!lineaDeCredito.getTipoOperaciones().contains(tipo)) {
+            throw new RuntimeException("El socio no tiene la operacion en la linea de credito");
+        }
+        if (empresa.getPostulante()) {
+            throw new RuntimeException("El socio es postulante.");
+        }
+        Tipo1 cheque = Tipo1.Builder.newBuilder()
+                .withBancoCheque(bancoDelCheque)
+                .withNroCheque(numeroDelCheque)
+                .withFechaVencimiento(fechaDeVencimiento)
+                .withCuitFirmante(cuitDelFirmante)
+                .withCheque(tipo)
+                .withImporteTotal(importe)
+                .build();
+
+        cheque.modificarEstado("Ingresado");
+        lineaDeCredito.agregarOperacion(cheque);
+        CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(cuit);
+        cheque.agregarCertificadoDeGarantia(certificadoDeGarantia);
+        cheque.modificarEstado("Con certificado emitido");
+
+
+        return cheque.getId();
+
+    }
+
+    public String solicitarOperacionCCC(
+            final Integer cuit,
+            final String empresaCC,
+            final Date fechaVencimiento,
+            final CtaCorriente cuentaCr,
+            final Float importe
+    ) {
+
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        if (!lineaDeCredito.getTipoOperaciones().contains(cuentaCr)) {
+            throw new RuntimeException("El socio no tiene la operacion en la linea de credito");
+        }
+        if (empresa.getPostulante()) {
+            throw new RuntimeException("El socio es postulante.");
+        }
+        Tipo2 cuenta = Tipo2.Builder.newBuilder()
+                .withEmpresaCC(empresaCC)
+                .withFechaVencimiento(fechaVencimiento)
+                .withCuenta(cuentaCr)
+                .withImporteTotal(importe)
+                .build();
+
+        cuenta.modificarEstado("Ingresado");
+        lineaDeCredito.agregarOperacion(cuenta);
+        CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(cuit);
+        cuenta.agregarCertificadoDeGarantia(certificadoDeGarantia);
+        cuenta.modificarEstado("Con certificado emitido");
+
+        return cuenta.getId();
+
+
+    }
+
+    public String solicitarOperacionPrestamo(
+            final Integer cuit,
+            final String bancoPrestamo,
+            final Float importeTotal,
+            final Float tasa,
+            final Date fechaAcreditacion,
+            final Integer cantidadCuotas,
+            final String sistema
+
+    ) {
+
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        if (!lineaDeCredito.getTipoOperaciones().contains(Prestamo.Prestamo)) {
+            throw new RuntimeException("El socio no tiene la linea de credito");
+        }
+        if (empresa.getPostulante()) {
+            throw new RuntimeException("El socio es postulante.");
+        }
+        Tipo3 prestamo = Tipo3.Builder.newBuilder()
+                .withBancoPrestamo(bancoPrestamo)
+                .withImporteTotal(importeTotal)
+                .withTasa(tasa)
+                .withFechaAcreditacion(fechaAcreditacion)
+                .withCantidadCuotas(cantidadCuotas)
+                .withSistema(sistema)
+                .build();
+
+        prestamo.modificarEstado("Ingresado");
+        lineaDeCredito.agregarOperacion(prestamo);
+        CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(cuit);
+        prestamo.agregarCertificadoDeGarantia(certificadoDeGarantia);
+        prestamo.modificarEstado("Con certificado emitido");
+
+
+        return prestamo.getId();
+
 
     }
 
@@ -169,14 +318,4 @@ public class ControladorSocio {
         return empresaIndex;
     }
 
-    private Integer buscarIndexEmpresa(final Integer empresaCuit) {
-        Integer posicion = 0;
-        for (int i = 0; i < listaEmpresas.size(); i++) {
-            Empresa empresa = listaEmpresas.get(i);
-            if (empresa.getCuit() == empresaCuit) {
-                posicion = i;
-            }
-        }
-        return posicion;
-    }
 }

@@ -1,6 +1,13 @@
-package dto;
+package dto.Operacion;
+
+import dto.enumeration.TipoCheque;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import utils.Utils;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Tipo1 extends Operacion {
 
@@ -38,11 +45,52 @@ public class Tipo1 extends Operacion {
         return cheque;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
 
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tipo1 tipo1 = (Tipo1) o;
+
+        return new EqualsBuilder()
+                .append(getNroCheque(), tipo1.getNroCheque())
+                .append(getBancoCheque(), tipo1.getBancoCheque())
+                .append(getFechaVencimiento(), tipo1.getFechaVencimiento())
+                .append(getCuitFirmante(), tipo1.getCuitFirmante())
+                .append(getTasaDescuento(), tipo1.getTasaDescuento())
+                .append(getCheque(), tipo1.getCheque())
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder()
+                .append(getNroCheque())
+                .append(getBancoCheque())
+                .append(getFechaVencimiento())
+                .append(getCuitFirmante())
+                .append(getTasaDescuento())
+                .append(getCheque())
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("nroCheque", nroCheque)
+                .append("bancoCheque", bancoCheque)
+                .append("fechaVencimiento", fechaVencimiento)
+                .append("cuitFirmante", cuitFirmante)
+                .append("tasaDescuento", tasaDescuento)
+                .append("cheque", cheque)
+                .toString();
+    }
 
     public static final class Builder {
-        protected Integer comisiones;
-        protected Integer importeTotal;
+        protected Comision comisiones;
+        protected Float importeTotal;
+
         private Integer nroCheque;
         private String bancoCheque;
         private Date fechaVencimiento;
@@ -87,13 +135,13 @@ public class Tipo1 extends Operacion {
             return this;
         }
 
-        public Builder withComisiones(Integer comisiones) {
+        public Builder withComisiones(Comision comisiones) {
             this.comisiones = comisiones;
             return this;
         }
 
-        public Builder withImporteTotal(Integer impporteTotal) {
-            this.importeTotal = impporteTotal;
+        public Builder withImporteTotal(Float importeTotal) {
+            this.importeTotal = importeTotal;
             return this;
         }
 
@@ -104,9 +152,11 @@ public class Tipo1 extends Operacion {
             tipo1.cheque = this.cheque;
             tipo1.bancoCheque = this.bancoCheque;
             tipo1.cuitFirmante = this.cuitFirmante;
-            tipo1.comisiones = this.comisiones;
+            tipo1.comision = this.comisiones;
             tipo1.importeTotal = this.importeTotal;
             tipo1.tasaDescuento = this.tasaDescuento;
+            tipo1.fecha = Utils.getDate();
+            tipo1.id = UUID.randomUUID().toString();
             return tipo1;
         }
     }

@@ -1,6 +1,10 @@
-package dto;
+package dto.Operacion;
+
+import dto.enumeration.CtaCorriente;
+import utils.Utils;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Tipo2 extends Operacion {
 
@@ -25,8 +29,8 @@ public class Tipo2 extends Operacion {
 
 
     public static final class Builder {
-        protected Integer comisiones;
-        protected Integer importeTotal;
+        protected Comision comisiones;
+        protected Float importeTotal;
         private String empresaCC;
         private Date fechaVencimiento;
         private CtaCorriente cuenta;
@@ -34,7 +38,7 @@ public class Tipo2 extends Operacion {
         private Builder() {
         }
 
-        public static Builder aTipo2() {
+        public static Builder newBuilder() {
             return new Builder();
         }
 
@@ -53,12 +57,12 @@ public class Tipo2 extends Operacion {
             return this;
         }
 
-        public Builder withComisiones(Integer comisiones) {
+        public Builder withComisiones(Comision comisiones) {
             this.comisiones = comisiones;
             return this;
         }
 
-        public Builder withImporteTotal(Integer importeTotal) {
+        public Builder withImporteTotal(Float importeTotal) {
             this.importeTotal = importeTotal;
             return this;
         }
@@ -67,9 +71,11 @@ public class Tipo2 extends Operacion {
             Tipo2 tipo2 = new Tipo2();
             tipo2.importeTotal = this.importeTotal;
             tipo2.empresaCC = this.empresaCC;
-            tipo2.comisiones = this.comisiones;
+            tipo2.comision = this.comisiones;
             tipo2.fechaVencimiento = this.fechaVencimiento;
             tipo2.cuenta = this.cuenta;
+            tipo2.fecha = Utils.getDate();
+            tipo2.id = UUID.randomUUID().toString();
             return tipo2;
         }
     }

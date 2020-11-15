@@ -1,9 +1,9 @@
 package controller;
 
-public class ControladorOperaciones {
+public class ControladorOperacion {
 
 
-    public ControladorOperaciones() {
+    public ControladorOperacion() {
 
     }
 

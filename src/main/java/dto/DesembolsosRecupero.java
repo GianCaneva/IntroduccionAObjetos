@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class desembolsosRecuperos {
+public class DesembolsosRecupero {
     public static final String _NRO_LINEA_CREDITO = "nroLineaCredito";
     public static final String _MONTO = "monto";
     public static final String _MORA = "mora";
@@ -16,7 +16,7 @@ public class desembolsosRecuperos {
     private Integer mora;
     private String tipo;
 
-    public desembolsosRecuperos() {
+    public DesembolsosRecupero() {
     }
 
     public Integer getNroLineaCredito() {
@@ -41,7 +41,7 @@ public class desembolsosRecuperos {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        desembolsosRecuperos that = (desembolsosRecuperos) o;
+        DesembolsosRecupero that = (DesembolsosRecupero) o;
 
         return new EqualsBuilder()
                 .append(getNroLineaCredito(), that.getNroLineaCredito())
@@ -53,7 +53,7 @@ public class desembolsosRecuperos {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        return new HashCodeBuilder()
                 .append(getNroLineaCredito())
                 .append(getMonto())
                 .append(getMora())
@@ -80,32 +80,32 @@ public class desembolsosRecuperos {
         private Builder(){
 
         }
-        public static desembolsosRecuperos.Builder newBuilder() {
-            return new desembolsosRecuperos.Builder();
+        public static DesembolsosRecupero.Builder newBuilder() {
+            return new DesembolsosRecupero.Builder();
         }
 
-        public desembolsosRecuperos.Builder withNroLineaCredito(Integer nroLineaCredito){
+        public DesembolsosRecupero.Builder withNroLineaCredito(Integer nroLineaCredito){
             this.nroLineaCredito = nroLineaCredito;
             return this;
         }
 
-        public desembolsosRecuperos.Builder withMonto(Integer monto){
+        public DesembolsosRecupero.Builder withMonto(Integer monto){
             this.monto = monto;
             return this;
         }
 
-        public desembolsosRecuperos.Builder withMora(Integer mora){
+        public DesembolsosRecupero.Builder withMora(Integer mora){
             this.mora = mora;
             return this;
         }
 
-        public desembolsosRecuperos.Builder withTipo(String tipo){
+        public DesembolsosRecupero.Builder withTipo(String tipo){
             this.tipo = tipo;
             return this;
         }
 
-        public desembolsosRecuperos build() {
-            desembolsosRecuperos desembolsosRecuperos = new desembolsosRecuperos();
+        public DesembolsosRecupero build() {
+            DesembolsosRecupero desembolsosRecuperos = new DesembolsosRecupero();
             desembolsosRecuperos.nroLineaCredito = this.nroLineaCredito;
             desembolsosRecuperos.monto = this.monto;
             desembolsosRecuperos.mora = this.mora;

@@ -1,5 +1,6 @@
 package dto;
 
+import dto.Operacion.Operacion;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -14,6 +15,7 @@ public class LineaDeCredito {
     private Integer nroLineaCredito;
     private Boolean estado;
     private List<Enum> tipoOperaciones;
+    private List<Operacion> operaciones;
 
     private LineaDeCredito() {}
 
@@ -35,6 +37,14 @@ public class LineaDeCredito {
 
     public List<Enum> getTipoOperaciones() {
         return tipoOperaciones;
+    }
+
+    public List<Operacion> getOperaciones() {
+        return operaciones;
+    }
+
+    public void agregarOperacion (final Operacion operacion){
+        operaciones.add(operacion);
     }
 
     @Override
