@@ -6,25 +6,21 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 
-public class participacionSGR {
-    public static final String _PORCENTAJE = "porcentaje";
-    public static final String _COMPRADOR = "comprador";
-    public static final String _FECHA = "fecha";
-    public static final String _PRECIO_UNIDAD = "precioUnidad";
+public class ParticipacionSGR {
     private Float porcentaje;
-    private String comprador;
+    private Integer vendedor;
     private Date fecha;
     private Float precioUnidad;
 
-    public participacionSGR() {
+    public ParticipacionSGR() {
     }
 
     public Float getPorcentaje() {
         return porcentaje;
     }
 
-    public String getComprador() {
-        return comprador;
+    public Integer getVendedor() {
+        return vendedor;
     }
 
     public Date getFecha() {
@@ -41,11 +37,11 @@ public class participacionSGR {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        participacionSGR that = (participacionSGR) o;
+        ParticipacionSGR that = (ParticipacionSGR) o;
 
         return new EqualsBuilder()
                 .append(getPorcentaje(), that.getPorcentaje())
-                .append(getComprador(), that.getComprador())
+                .append(getVendedor(), that.getVendedor())
                 .append(getFecha(), that.getFecha())
                 .append(getPrecioUnidad(), that.getPrecioUnidad())
                 .isEquals();
@@ -53,9 +49,9 @@ public class participacionSGR {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        return new HashCodeBuilder()
                 .append(getPorcentaje())
-                .append(getComprador())
+                .append(getVendedor())
                 .append(getFecha())
                 .append(getPrecioUnidad())
                 .toHashCode();
@@ -65,7 +61,7 @@ public class participacionSGR {
     public String toString() {
         return new ToStringBuilder(this)
                 .append("porcentaje", porcentaje)
-                .append("comprador", comprador)
+                .append("vendedor", vendedor)
                 .append("fecha", fecha)
                 .append("precioUnidad", precioUnidad)
                 .toString();
@@ -73,42 +69,44 @@ public class participacionSGR {
 
     public static final class Builder {
         private Float porcentaje;
-        private String comprador;
+        private Integer vendedor;
         private Date fecha;
         private Float precioUnidad;
 
-        private Builder() {}
-
-        public static participacionSGR.Builder newBuilder() {
-            return new participacionSGR.Builder();
+        private Builder() {
         }
 
-        public participacionSGR.Builder withPorcentaje(Float porcentaje){
+        public static ParticipacionSGR.Builder newBuilder() {
+            return new Builder();
+        }
+
+        public Builder withPorcentaje(final Float porcentaje) {
             this.porcentaje = porcentaje;
             return this;
         }
 
-        public participacionSGR.Builder withComprador(String comprador){
-            this.comprador = comprador;
+        public Builder withVendedor(final Integer vendedor) {
+            this.vendedor = vendedor;
             return this;
         }
 
-        public participacionSGR.Builder withFecha(Date fecha){
+        public Builder withFecha(final Date fecha) {
             this.fecha = fecha;
             return this;
         }
 
-        public participacionSGR.Builder withPrecioUnidad(Float precioUnidad){
+        public Builder withPrecioUnidad(final Float precioUnidad) {
             this.precioUnidad = precioUnidad;
             return this;
         }
-        public participacionSGR build() {
-            participacionSGR ParticipacionSGR = new participacionSGR();
-            ParticipacionSGR.porcentaje = this.porcentaje;
-            ParticipacionSGR.comprador = this.comprador;
-            ParticipacionSGR.fecha = this.fecha;
-            ParticipacionSGR.precioUnidad = this.precioUnidad;
-            return ParticipacionSGR;
+
+        public ParticipacionSGR build() {
+            ParticipacionSGR participacionSGR = new ParticipacionSGR();
+            porcentaje = this.porcentaje;
+            vendedor = this.vendedor;
+            fecha = this.fecha;
+            precioUnidad = this.precioUnidad;
+            return participacionSGR;
         }
     }
 }

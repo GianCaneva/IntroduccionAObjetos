@@ -5,21 +5,19 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
+import java.util.List;
 
-public class LineasDeCredito {
+public class LineaDeCredito {
 
-    public static final String _MONTO = "monto";
-    public static final String _FECHA_VIGENCIA = "fechaVigencia";
-    public static final String _NRO_LINEA_CREDITO = "nroLineaCredito";
-    public static final String _ESTADO = "estado";
-    private Integer monto;
+    private Float monto;
     private Date fechaVigencia;
     private Integer nroLineaCredito;
     private Boolean estado;
+    private List<Enum> tipoOperaciones;
 
-    private LineasDeCredito() {}
+    private LineaDeCredito() {}
 
-    public Integer getMonto() {
+    public Float getMonto() {
         return monto;
     }
 
@@ -35,29 +33,35 @@ public class LineasDeCredito {
         return estado;
     }
 
+    public List<Enum> getTipoOperaciones() {
+        return tipoOperaciones;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        LineasDeCredito that = (LineasDeCredito) o;
+        LineaDeCredito that = (LineaDeCredito) o;
 
         return new EqualsBuilder()
                 .append(getMonto(), that.getMonto())
                 .append(getFechaVigencia(), that.getFechaVigencia())
                 .append(getNroLineaCredito(), that.getNroLineaCredito())
                 .append(getEstado(), that.getEstado())
+                .append(getTipoOperaciones(), that.getTipoOperaciones())
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        return new HashCodeBuilder()
                 .append(getMonto())
                 .append(getFechaVigencia())
                 .append(getNroLineaCredito())
                 .append(getEstado())
+                .append(getTipoOperaciones())
                 .toHashCode();
     }
 
@@ -68,48 +72,57 @@ public class LineasDeCredito {
                 .append("fechaVigencia", fechaVigencia)
                 .append("nroLineaCredito", nroLineaCredito)
                 .append("estado", estado)
+                .append("tipoOperaciones", tipoOperaciones)
                 .toString();
     }
 
     public static final class Builder {
-        private Integer monto;
+        private Float monto;
         private Date fechaVigencia;
         private Integer nroLineaCredito;
         private Boolean estado;
+        private List<Enum> tipoOperaciones;
 
         private Builder() {}
 
-        public static LineasDeCredito.Builder newBuilder() {
-            return new LineasDeCredito.Builder();
+        public static Builder newBuilder() {
+            return new Builder();
         }
 
-        public LineasDeCredito.Builder withMonto(Integer monto){
+        public Builder withMonto(Float monto){
             this.monto = monto;
             return this;
         }
 
-        public LineasDeCredito.Builder withFechaVigencia(Date fechaVigencia){
+        public Builder withFechaVigencia(Date fechaVigencia){
             this.fechaVigencia = fechaVigencia;
             return this;
         }
 
-        public LineasDeCredito.Builder withNroLineaCredito(Integer nroLineaCredito){
+        public Builder withNroLineaCredito(Integer nroLineaCredito){
             this.nroLineaCredito = nroLineaCredito;
             return this;
         }
 
-        public LineasDeCredito.Builder withEstado(Boolean estado){
+        public Builder withEstado(Boolean estado){
             this.estado = estado;
             return this;
         }
 
-        public LineasDeCredito build() {
-            LineasDeCredito LineasDeCredito = new LineasDeCredito();
-            LineasDeCredito.monto = this.monto;
-            LineasDeCredito.fechaVigencia = this.fechaVigencia;
-            LineasDeCredito.nroLineaCredito = this.nroLineaCredito;
-            LineasDeCredito.estado = this.estado;
-            return LineasDeCredito;
+        public Builder withTipoOperaciones(List<Enum> tipoOperaciones){
+            this.tipoOperaciones = tipoOperaciones;
+            return this;
+        }
+
+        public LineaDeCredito build() {
+            LineaDeCredito lineaDeCredito = new LineaDeCredito();
+            lineaDeCredito.monto = monto;
+            lineaDeCredito.fechaVigencia = fechaVigencia;
+            lineaDeCredito.nroLineaCredito = nroLineaCredito;
+            lineaDeCredito.estado = estado;
+            lineaDeCredito.tipoOperaciones = tipoOperaciones;
+
+            return lineaDeCredito;
         }
     }
 }

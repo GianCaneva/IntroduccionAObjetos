@@ -10,12 +10,12 @@ import java.util.Date;
 public class AporteDeCapital {
     public static final String _MONTO = "monto";
     public static final String _FECHA_APORTE = "fechaAporte";
-    private Integer monto;
+    private Float monto;
     private Date fechaAporte;
 
     private AporteDeCapital() {}
 
-    public Integer getMonto() {
+    public Float getMonto() {
         return monto;
     }
 
@@ -39,7 +39,7 @@ public class AporteDeCapital {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        return new HashCodeBuilder()
                 .append(getMonto())
                 .append(getFechaAporte())
                 .toHashCode();
@@ -55,7 +55,7 @@ public class AporteDeCapital {
 
 
     public static final class Builder {
-        private Integer monto;
+        private Float monto;
         private Date fechaAporte;
 
         private Builder() {}
@@ -64,12 +64,12 @@ public class AporteDeCapital {
             return new Builder();
         }
 
-        public Builder withMonto(Integer monto) {
+        public Builder withMonto(final Float monto) {
             this.monto = monto;
             return this;
         }
 
-        public Builder withFechaAporte(Date fechaAporte) {
+        public Builder withFechaAporte(final Date fechaAporte) {
             this.fechaAporte = fechaAporte;
             return this;
         }
