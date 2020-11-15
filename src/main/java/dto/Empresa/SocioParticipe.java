@@ -4,7 +4,9 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 
 public class SocioParticipe extends Empresa {
 
@@ -13,9 +15,11 @@ public class SocioParticipe extends Empresa {
     private String estatuto;
     private Integer balances;
     private String manifestacionesBienes;
-    private Date fechaRecepcion;
-    private Boolean estadoDoc;
+    private Instant fechaRecepcion;
+    private String estadoDoc;
     private Integer accionesA;
+    private List<Accionista> accionista;
+    private String usuarioAlta;
 
     private SocioParticipe() {
         super();
@@ -41,16 +45,28 @@ public class SocioParticipe extends Empresa {
         return manifestacionesBienes;
     }
 
-    public Date getFechaRecepcion() {
+    public Instant getFechaRecepcion() {
         return fechaRecepcion;
     }
 
-    public Boolean getEstadoDoc() {
+    public String getEstadoDoc() {
         return estadoDoc;
     }
 
     public Integer getAccionesA() {
         return accionesA;
+    }
+
+    public String getUsuarioAlta() {
+        return usuarioAlta;
+    }
+
+    public List<Accionista> getAccionista() {
+        return accionista;
+    }
+
+    public void changeToPostulante() {
+        postulante = true;
     }
 
     @Override
@@ -71,6 +87,8 @@ public class SocioParticipe extends Empresa {
                 .append(getFechaRecepcion(), that.getFechaRecepcion())
                 .append(getEstadoDoc(), that.getEstadoDoc())
                 .append(getAccionesA(), that.getAccionesA())
+                .append(getAccionista(), that.getAccionista())
+                .append(getUsuarioAlta(), that.getUsuarioAlta())
                 .isEquals();
     }
 
@@ -86,6 +104,8 @@ public class SocioParticipe extends Empresa {
                 .append(getFechaRecepcion())
                 .append(getEstadoDoc())
                 .append(getAccionesA())
+                .append(getAccionista())
+                .append(getUsuarioAlta())
                 .toHashCode();
     }
 
@@ -100,35 +120,31 @@ public class SocioParticipe extends Empresa {
                 .append("fechaRecepcion", fechaRecepcion)
                 .append("estadoDoc", estadoDoc)
                 .append("accionesA", accionesA)
-                .append("cuit", cuit)
-                .append("razonSocial", razonSocial)
-                .append("fechaInicio", fechaInicio)
-                .append("tipo", tipo)
-                .append("actividadPrincipal", actividadPrincipal)
-                .append("direccion", direccion)
-                .append("telefono", telefono)
-                .append("correoElectronico", correoElectronico)
+                .append("accionista", accionista)
+                .append("usuarioAlta", usuarioAlta)
                 .toString();
     }
 
     public static final class Builder {
-        private Integer idSocio;
-        private Boolean postulante;
-        private String estatuto;
-        private Integer balances;
-        private String manifestacionesBienes;
-        private Date fechaRecepcion;
-        private Boolean estadoDoc;
-        private Integer accionesA;
+        private static Integer idSocio;
+        private static Boolean postulante;
+        private static String estatuto;
+        private static Integer balances;
+        private static String manifestacionesBienes;
+        private static Instant fechaRecepcion;
+        private static String estadoDoc;
+        private static Integer accionesA;
+        private static String usuarioAlta;
 
-        private Integer cuit;
-        private String razonSocial;
-        private Date fechaInicio;
-        private String tipo;
-        private String actividadPrincipal;
-        private String direccion;
-        private Integer telefono;
-        private String correoElectronico;
+        private static Integer cuit;
+        private static String razonSocial;
+        private static Date fechaInicio;
+        private static String tipo;
+        private static String actividadPrincipal;
+        private static String direccion;
+        private static Integer telefono;
+        private static String correoElectronico;
+        private static List<Accionista> accionista;
 
         private Builder() {
         }
@@ -137,83 +153,118 @@ public class SocioParticipe extends Empresa {
             return new Builder();
         }
 
-        public Builder withIdSocio(Integer idSocio) {
+        public Builder from(final SocioParticipe empresa) {
+
+            idSocio = empresa.getIdSocio();
+            postulante = empresa.getPostulante();
+            estatuto = empresa.getEstatuto();
+            balances = empresa.getBalances();
+            manifestacionesBienes = empresa.getManifestacionesBienes();
+            fechaRecepcion = empresa.getFechaRecepcion();
+            estadoDoc = empresa.getEstadoDoc();
+            accionesA = empresa.getAccionesA();
+            cuit = empresa.getCuit();
+            razonSocial = empresa.getRazonSocial();
+            fechaInicio = empresa.getFechaInicio();
+            tipo = empresa.getTipo();
+            actividadPrincipal = empresa.getActividadPrincipal();
+            direccion = empresa.getDireccion();
+            telefono = empresa.getTelefono();
+            correoElectronico = empresa.getCorreoElectronico();
+            accionista = empresa.getAccionista();
+            usuarioAlta = empresa.getUsuarioAlta();
+
+            return this;
+
+        }
+
+        public Builder withIdSocio(final Integer idSocio) {
             this.idSocio = idSocio;
             return this;
         }
 
-        public Builder withPostulante(Boolean postulante) {
+        public Builder withAccionista(final List<Accionista> accionista) {
+            this.accionista = accionista;
+            return this;
+        }
+
+        public Builder withPostulante(final Boolean postulante) {
             this.postulante = postulante;
             return this;
         }
 
-        public Builder withEstatuto(String estatuto) {
+        public Builder withEstatuto(final String estatuto) {
             this.estatuto = estatuto;
             return this;
         }
 
-        public Builder withBalances(Integer balances) {
+        public Builder withBalances(final Integer balances) {
             this.balances = balances;
             return this;
         }
 
-        public Builder withManifestacionesBienes(String manifestacionesBienes) {
+        public Builder withManifestacionesBienes(final String manifestacionesBienes) {
             this.manifestacionesBienes = manifestacionesBienes;
             return this;
         }
 
-        public Builder withFechaRecepcion(Date fechaRecepcion) {
+        public Builder withFechaRecepcion(final Instant fechaRecepcion) {
             this.fechaRecepcion = fechaRecepcion;
             return this;
         }
 
-        public Builder withEstadoDoc(Boolean estadoDoc) {
+        public Builder withEstadoDoc(final String estadoDoc) {
             this.estadoDoc = estadoDoc;
             return this;
         }
 
-        public Builder withAccionesA(Integer accionesA) {
+        public Builder withAccionesA(final Integer accionesA) {
             this.accionesA = accionesA;
             return this;
         }
 
-        public Builder withCuit(Integer cuit) {
+        public Builder withCuit(final Integer cuit) {
             this.cuit = cuit;
             return this;
         }
 
-        public Builder withRazonSocial(String razonSocial) {
+        public Builder withRazonSocial(final String razonSocial) {
             this.razonSocial = razonSocial;
             return this;
         }
 
-        public Builder withTipo(String tipo) {
+        public Builder withTipo(final String tipo) {
             this.tipo = tipo;
             return this;
         }
 
-        public Builder withActividadPrincipal(String actividadPrincipal) {
+        public Builder withActividadPrincipal(final String actividadPrincipal) {
             this.actividadPrincipal = actividadPrincipal;
             return this;
         }
 
-        public Builder withDireccion(String direccion) {
+        public Builder withDireccion(final String direccion) {
             this.direccion = direccion;
             return this;
         }
 
-        public Builder withTelefono(Integer telefono) {
+        public Builder withTelefono(final Integer telefono) {
             this.telefono = telefono;
             return this;
         }
 
-        public Builder withCorreoElectronico(String correoElectronico) {
+        public Builder withCorreoElectronico(final String correoElectronico) {
             this.correoElectronico = correoElectronico;
             return this;
         }
 
-        public Builder withFechaInicio(Date fechaInicio) {
+        public Builder withFechaInicio(final Date fechaInicio) {
             this.fechaInicio = fechaInicio;
+            return this;
+        }
+
+        public Builder withUsuarioAlta(final String usuarioAlta) {
+            this.usuarioAlta = usuarioAlta;
             return this;
         }
 
@@ -236,8 +287,11 @@ public class SocioParticipe extends Empresa {
             empresa.fechaRecepcion = fechaRecepcion;
             empresa.estadoDoc = estadoDoc;
             empresa.accionesA = accionesA;
+            empresa.accionista = accionista;
+            empresa.usuarioAlta = usuarioAlta;
             return empresa;
         }
+
     }
 
 }
