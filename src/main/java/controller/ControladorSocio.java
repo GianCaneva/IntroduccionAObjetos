@@ -17,10 +17,23 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ControladorSocio {
+    private static List<Empresa> listaEmpresas;
+    private static List<SocioParticipe> listaSocioParticipe;
     private Integer idSocio = 0;
 
-    private List<Empresa> listaEmpresas;
-    private List<SocioParticipe> listaSocioParticipe;
+//    private List<Empresa> listaEmpresas;
+//    private List<SocioParticipe> listaSocioParticipe;
+
+    public ControladorSocio() {
+    }
+
+    public static List<Empresa> getListaEmpresas() {
+        return listaEmpresas;
+    }
+
+    public static List<SocioParticipe> getListaSocioParticipe() {
+        return listaSocioParticipe;
+    }
 
     private void agregarEmpresa(final Empresa empresa) {
         listaEmpresas.add(empresa);
@@ -29,10 +42,6 @@ public class ControladorSocio {
     private void agregarSocioParticipe(final SocioParticipe socioParticipe) {
         listaSocioParticipe.add(socioParticipe);
     }
-
-    public ControladorSocio() {
-    }
-
 
     public void emicionDeFacturasPendientes() {
         //Se asume que el primer dia de la semana es Lunes y que no existen los feriados.
@@ -349,7 +358,7 @@ public class ControladorSocio {
     }
 
 
-    private Empresa buscarEmpresa(final Integer empresaCuit) {
+    public static Empresa buscarEmpresa(final Integer empresaCuit) {
         Empresa empresaIndex = null;
         for (int i = 0; i < listaEmpresas.size(); i++) {
             Empresa empresa = listaEmpresas.get(i);
