@@ -1,4 +1,5 @@
 package dto.enumeration;
 
-public enum Prestamos {
+public enum Prestamo {
+    Prestamo
 }

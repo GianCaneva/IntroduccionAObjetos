@@ -1,4 +1,4 @@
-package dto;
+package dto.enumeration;
 
 public enum TipoCheque {
     ChequePropio,
