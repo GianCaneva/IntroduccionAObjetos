@@ -34,17 +34,6 @@ public class ControladorSocio {
     }
 
 
-    private Float operar(final Empresa empresa) {
-        LineaDeCredito LineaDeCredito = empresa.getLineaDeCredito();
-        if (LineaDeCredito.getFechaVigencia() > fechaDeHoy) {
-            //  levantarError
-        }
-        if (desembolsos != 0) {
-            //    levantarError
-        }
-
-    }
-
     public void emicionDeFacturasPendientes() {
         //Se asume que el primer dia de la semana es Lunes y que no existen los feriados.
         //En caso de que asi sea se debera esperar hasta la proxima semana.
@@ -106,6 +95,10 @@ public class ControladorSocio {
         if (empresa.getPostulante()) {
             throw new RuntimeException("El socio es postulante.");
         }
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
         Tipo1 cheque = Tipo1.Builder.newBuilder()
                 .withBancoCheque(bancoDelCheque)
                 .withNroCheque(numeroDelCheque)
@@ -126,6 +119,29 @@ public class ControladorSocio {
 
     }
 
+    private boolean excesoPorcentajeFacturas(final Integer cuit) {
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        List<Factura> facturaList = lineaDeCredito.getFacturaList();
+
+        Float montoFacturas = Float.valueOf(0);
+
+        Boolean valorDeRetorno = false;
+
+        for (int a = 0; a < facturaList.size(); a++) {
+            montoFacturas = montoFacturas + facturaList.get(a).getMonto();
+        }
+
+        float operacion = (montoFacturas * 100) / lineaDeCredito.getMonto();
+
+        if (operacion > 10) {
+            valorDeRetorno = true;
+        }
+
+        return valorDeRetorno;
+
+    }
+
     public String solicitarOperacionCCC(
             final Integer cuit,
             final String empresaCC,
@@ -143,6 +159,10 @@ public class ControladorSocio {
         if (empresa.getPostulante()) {
             throw new RuntimeException("El socio es postulante.");
         }
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
         Tipo2 cuenta = Tipo2.Builder.newBuilder()
                 .withEmpresaCC(empresaCC)
                 .withFechaVencimiento(fechaVencimiento)
@@ -181,6 +201,11 @@ public class ControladorSocio {
         if (empresa.getPostulante()) {
             throw new RuntimeException("El socio es postulante.");
         }
+
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
         Tipo3 prestamo = Tipo3.Builder.newBuilder()
                 .withBancoPrestamo(bancoPrestamo)
                 .withImporteTotal(importeTotal)
@@ -228,6 +253,14 @@ public class ControladorSocio {
 
     public void aprobarDocumento(final Integer cuit) {
         Empresa empresa = buscarEmpresa(cuit);
+
+        if (empresa.getClass() == SocioProtector.class) {
+            List<Accionista> listaAccionistas = (List<Accionista>) listaSocioParticipe.stream().map(x -> x.getAccionista());
+            List<Integer> cuitAccionistas = (List<Integer>) listaAccionistas.stream().map(x -> x.getCuit());
+            if (cuitAccionistas.contains(cuit)) {
+                throw new RuntimeException("Un socio no puede ser aprobado como protector si es accionista de una empresa socia partícipe de la SGR");
+            }
+        }
         empresa.aprobarDocumento();
     }
 

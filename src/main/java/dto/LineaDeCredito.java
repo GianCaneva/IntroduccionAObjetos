@@ -53,7 +53,7 @@ public class LineaDeCredito {
         operaciones.add(operacion);
     }
     public void agregarFactura (final Float monto, final String name){
-        Factura.Builder.newBuilder().withMonto().withNombreDeSocio(name).build();
+        Factura factura = Factura.Builder.newBuilder().withMonto(monto).withNombreDeSocio(name).build();
         facturaList.add(factura);
     }
 
