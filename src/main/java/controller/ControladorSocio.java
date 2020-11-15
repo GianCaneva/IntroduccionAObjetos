@@ -17,10 +17,23 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ControladorSocio {
+    private static List<Empresa> listaEmpresas;
+    private static List<SocioParticipe> listaSocioParticipe;
     private Integer idSocio = 0;
 
-    private List<Empresa> listaEmpresas;
-    private List<SocioParticipe> listaSocioParticipe;
+//    private List<Empresa> listaEmpresas;
+//    private List<SocioParticipe> listaSocioParticipe;
+
+    public ControladorSocio() {
+    }
+
+    public static List<Empresa> getListaEmpresas() {
+        return listaEmpresas;
+    }
+
+    public static List<SocioParticipe> getListaSocioParticipe() {
+        return listaSocioParticipe;
+    }
 
     private void agregarEmpresa(final Empresa empresa) {
         listaEmpresas.add(empresa);
@@ -28,21 +41,6 @@ public class ControladorSocio {
 
     private void agregarSocioParticipe(final SocioParticipe socioParticipe) {
         listaSocioParticipe.add(socioParticipe);
-    }
-
-    public ControladorSocio() {
-    }
-
-
-    private Float operar(final Empresa empresa) {
-        LineaDeCredito LineaDeCredito = empresa.getLineaDeCredito();
-        if (LineaDeCredito.getFechaVigencia() > fechaDeHoy) {
-            //  levantarError
-        }
-        if (desembolsos != 0) {
-            //    levantarError
-        }
-
     }
 
     public void emicionDeFacturasPendientes() {
@@ -106,6 +104,10 @@ public class ControladorSocio {
         if (empresa.getPostulante()) {
             throw new RuntimeException("El socio es postulante.");
         }
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
         Tipo1 cheque = Tipo1.Builder.newBuilder()
                 .withBancoCheque(bancoDelCheque)
                 .withNroCheque(numeroDelCheque)
@@ -126,6 +128,29 @@ public class ControladorSocio {
 
     }
 
+    private boolean excesoPorcentajeFacturas(final Integer cuit) {
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        List<Factura> facturaList = lineaDeCredito.getFacturaList();
+
+        Float montoFacturas = Float.valueOf(0);
+
+        Boolean valorDeRetorno = false;
+
+        for (int a = 0; a < facturaList.size(); a++) {
+            montoFacturas = montoFacturas + facturaList.get(a).getMonto();
+        }
+
+        float operacion = (montoFacturas * 100) / lineaDeCredito.getMonto();
+
+        if (operacion > 10) {
+            valorDeRetorno = true;
+        }
+
+        return valorDeRetorno;
+
+    }
+
     public String solicitarOperacionCCC(
             final Integer cuit,
             final String empresaCC,
@@ -143,6 +168,10 @@ public class ControladorSocio {
         if (empresa.getPostulante()) {
             throw new RuntimeException("El socio es postulante.");
         }
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
         Tipo2 cuenta = Tipo2.Builder.newBuilder()
                 .withEmpresaCC(empresaCC)
                 .withFechaVencimiento(fechaVencimiento)
@@ -181,6 +210,11 @@ public class ControladorSocio {
         if (empresa.getPostulante()) {
             throw new RuntimeException("El socio es postulante.");
         }
+
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
         Tipo3 prestamo = Tipo3.Builder.newBuilder()
                 .withBancoPrestamo(bancoPrestamo)
                 .withImporteTotal(importeTotal)
@@ -228,6 +262,14 @@ public class ControladorSocio {
 
     public void aprobarDocumento(final Integer cuit) {
         Empresa empresa = buscarEmpresa(cuit);
+
+        if (empresa.getClass() == SocioProtector.class) {
+            List<Accionista> listaAccionistas = (List<Accionista>) listaSocioParticipe.stream().map(x -> x.getAccionista());
+            List<Integer> cuitAccionistas = (List<Integer>) listaAccionistas.stream().map(x -> x.getCuit());
+            if (cuitAccionistas.contains(cuit)) {
+                throw new RuntimeException("Un socio no puede ser aprobado como protector si es accionista de una empresa socia partícipe de la SGR");
+            }
+        }
         empresa.aprobarDocumento();
     }
 
@@ -316,7 +358,7 @@ public class ControladorSocio {
     }
 
 
-    private Empresa buscarEmpresa(final Integer empresaCuit) {
+    public static Empresa buscarEmpresa(final Integer empresaCuit) {
         Empresa empresaIndex = null;
         for (int i = 0; i < listaEmpresas.size(); i++) {
             Empresa empresa = listaEmpresas.get(i);
