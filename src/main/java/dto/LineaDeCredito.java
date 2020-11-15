@@ -1,5 +1,6 @@
 package dto;
 
+import dto.Operacion.Factura;
 import dto.Operacion.Operacion;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -16,8 +17,13 @@ public class LineaDeCredito {
     private Boolean estado;
     private List<Enum> tipoOperaciones;
     private List<Operacion> operaciones;
+    private List<Factura> facturaList;
 
     private LineaDeCredito() {}
+
+    public List<Factura> getFacturaList() {
+        return facturaList;
+    }
 
     public Float getMonto() {
         return monto;
@@ -46,6 +52,10 @@ public class LineaDeCredito {
     public void agregarOperacion (final Operacion operacion){
         operaciones.add(operacion);
     }
+    public void agregarFactura (final Float monto, final String name){
+        Factura.Builder.newBuilder().withMonto().withNombreDeSocio(name).build();
+        facturaList.add(factura);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,6 +71,8 @@ public class LineaDeCredito {
                 .append(getNroLineaCredito(), that.getNroLineaCredito())
                 .append(getEstado(), that.getEstado())
                 .append(getTipoOperaciones(), that.getTipoOperaciones())
+                .append(getOperaciones(), that.getOperaciones())
+                .append(getFacturaList(), that.getFacturaList())
                 .isEquals();
     }
 
@@ -72,6 +84,8 @@ public class LineaDeCredito {
                 .append(getNroLineaCredito())
                 .append(getEstado())
                 .append(getTipoOperaciones())
+                .append(getOperaciones())
+                .append(getFacturaList())
                 .toHashCode();
     }
 
@@ -83,6 +97,8 @@ public class LineaDeCredito {
                 .append("nroLineaCredito", nroLineaCredito)
                 .append("estado", estado)
                 .append("tipoOperaciones", tipoOperaciones)
+                .append("operaciones", operaciones)
+                .append("factura", facturaList)
                 .toString();
     }
 

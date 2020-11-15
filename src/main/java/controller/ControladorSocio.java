@@ -34,7 +34,6 @@ public class ControladorSocio {
     }
 
 
-
     private Float operar(final Empresa empresa) {
         LineaDeCredito LineaDeCredito = empresa.getLineaDeCredito();
         if (LineaDeCredito.getFechaVigencia() > fechaDeHoy) {
@@ -50,17 +49,26 @@ public class ControladorSocio {
         //Se asume que el primer dia de la semana es Lunes y que no existen los feriados.
         //En caso de que asi sea se debera esperar hasta la proxima semana.
         //1 representa el dia lunes, 2 martes etc y 0 el doming
-        if (Utils.getDate().getDay() !=1){
+        if (Utils.getDate().getDay() != 1) {
             throw new RuntimeException("Error. Se debe esperar hasta el primer dia habil para hacer la emision de Facturas");
         }
 
-        Collection<LineaDeCredito> lineaDeCreditoList = (Collection<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
+        List<LineaDeCredito> lineaDeCreditoList = (List<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
         List<Operacion> listOps = (List<Operacion>) lineaDeCreditoList.stream().map(LineaDeCredito::getOperaciones);
-        List<Operacion> collect = listOps.stream().filter(x -> x.getEstado() == "calculada").collect(Collectors.toList());
+        List<Operacion> listaDeOps = listOps.stream().filter(x -> x.getEstado() == "calculada").collect(Collectors.toList());
 
-        collect.stream().forEach(x->x.cambiarAFacturada());
-
-
+        for (int y = 0; y < listaDeOps.size(); y++) {
+            Operacion operacion = listaDeOps.get(y);
+            operacion.cambiarAFacturada();
+            for (int j = 0; j < lineaDeCreditoList.size(); j++) {
+                List<Operacion> operaciones = lineaDeCreditoList.get(j).getOperaciones();
+                for (int p = 0; p < operaciones.size(); p++) {
+                    if (operaciones.get(p).getId() == operacion.getId()) {
+                        lineaDeCreditoList.get(j).agregarFactura(operacion.getImporteTotal(), operacion.getId());
+                    }
+                }
+            }
+        }
     }
 
     public void operacionProsperada(
