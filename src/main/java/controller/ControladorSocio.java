@@ -10,29 +10,30 @@ import dto.enumeration.Prestamo;
 import dto.enumeration.TipoCheque;
 import utils.Utils;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ControladorSocio {
     private Integer idSocio = 0;
 
     private List<Empresa> listaEmpresas;
+    private List<SocioParticipe> listaSocioParticipe;
 
     private void agregarEmpresa(final Empresa empresa) {
         listaEmpresas.add(empresa);
+    }
 
+    private void agregarSocioParticipe(final SocioParticipe socioParticipe) {
+        listaSocioParticipe.add(socioParticipe);
     }
 
     public ControladorSocio() {
     }
 
-    private Empresa crearEmpresa(final int cuit, final String razonSocial, final Date fechaInicio, final String tipo, final String actividadPrincipal, final String direccion, final int telefono, final String correoElectronico) {
 
-    }
-
-    private socioParticipe solicitarSocioParticipe(final String cuit) {
-
-    }
 
     private Float operar(final Empresa empresa) {
         LineaDeCredito LineaDeCredito = empresa.getLineaDeCredito();
@@ -45,7 +46,20 @@ public class ControladorSocio {
 
     }
 
-    private boolean habilitaOperacion() {
+    public void emicionDeFacturasPendientes() {
+        //Se asume que el primer dia de la semana es Lunes y que no existen los feriados.
+        //En caso de que asi sea se debera esperar hasta la proxima semana.
+        //1 representa el dia lunes, 2 martes etc y 0 el doming
+        if (Utils.getDate().getDay() !=1){
+            throw new RuntimeException("Error. Se debe esperar hasta el primer dia habil para hacer la emision de Facturas");
+        }
+
+        Collection<LineaDeCredito> lineaDeCreditoList = (Collection<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
+        List<Operacion> listOps = (List<Operacion>) lineaDeCreditoList.stream().map(LineaDeCredito::getOperaciones);
+        List<Operacion> collect = listOps.stream().filter(x -> x.getEstado() == "calculada").collect(Collectors.toList());
+
+        collect.stream().forEach(x->x.cambiarAFacturada());
+
 
     }
 
@@ -64,20 +78,6 @@ public class ControladorSocio {
             operacion.crearComision((float) 4, 3);
         }
     }
-
-
-    private Operacion buscarOperacion(final List<Operacion> operaciones, final String numOperacion) {
-
-        Operacion operacionDeRetorno = null;
-        for (int i = 0; i < operaciones.size(); i++) {
-            Operacion operacion = operaciones.get(i);
-            if (operacion.getId() == numOperacion) {
-                operacionDeRetorno = operacion;
-            }
-        }
-        return operacionDeRetorno;
-    }
-
 
     public String solicitarOperacionCheque(
             final Integer cuit,
@@ -272,6 +272,7 @@ public class ControladorSocio {
                 .build();
 
         agregarEmpresa(newEmpresa);
+        agregarSocioParticipe((SocioParticipe) newEmpresa);
         idSocio = idSocio + 1;
     }
 
@@ -317,5 +318,19 @@ public class ControladorSocio {
         }
         return empresaIndex;
     }
+
+
+    private Operacion buscarOperacion(final List<Operacion> operaciones, final String numOperacion) {
+
+        Operacion operacionDeRetorno = null;
+        for (int i = 0; i < operaciones.size(); i++) {
+            Operacion operacion = operaciones.get(i);
+            if (operacion.getId() == numOperacion) {
+                operacionDeRetorno = operacion;
+            }
+        }
+        return operacionDeRetorno;
+    }
+
 
 }

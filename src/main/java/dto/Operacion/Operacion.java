@@ -42,20 +42,28 @@ public abstract class Operacion {
         this.certificadoDeGarantia = certificadoDeGarantia;
     }
 
-    public void modificarEstado(final String newEstado){
-        estado= newEstado;
+    public void modificarEstado(final String newEstado) {
+        estado = newEstado;
     }
 
-    public String getIdCertificado(){
+    public String getIdCertificado() {
         return certificadoDeGarantia.getId();
     }
 
-    public void crearComision (final Float porcentaje,final Integer tipo){
+    public void crearComision(final Float porcentaje, final Integer tipo) {
+
+        estado = "Monetizado";
+
         comision = Comision.Builder.newBuilder()
-                .withEstado("Calculada")
+                .withEstado("calculada")
                 .withPorcentaje(porcentaje)
                 .withTipoOperacion(tipo)
                 .build();
     }
+
+    public void cambiarAFacturada() {
+        estado = "facturada";
+    }
+
 
 }

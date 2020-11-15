@@ -1,13 +1,14 @@
 package dto.Empresa;
 
 import dto.*;
-import dto.Operacion.CertificadoDeGarantia;
+import dto.Operacion.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class SocioParticipe extends Empresa {
 
@@ -37,6 +38,31 @@ public class SocioParticipe extends Empresa {
                 .withEstado(true)
                 .withTipoOperaciones(operaciones)
                 .build();
+    }
+
+
+    public Float calcularRiesgoVivo() {
+
+        float riesgoVivo = 0;
+        List<Operacion> operaciones = getLineaDeCredito().getOperaciones();
+        List<Operacion> operacionesMonetizadas = (List<Operacion>) operaciones.stream().filter(x -> x.getEstado() == "Monetizado");
+
+
+        for (int i = 0; i < operacionesMonetizadas.size(); i++) {
+            Operacion operacion = operacionesMonetizadas.get(i);
+            if (operacion.getClass() == Tipo1.class) {
+                riesgoVivo= riesgoVivo + operacion.getImporteTotal();
+            }
+            if (operacion.getClass() == Tipo2.class) {
+                riesgoVivo = riesgoVivo + operacion.getImporteTotal();
+            }
+            if (operacion.getClass() == Tipo3.class) {
+                riesgoVivo = riesgoVivo + ((Tipo3) operacion).getCantidadCuotasImpagas()* ((Tipo3) operacion).getPrecioDeCuota();
+            }
+        }
+
+        return  riesgoVivo;
+
     }
 
     @Override

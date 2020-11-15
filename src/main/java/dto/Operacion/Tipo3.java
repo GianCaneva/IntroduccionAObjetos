@@ -15,10 +15,23 @@ public class Tipo3 extends Operacion {
     private Float tasa;
     private Date fechaAcreditacion;
     private Integer cantidadCuotas;
+    private Integer cantidadCuotasImpagas;
     private String sistema;
 
     public String getBancoPrestamo() {
         return bancoPrestamo;
+    }
+
+    public Float getPrecioDeCuota() {
+        return importeTotal / cantidadCuotas;
+    }
+
+    public Integer getCantidadCuotasImpagas() {
+        return cantidadCuotasImpagas;
+    }
+
+    public void pagarCuota() {
+        cantidadCuotasImpagas = cantidadCuotasImpagas - 1;
     }
 
     @Override
@@ -140,6 +153,7 @@ public class Tipo3 extends Operacion {
             tipo3.tasa = this.tasa;
             tipo3.fecha = Utils.getDate();
             tipo3.id = UUID.randomUUID().toString();
+            tipo3.cantidadCuotasImpagas = cantidadCuotas;
             return tipo3;
         }
     }
