@@ -7,16 +7,19 @@ import dto.ParticipacionSGR;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import utils.Utils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public class SocioProtector extends Empresa {
 
     private Integer idSocio;
-    private Boolean postulante;
     private Integer accionesB;
     private List<AporteDeCapital> cantidadAporteCapìtal;
+    private List<AporteDeCapital> aportesExtraidos;
     private Float desembolso;
 
     private SocioProtector() {
@@ -26,11 +29,7 @@ public class SocioProtector extends Empresa {
         return idSocio;
     }
 
-    public Boolean getPostulante() {
-        return postulante;
-    }
-
-    public Integer getAccionesB() {
+      public Integer getAccionesB() {
         return accionesB;
     }
 
@@ -40,6 +39,41 @@ public class SocioProtector extends Empresa {
 
     public Float getDesembolso() {
         return desembolso;
+    }
+
+    public List<AporteDeCapital> getAportesExtraidos() {
+        return aportesExtraidos;
+    }
+
+    public void generarAporteCapital(final Float monto) {
+
+        if(postulante){
+            throw new RuntimeException("Al momento de la fecha el socio no se encuentra habilitado para operar");
+        }
+
+        AporteDeCapital aporteDeCapital = AporteDeCapital.Builder.newBuilder()
+                .withMonto(monto)
+                .withFechaAporte(Utils.getDate())
+                .build();
+        cantidadAporteCapìtal.add(aporteDeCapital);
+    }
+
+    public void retirarAporteCapital(final Date fechaDeAporte) throws RuntimeException {
+
+        if(postulante){
+            throw new RuntimeException("Al momento de la fecha el socio no se encuentra habilitado para operar");
+        }
+
+        AporteDeCapital aporteDeCapital = cantidadAporteCapìtal.stream()
+                .filter(x -> x.getFechaAporte().equals(fechaDeAporte))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("No existe un aporte de capital realizado para tal fecha"));
+
+        if (aporteDeCapital.getFechaAporte().getYear()+2<fechaDeAporte.getYear()){
+            throw new RuntimeException("No han pasado el minimo de dos años para realizar la extraccion");
+        }
+        aportesExtraidos.add(aporteDeCapital);
+        cantidadAporteCapìtal.remove(aporteDeCapital);
     }
 
 
@@ -57,18 +91,20 @@ public class SocioProtector extends Empresa {
                 .append(getPostulante(), that.getPostulante())
                 .append(getAccionesB(), that.getAccionesB())
                 .append(getCantidadAporteCapìtal(), that.getCantidadAporteCapìtal())
+                .append(getAportesExtraidos(), that.getAportesExtraidos())
                 .append(getDesembolso(), that.getDesembolso())
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
+        return new HashCodeBuilder()
                 .appendSuper(super.hashCode())
                 .append(getIdSocio())
                 .append(getPostulante())
                 .append(getAccionesB())
                 .append(getCantidadAporteCapìtal())
+                .append(getAportesExtraidos())
                 .append(getDesembolso())
                 .toHashCode();
     }
@@ -80,6 +116,7 @@ public class SocioProtector extends Empresa {
                 .append("postulante", postulante)
                 .append("accionesB", accionesB)
                 .append("cantidadAporteCapìtal", cantidadAporteCapìtal)
+                .append("aportesExtraidos", aportesExtraidos)
                 .append("desembolso", desembolso)
                 .toString();
     }
@@ -216,32 +253,29 @@ public class SocioProtector extends Empresa {
             return this;
         }
 
+
+        public Empresa build() {
+            SocioProtector socioProtector = new SocioProtector();
+
+            socioProtector.cuit = cuit;
+            socioProtector.razonSocial = razonSocial;
+            socioProtector.fechaInicio = fechaInicio;
+            socioProtector.tipo = tipo;
+            socioProtector.actividadPrincipal = actividadPrincipal;
+            socioProtector.direccion = direccion;
+            socioProtector.telefono = telefono;
+            socioProtector.correoElectronico = correoElectronico;
+            socioProtector.accionista = accionista;
+            socioProtector.documento = documento;
+            socioProtector.participacionSGR = participacionSGR;
+
+            socioProtector.idSocio = idSocio;
+            socioProtector.postulante = postulante;
+            socioProtector.accionesB = accionesB;
+            socioProtector.cantidadAporteCapìtal = cantidadAporteCapìtal;
+            socioProtector.desembolso = desembolso;
+
+            return socioProtector;
+        }
     }
-
-    public Empresa build() {
-        SocioProtector socioProtector = new SocioProtector();
-
-        socioProtector.cuit = cuit;
-        socioProtector.razonSocial = razonSocial;
-        socioProtector.fechaInicio = fechaInicio;
-        socioProtector.tipo = tipo;
-        socioProtector.actividadPrincipal = actividadPrincipal;
-        socioProtector.direccion = direccion;
-        socioProtector.telefono = telefono;
-        socioProtector.correoElectronico = correoElectronico;
-        socioProtector.accionista = accionista;
-        socioProtector.documento = documento;
-        socioProtector.participacionSGR = participacionSGR;
-
-        socioProtector.idSocio = idSocio;
-        socioProtector.postulante = postulante;
-        socioProtector.accionesB = accionesB;
-        socioProtector.cantidadAporteCapìtal = cantidadAporteCapìtal;
-        socioProtector.desembolso = desembolso;
-
-
-        return socioProtector;
-    }
-
-
 }
