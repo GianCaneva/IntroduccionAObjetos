@@ -1,21 +1,17 @@
-package dto;
+package dto.Empresa;
 
+import dto.Accionista;
+import dto.Documento;
+import dto.ParticipacionSGR;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.Date;
 import java.util.List;
 
 public abstract class Empresa {
 
-    public static final String _CUIT = "cuit";
-    public static final String _RAZON_SOCIAL = "razonSocial";
-    public static final String _FECHA_INICIO = "fechaInicio";
-    public static final String _TIPO = "tipo";
-    public static final String _ACTIVIDAD_PRINCIPAL = "actividadPrincipal";
-    public static final String _DIRECCION = "direccion";
-    public static final String _TELEFONO = "telefono";
-    public static final String _CORREO_ELECTRONICO = "correoElectronico";
     protected Integer cuit;
     protected String razonSocial;
     protected Date fechaInicio;
@@ -24,6 +20,9 @@ public abstract class Empresa {
     protected String direccion;
     protected Integer telefono;
     protected String correoElectronico;
+    protected List<Accionista> accionista;
+    protected Documento documento;
+    protected ParticipacionSGR participacionSGR;
 
     protected Empresa() {
     }
@@ -60,6 +59,18 @@ public abstract class Empresa {
         return correoElectronico;
     }
 
+    public List<Accionista> getAccionista() {
+        return accionista;
+    }
+
+    public Documento getDocumento() {
+        return documento;
+    }
+
+    public ParticipacionSGR getParticipacionSGR() {
+        return participacionSGR;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,43 +80,52 @@ public abstract class Empresa {
         Empresa empresa = (Empresa) o;
 
         return new EqualsBuilder()
-                .append(getCuit(), empresa.getCuit())
-                .append(getRazonSocial(), empresa.getRazonSocial())
-                .append(getFechaInicio(), empresa.getFechaInicio())
-                .append(getTipo(), empresa.getTipo())
-                .append(getActividadPrincipal(), empresa.getActividadPrincipal())
-                .append(getDireccion(), empresa.getDireccion())
-                .append(getTelefono(), empresa.getTelefono())
-                .append(getCorreoElectronico(), empresa.getCorreoElectronico())
+                .append(cuit, empresa.cuit)
+                .append(razonSocial, empresa.razonSocial)
+                .append(fechaInicio, empresa.fechaInicio)
+                .append(tipo, empresa.tipo)
+                .append(actividadPrincipal, empresa.actividadPrincipal)
+                .append(direccion, empresa.direccion)
+                .append(telefono, empresa.telefono)
+                .append(correoElectronico, empresa.correoElectronico)
+                .append(accionista, empresa.accionista)
+                .append(documento, empresa.documento)
+                .append(participacionSGR, empresa.participacionSGR)
                 .isEquals();
     }
 
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .append(getCuit())
-                .append(getRazonSocial())
-                .append(getFechaInicio())
-                .append(getTipo())
-                .append(getActividadPrincipal())
-                .append(getDireccion())
-                .append(getTelefono())
-                .append(getCorreoElectronico())
+                .append(cuit)
+                .append(razonSocial)
+                .append(fechaInicio)
+                .append(tipo)
+                .append(actividadPrincipal)
+                .append(direccion)
+                .append(telefono)
+                .append(correoElectronico)
+                .append(accionista)
+                .append(documento)
+                .append(participacionSGR)
                 .toHashCode();
     }
+
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append(_CUIT, cuit)
-                .append(_RAZON_SOCIAL, razonSocial)
-                .append(_FECHA_INICIO, fechaInicio)
-                .append(_TIPO, tipo)
-                .append(_ACTIVIDAD_PRINCIPAL, actividadPrincipal)
-                .append(_DIRECCION, direccion)
-                .append(_TELEFONO, telefono)
-                .append(_CORREO_ELECTRONICO, correoElectronico)
+                .append("cuit", cuit)
+                .append("razonSocial", razonSocial)
+                .append("fechaInicio", fechaInicio)
+                .append("tipo", tipo)
+                .append("actividadPrincipal", actividadPrincipal)
+                .append("direccion", direccion)
+                .append("telefono", telefono)
+                .append("correoElectronico", correoElectronico)
+                .append("accionista", accionista)
+                .append("documento", documento)
+                .append("participacionSGR", participacionSGR)
                 .toString();
     }
-
 }

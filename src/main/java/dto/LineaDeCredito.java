@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 
-public class lineasDeCredito {
+public class LineasDeCredito {
 
     public static final String _MONTO = "monto";
     public static final String _FECHA_VIGENCIA = "fechaVigencia";
@@ -17,7 +17,7 @@ public class lineasDeCredito {
     private Integer nroLineaCredito;
     private Boolean estado;
 
-    private lineasDeCredito() {}
+    private LineasDeCredito() {}
 
     public Integer getMonto() {
         return monto;
@@ -41,7 +41,7 @@ public class lineasDeCredito {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        lineasDeCredito that = (lineasDeCredito) o;
+        LineasDeCredito that = (LineasDeCredito) o;
 
         return new EqualsBuilder()
                 .append(getMonto(), that.getMonto())
@@ -79,32 +79,32 @@ public class lineasDeCredito {
 
         private Builder() {}
 
-        public static lineasDeCredito.Builder newBuilder() {
-            return new lineasDeCredito.Builder();
+        public static LineasDeCredito.Builder newBuilder() {
+            return new LineasDeCredito.Builder();
         }
 
-        public lineasDeCredito.Builder withMonto(Integer monto){
+        public LineasDeCredito.Builder withMonto(Integer monto){
             this.monto = monto;
             return this;
         }
 
-        public lineasDeCredito.Builder withFechaVigencia(Date fechaVigencia){
+        public LineasDeCredito.Builder withFechaVigencia(Date fechaVigencia){
             this.fechaVigencia = fechaVigencia;
             return this;
         }
 
-        public lineasDeCredito.Builder withNroLineaCredito(Integer nroLineaCredito){
+        public LineasDeCredito.Builder withNroLineaCredito(Integer nroLineaCredito){
             this.nroLineaCredito = nroLineaCredito;
             return this;
         }
 
-        public lineasDeCredito.Builder withEstado(Boolean estado){
+        public LineasDeCredito.Builder withEstado(Boolean estado){
             this.estado = estado;
             return this;
         }
 
-        public lineasDeCredito build() {
-            lineasDeCredito LineasDeCredito = new lineasDeCredito();
+        public LineasDeCredito build() {
+            LineasDeCredito LineasDeCredito = new LineasDeCredito();
             LineasDeCredito.monto = this.monto;
             LineasDeCredito.fechaVigencia = this.fechaVigencia;
             LineasDeCredito.nroLineaCredito = this.nroLineaCredito;

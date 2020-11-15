@@ -30,11 +30,6 @@ public class SocioProtector extends Empresa {
         return postulante;
     }
 
-    @Override
-    public Date getFechaInicio() {
-        return fechaInicio;
-    }
-
     public Integer getAccionesB() {
         return accionesB;
     }
