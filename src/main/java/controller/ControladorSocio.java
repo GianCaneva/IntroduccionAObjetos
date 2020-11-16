@@ -10,19 +10,15 @@ import dto.enumeration.Prestamo;
 import dto.enumeration.TipoCheque;
 import utils.Utils;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ControladorSocio {
     private static List<Empresa> listaEmpresas;
     private static List<SocioParticipe> listaSocioParticipe;
+    private static List<SocioProtector> listaSocioProtector;
     private Integer idSocio = 0;
-
-//    private List<Empresa> listaEmpresas;
-//    private List<SocioParticipe> listaSocioParticipe;
 
     public ControladorSocio() {
     }
@@ -41,6 +37,10 @@ public class ControladorSocio {
 
     private void agregarSocioParticipe(final SocioParticipe socioParticipe) {
         listaSocioParticipe.add(socioParticipe);
+    }
+
+    private void agregarSocioProtector(final SocioProtector socioProtector) {
+        listaSocioProtector.add(socioProtector);
     }
 
     public void emicionDeFacturasPendientes() {
@@ -85,6 +85,23 @@ public class ControladorSocio {
         }
     }
 
+    public void operar(final String id, final Integer cuit){
+
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+        Desembolso desembolso = empresa.getLineaDeCredito().getDesembolso();
+
+        if (desembolso != null){
+            throw new RuntimeException("Ningún socio puede operar con desembolsos no cubiertos");
+        }
+
+        Operacion operacion = buscarOperacion(id);
+
+        CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(cuit);
+        operacion.agregarCertificadoDeGarantia(certificadoDeGarantia);
+        operacion.modificarEstado("Con certificado emitido");
+
+    }
+
     public String solicitarOperacionCheque(
             final Integer cuit,
             final TipoCheque tipo,
@@ -108,6 +125,16 @@ public class ControladorSocio {
             throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
         }
 
+        float porcentaje = (importe * 100) / getFDR();
+
+        if (porcentaje > 5) {
+            throw new RuntimeException("Ningún socio puede operar por más del 5% del FDR");
+        }
+
+        if (excesoChequesFirmante(cuit, importe)) {
+            throw new RuntimeException("La SGR no puede recibir más del 5% del FDR en cheques de un mismo firmante");
+        }
+
         Tipo1 cheque = Tipo1.Builder.newBuilder()
                 .withBancoCheque(bancoDelCheque)
                 .withNroCheque(numeroDelCheque)
@@ -119,35 +146,8 @@ public class ControladorSocio {
 
         cheque.modificarEstado("Ingresado");
         lineaDeCredito.agregarOperacion(cheque);
-        CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(cuit);
-        cheque.agregarCertificadoDeGarantia(certificadoDeGarantia);
-        cheque.modificarEstado("Con certificado emitido");
-
 
         return cheque.getId();
-
-    }
-
-    private boolean excesoPorcentajeFacturas(final Integer cuit) {
-        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
-        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
-        List<Factura> facturaList = lineaDeCredito.getFacturaList();
-
-        Float montoFacturas = Float.valueOf(0);
-
-        Boolean valorDeRetorno = false;
-
-        for (int a = 0; a < facturaList.size(); a++) {
-            montoFacturas = montoFacturas + facturaList.get(a).getMonto();
-        }
-
-        float operacion = (montoFacturas * 100) / lineaDeCredito.getMonto();
-
-        if (operacion > 10) {
-            valorDeRetorno = true;
-        }
-
-        return valorDeRetorno;
 
     }
 
@@ -172,6 +172,12 @@ public class ControladorSocio {
             throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
         }
 
+        float porcentaje = (importe * 100) / getFDR();
+
+        if (porcentaje > 5) {
+            throw new RuntimeException("Ningún socio puede operar por más del 5% del FDR");
+        }
+
         Tipo2 cuenta = Tipo2.Builder.newBuilder()
                 .withEmpresaCC(empresaCC)
                 .withFechaVencimiento(fechaVencimiento)
@@ -181,12 +187,8 @@ public class ControladorSocio {
 
         cuenta.modificarEstado("Ingresado");
         lineaDeCredito.agregarOperacion(cuenta);
-        CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(cuit);
-        cuenta.agregarCertificadoDeGarantia(certificadoDeGarantia);
-        cuenta.modificarEstado("Con certificado emitido");
 
         return cuenta.getId();
-
 
     }
 
@@ -215,6 +217,12 @@ public class ControladorSocio {
             throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
         }
 
+        float porcentaje = (importeTotal * 100) / getFDR();
+
+        if (porcentaje > 5) {
+            throw new RuntimeException("Ningún socio puede operar por más del 5% del FDR");
+        }
+
         Tipo3 prestamo = Tipo3.Builder.newBuilder()
                 .withBancoPrestamo(bancoPrestamo)
                 .withImporteTotal(importeTotal)
@@ -226,13 +234,7 @@ public class ControladorSocio {
 
         prestamo.modificarEstado("Ingresado");
         lineaDeCredito.agregarOperacion(prestamo);
-        CertificadoDeGarantia certificadoDeGarantia = new CertificadoDeGarantia(cuit);
-        prestamo.agregarCertificadoDeGarantia(certificadoDeGarantia);
-        prestamo.modificarEstado("Con certificado emitido");
-
-
         return prestamo.getId();
-
 
     }
 
@@ -354,6 +356,7 @@ public class ControladorSocio {
                 .build();
 
         agregarEmpresa(newEmpresa);
+        agregarSocioProtector((SocioProtector) newEmpresa);
         idSocio = idSocio + 1;
     }
 
@@ -369,6 +372,15 @@ public class ControladorSocio {
         return empresaIndex;
     }
 
+    public void agregarDesembolsos(final Integer cuit, final Float monto, final Float mora, final String tipo){
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+        empresa.getLineaDeCredito().agregarDesembolso(monto, mora, tipo);
+    }
+
+    public void eliminarDesembolsos(final Integer cuit){
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+        empresa.getLineaDeCredito().eliminarDesembolso();
+    }
 
     private Operacion buscarOperacion(final List<Operacion> operaciones, final String numOperacion) {
 
@@ -380,6 +392,86 @@ public class ControladorSocio {
             }
         }
         return operacionDeRetorno;
+    }
+
+    private Operacion buscarOperacion(final String numOperacion) {
+
+        List<LineaDeCredito> lineaDeCredito = (List<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
+        List<Operacion> operaciones = (List<Operacion>) lineaDeCredito.stream().map(x -> x.getOperaciones());
+
+        Operacion operacionDeRetorno = null;
+
+        for (int i = 0; i < operaciones.size(); i++) {
+            Operacion operacion = operaciones.get(i);
+            if (operacion.getId() == numOperacion) {
+                operacionDeRetorno = operacion;
+            }
+        }
+        return operacionDeRetorno;
+    }
+
+    private boolean excesoPorcentajeFacturas(final Integer cuit) {
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        List<Factura> facturaList = lineaDeCredito.getFacturaList();
+
+        Float montoFacturas = Float.valueOf(0);
+
+        Boolean valorDeRetorno = false;
+
+        for (int a = 0; a < facturaList.size(); a++) {
+            montoFacturas = montoFacturas + facturaList.get(a).getMonto();
+        }
+
+        float operacion = (montoFacturas * 100) / lineaDeCredito.getMonto();
+
+        if (operacion > 10) {
+            valorDeRetorno = true;
+        }
+
+        return valorDeRetorno;
+
+    }
+
+    private Float getFDR() {
+        Float fdr = Float.valueOf(0);
+        List<AporteDeCapital> aportesDeCapital = (List<AporteDeCapital>) listaSocioProtector.stream().map(x -> x.getCantidadAporteCapìtal());
+        List<Float> montosTotales = (List<Float>) aportesDeCapital.stream().map(x -> x.getMonto());
+
+        for (int i = 0; i < montosTotales.size(); i++) {
+            fdr = fdr + montosTotales.get(i);
+        }
+        return fdr;
+    }
+
+
+    private boolean excesoChequesFirmante(final Integer firmante, final Float valorAgregado) {
+        List<LineaDeCredito> lineaDeCredito = (List<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
+        List<Operacion> operaciones = (List<Operacion>) lineaDeCredito.stream().map(x -> x.getOperaciones());
+        List<Tipo1> operacionesDeTipoCheque = null;
+
+        for (int i = 0; i < operaciones.size(); i++) {
+            Operacion operacion = operaciones.get(i);
+            if (operacion.getClass() == Tipo1.class) {
+                operacionesDeTipoCheque.add((Tipo1) operacion);
+            }
+        }
+        List<Tipo1> operacionesFirmante = (List<Tipo1>) operacionesDeTipoCheque.stream().filter(x -> x.getCuitFirmante() == firmante);
+
+        Float monto = Float.valueOf(0);
+        for (int i = 0; i < operacionesFirmante.size(); i++) {
+            Tipo1 tipo1 = operacionesFirmante.get(i);
+            monto = monto + tipo1.getImporteTotal();
+        }
+
+        monto = monto + valorAgregado;
+        Boolean valorDeRetorno = false;
+
+        if (((monto * 100) / getFDR()) > 5) {
+            valorDeRetorno = true;
+        }
+
+        return valorDeRetorno;
     }
 
 

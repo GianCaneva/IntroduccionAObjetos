@@ -18,8 +18,10 @@ public class LineaDeCredito {
     private List<Enum> tipoOperaciones;
     private List<Operacion> operaciones;
     private List<Factura> facturaList;
+    private Desembolso desembolso;
 
-    private LineaDeCredito() {}
+    private LineaDeCredito() {
+    }
 
     public List<Factura> getFacturaList() {
         return facturaList;
@@ -49,12 +51,29 @@ public class LineaDeCredito {
         return operaciones;
     }
 
-    public void agregarOperacion (final Operacion operacion){
+    public Desembolso getDesembolso() {
+        return desembolso;
+    }
+
+    public void agregarOperacion(final Operacion operacion) {
         operaciones.add(operacion);
     }
-    public void agregarFactura (final Float monto, final String name){
+
+    public void agregarFactura(final Float monto, final String name) {
         Factura factura = Factura.Builder.newBuilder().withMonto(monto).withNombreDeSocio(name).build();
         facturaList.add(factura);
+    }
+
+    public void agregarDesembolso(final Float monto, final Float mora, final String tipo) {
+        this.desembolso = Desembolso.Builder.newBuilder()
+                .withMonto(monto)
+                .withMora(mora)
+                .withTipo(tipo)
+                .build();
+    }
+
+    public void eliminarDesembolso() {
+        this.desembolso = null;
     }
 
     @Override
@@ -73,6 +92,7 @@ public class LineaDeCredito {
                 .append(getTipoOperaciones(), that.getTipoOperaciones())
                 .append(getOperaciones(), that.getOperaciones())
                 .append(getFacturaList(), that.getFacturaList())
+                .append(getDesembolso(), that.getDesembolso())
                 .isEquals();
     }
 
@@ -86,6 +106,7 @@ public class LineaDeCredito {
                 .append(getTipoOperaciones())
                 .append(getOperaciones())
                 .append(getFacturaList())
+                .append(getDesembolso())
                 .toHashCode();
     }
 
@@ -98,7 +119,8 @@ public class LineaDeCredito {
                 .append("estado", estado)
                 .append("tipoOperaciones", tipoOperaciones)
                 .append("operaciones", operaciones)
-                .append("factura", facturaList)
+                .append("facturaList", facturaList)
+                .append("desembolso", desembolso)
                 .toString();
     }
 
@@ -109,33 +131,34 @@ public class LineaDeCredito {
         private Boolean estado;
         private List<Enum> tipoOperaciones;
 
-        private Builder() {}
+        private Builder() {
+        }
 
         public static Builder newBuilder() {
             return new Builder();
         }
 
-        public Builder withMonto(Float monto){
+        public Builder withMonto(Float monto) {
             this.monto = monto;
             return this;
         }
 
-        public Builder withFechaVigencia(Date fechaVigencia){
+        public Builder withFechaVigencia(Date fechaVigencia) {
             this.fechaVigencia = fechaVigencia;
             return this;
         }
 
-        public Builder withNroLineaCredito(Integer nroLineaCredito){
+        public Builder withNroLineaCredito(Integer nroLineaCredito) {
             this.nroLineaCredito = nroLineaCredito;
             return this;
         }
 
-        public Builder withEstado(Boolean estado){
+        public Builder withEstado(Boolean estado) {
             this.estado = estado;
             return this;
         }
 
-        public Builder withTipoOperaciones(List<Enum> tipoOperaciones){
+        public Builder withTipoOperaciones(List<Enum> tipoOperaciones) {
             this.tipoOperaciones = tipoOperaciones;
             return this;
         }
