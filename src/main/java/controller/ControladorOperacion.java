@@ -84,10 +84,21 @@ public class ControladorOperacion {
         return valor;
 
     }
-//    private int calcularSaldoMora(){
-//    }
-//    private int calcularConsolidada(){
-//    }
+
+    private Float obtenerMoraPorDia(final Integer cuit){
+        SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
+        return empresa.getLineaDeCredito().getDesembolso().getMora();
+    }
+
+    public Float calcularConsolidadaUtilizado(final Integer cuit){
+        SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
+        return empresa.calcularUtilizadoEnLinea();
+    }
+
+    public Float calcularConsolidadaRiesgo(final Integer cuit){
+        SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
+        return empresa.calcularRiesgoVivo();
+    }
 
 
 }
