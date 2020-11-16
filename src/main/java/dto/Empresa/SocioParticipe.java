@@ -51,19 +51,39 @@ public class SocioParticipe extends Empresa {
         for (int i = 0; i < operacionesMonetizadas.size(); i++) {
             Operacion operacion = operacionesMonetizadas.get(i);
             if (operacion.getClass() == Tipo1.class) {
-                riesgoVivo= riesgoVivo + operacion.getImporteTotal();
+                riesgoVivo = riesgoVivo + operacion.getImporteTotal();
             }
             if (operacion.getClass() == Tipo2.class) {
                 riesgoVivo = riesgoVivo + operacion.getImporteTotal();
             }
             if (operacion.getClass() == Tipo3.class) {
-                riesgoVivo = riesgoVivo + ((Tipo3) operacion).getCantidadCuotasImpagas()* ((Tipo3) operacion).getPrecioDeCuota();
+                riesgoVivo = riesgoVivo + ((Tipo3) operacion).getCantidadCuotasImpagas() * ((Tipo3) operacion).getPrecioDeCuota();
             }
         }
 
-        return  riesgoVivo;
+        return riesgoVivo;
 
     }
+
+
+    public Float calcularUtilizadoEnLinea() {
+        Float utilizadoEnLinea = Float.valueOf(0);
+
+        List<Operacion> operacionConCertificado =
+                (List<Operacion>) lineaDeCredito.getOperaciones()
+                .stream().filter(x -> x.getEstado() == "Con certificado emitido");
+        List<Float> floatStream = (List<Float>) operacionConCertificado.stream().map(x -> x.getImporteTotal());
+
+        for (int a = 0; a>floatStream.size(); a++){
+            utilizadoEnLinea= utilizadoEnLinea + floatStream.get(a);
+        }
+
+        Float riesgoVivo = calcularRiesgoVivo();
+        utilizadoEnLinea = utilizadoEnLinea + riesgoVivo;
+        return  utilizadoEnLinea;
+
+    }
+
 
     @Override
     public boolean equals(Object o) {
