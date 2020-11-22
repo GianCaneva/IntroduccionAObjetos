@@ -1,6 +1,6 @@
 package dto.Operacion;
 
-import dto.enumeration.TipoCheque;
+import dto.Enumeration.TipoCheque;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -90,6 +90,7 @@ public class Tipo1 extends Operacion {
     public static final class Builder {
         protected Comision comisiones;
         protected Float importeTotal;
+        protected String id = null;
 
         private Integer nroCheque;
         private String bancoCheque;
@@ -145,6 +146,11 @@ public class Tipo1 extends Operacion {
             return this;
         }
 
+        public Builder withId(final String id) {
+            this.id = id;
+            return this;
+        }
+
         public Tipo1 build() {
             Tipo1 tipo1 = new Tipo1();
             tipo1.nroCheque = this.nroCheque;
@@ -156,7 +162,12 @@ public class Tipo1 extends Operacion {
             tipo1.importeTotal = this.importeTotal;
             tipo1.tasaDescuento = this.tasaDescuento;
             tipo1.fecha = Utils.getDate();
-            tipo1.id = UUID.randomUUID().toString();
+            if (id == null) {
+                tipo1.id = UUID.randomUUID().toString();
+            }else{
+                tipo1.id=id;
+            }
+
             return tipo1;
         }
     }

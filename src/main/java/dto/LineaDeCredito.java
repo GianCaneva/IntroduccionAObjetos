@@ -58,6 +58,9 @@ public class LineaDeCredito {
     public void agregarOperacion(final Operacion operacion) {
         operaciones.add(operacion);
     }
+    public void removeOperacion(final Operacion operacion) {
+        operaciones.remove(operacion);
+    }
 
     public void agregarFactura(final Float monto, final String name) {
         Factura factura = Factura.Builder.newBuilder().withMonto(monto).withNombreDeSocio(name).build();

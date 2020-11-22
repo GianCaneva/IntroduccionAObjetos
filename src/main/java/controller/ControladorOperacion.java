@@ -1,11 +1,13 @@
 package controller;
 
+import dto.Desembolso;
 import dto.Empresa.SocioParticipe;
 import dto.LineaDeCredito;
 import dto.Operacion.*;
-import dto.enumeration.CtaCorriente;
-import dto.enumeration.Prestamo;
-import dto.enumeration.TipoCheque;
+import dto.Enumeration.CtaCorriente;
+import dto.Enumeration.Prestamo;
+import dto.Enumeration.TipoCheque;
+import utils.Utils;
 
 import java.util.Date;
 import java.util.List;
@@ -17,12 +19,12 @@ public class ControladorOperacion {
 
     }
 
-    private Integer calcularComisionesCheques(final Date dia) {
+    private Float calcularComisionesCheques(final Date dia) {
         List<LineaDeCredito> lineaDeCreditoList = (List<LineaDeCredito>) ControladorSocio.getListaSocioParticipe().stream().map(x -> x.getLineaDeCredito());
         List<Operacion> listOperaciones = (List<Operacion>) lineaDeCreditoList.stream().map(x -> x.getOperaciones());
         List<Comision> comisionList = (List<Comision>) listOperaciones.stream().map(x -> x.getComision());
 
-        Integer cantidadComisionCheques = 0;
+        Float cantidadComisionCheques = (float) 0;
 
         for (int i = 0; i < comisionList.size(); i++) {
             Comision comision = comisionList.get(i);
@@ -62,7 +64,8 @@ public class ControladorOperacion {
     }
 
     //
-//    private int calcularValorPromedioTasa(){
+//    private int calcularValorPromedioTasa(STRING Y 2 DROPS DOWNS){
+//    }//    private int calcularValorPromedioTasa(){
 //    }
 //
     private float calcularPorcentajeComision(final Enum tipoDeOperacion) {
@@ -85,17 +88,43 @@ public class ControladorOperacion {
 
     }
 
-    private Float obtenerMoraPorDia(final Integer cuit){
+    public Float obtenerMoraTotal(final Integer cuit) {
+        SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
+        Desembolso desembolso = empresa.getLineaDeCredito().getDesembolso();
+        Float moraDiaria = desembolso.getMora();
+        Integer cantidadDeDias = obtenerCantidadDeDiasEntreDosFechas(desembolso.getFecha());
+        float moraTotal = moraDiaria * cantidadDeDias;
+
+        return moraTotal;
+    }
+
+    private Integer obtenerCantidadDeDiasEntreDosFechas(final Date date1) {
+
+        Date dateActual = Utils.getDate();
+
+        Integer cantidadDeMeses = date1.getMonth() - dateActual.getMonth();
+        //Se asume en este modelo que los meses tienen 30 dias
+        Integer cantidadDeDias = 30 * cantidadDeMeses;
+        int diferenciaDeDias = dateActual.getDay() - date1.getDay();
+        if (diferenciaDeDias > 0) {
+            cantidadDeDias = cantidadDeDias + diferenciaDeDias;
+        } else if (diferenciaDeDias < 0) {
+            cantidadDeDias = cantidadDeDias - diferenciaDeDias;
+        }
+        return cantidadDeDias;
+    }
+
+    public Float obtenerMoraPorDia(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.getLineaDeCredito().getDesembolso().getMora();
     }
 
-    public Float calcularConsolidadaUtilizado(final Integer cuit){
+    public Float calcularConsolidadaUtilizado(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.calcularUtilizadoEnLinea();
     }
 
-    public Float calcularConsolidadaRiesgo(final Integer cuit){
+    public Float calcularConsolidadaRiesgo(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.calcularRiesgoVivo();
     }

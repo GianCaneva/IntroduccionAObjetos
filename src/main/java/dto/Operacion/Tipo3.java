@@ -105,6 +105,8 @@ public class Tipo3 extends Operacion {
         private Date fechaAcreditacion;
         private Integer cantidadCuotas;
         private String sistema;
+        protected String id = null;
+
 
         private Builder() {
         }
@@ -143,6 +145,11 @@ public class Tipo3 extends Operacion {
             return this;
         }
 
+        public Builder withId(final String id) {
+            this.id = id;
+            return this;
+        }
+
         public Tipo3 build() {
             Tipo3 tipo3 = new Tipo3();
             tipo3.cantidadCuotas = this.cantidadCuotas;
@@ -152,7 +159,11 @@ public class Tipo3 extends Operacion {
             tipo3.bancoPrestamo = this.bancoPrestamo;
             tipo3.tasa = this.tasa;
             tipo3.fecha = Utils.getDate();
-            tipo3.id = UUID.randomUUID().toString();
+            if (id == null) {
+                tipo3.id = UUID.randomUUID().toString();
+            }else{
+                tipo3.id=id;
+            }
             tipo3.cantidadCuotasImpagas = cantidadCuotas;
             return tipo3;
         }

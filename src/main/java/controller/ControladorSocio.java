@@ -5,19 +5,21 @@ import dto.Empresa.Empresa;
 import dto.Empresa.SocioParticipe;
 import dto.Empresa.SocioProtector;
 import dto.Operacion.*;
-import dto.enumeration.CtaCorriente;
-import dto.enumeration.Prestamo;
-import dto.enumeration.TipoCheque;
+import dto.Enumeration.CtaCorriente;
+import dto.Enumeration.Prestamo;
+import dto.Enumeration.TipoCheque;
 import utils.Utils;
 
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ControladorSocio {
     private static List<Empresa> listaEmpresas;
     private static List<SocioParticipe> listaSocioParticipe;
     private static List<SocioProtector> listaSocioProtector;
+    private static List<Cambio> historial;
     private Integer idSocio = 0;
 
     public ControladorSocio() {
@@ -35,12 +37,28 @@ public class ControladorSocio {
         listaEmpresas.add(empresa);
     }
 
+    private void removerEmpresa(final Empresa empresa) {
+        listaEmpresas.remove(empresa);
+    }
+
     private void agregarSocioParticipe(final SocioParticipe socioParticipe) {
         listaSocioParticipe.add(socioParticipe);
     }
 
     private void agregarSocioProtector(final SocioProtector socioProtector) {
         listaSocioProtector.add(socioProtector);
+    }
+
+    private void removerSocioProtector(final SocioProtector socioProtector) {
+        listaSocioProtector.remove(socioProtector);
+    }
+
+    private void removerSocioParticipe(final SocioParticipe socioParticipe) {
+        listaSocioProtector.remove(socioParticipe);
+    }
+
+    private void agregarCambio(final Cambio cambio) {
+        historial.add(cambio);
     }
 
     public void emicionDeFacturasPendientes() {
@@ -85,12 +103,12 @@ public class ControladorSocio {
         }
     }
 
-    public void operar(final String id, final Integer cuit){
+    public void operar(final String id, final Integer cuit) {
 
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         Desembolso desembolso = empresa.getLineaDeCredito().getDesembolso();
 
-        if (desembolso != null){
+        if (desembolso != null) {
             throw new RuntimeException("Ningún socio puede operar con desembolsos no cubiertos");
         }
 
@@ -369,15 +387,20 @@ public class ControladorSocio {
                 empresaIndex = empresa;
             }
         }
+
+        if (empresaIndex == null) {
+            throw new RuntimeException("No existe ninguna empresa con con el CUIT solicitado");
+        }
+
         return empresaIndex;
     }
 
-    public void agregarDesembolsos(final Integer cuit, final Float monto, final Float mora, final String tipo){
+    public void agregarDesembolsos(final Integer cuit, final Float monto, final Float mora, final String tipo) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         empresa.getLineaDeCredito().agregarDesembolso(monto, mora, tipo);
     }
 
-    public void eliminarDesembolsos(final Integer cuit){
+    public void eliminarDesembolsos(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         empresa.getLineaDeCredito().eliminarDesembolso();
     }
@@ -472,6 +495,325 @@ public class ControladorSocio {
         }
 
         return valorDeRetorno;
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////MODIFICACIONES DE LAS ESTRUCTURAS////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    private void log(final Object originalObject, final Object newObject, final String referencia, final String usuario) {
+        agregarCambio(Cambio.Builder.newBuilder()
+                .withOldObject(originalObject)
+                .withNuevoObject(newObject)
+                .withReferencia(referencia)
+                .withUsuario(usuario)
+                .build());
+
+    }
+
+    public void modificarSocioProtector(
+            final Integer cuit,
+            final String razonSocial,
+            final Date fechaInicio,
+            final String tipo,
+            final String actividadPrincipal,
+            final String direccion,
+            final Integer telefono,
+            final String correoElectronico,
+            final List<Accionista> accionistas,
+            final String referencia,
+            final String usuario
+
+    ) {
+
+        SocioProtector empresaOriginal = (SocioProtector) buscarEmpresa(cuit);
+
+        Empresa empresaModificada = SocioProtector.Builder.newBuilder()
+                .withCuit(cuit)
+                .withRazonSocial(razonSocial)
+                .withFechaInicio(fechaInicio)
+                .withTipo(tipo)
+                .withActividadPrincipal(actividadPrincipal)
+                .withDireccion(direccion)
+                .withTelefono(telefono)
+                .withCorreoElectronico(correoElectronico)
+                .withAccionista(accionistas)
+                .withIdSocio(empresaOriginal.getIdSocio())
+                .withPostulante(true)
+                .build();
+
+
+        removerEmpresa(empresaOriginal);
+        agregarEmpresa(empresaModificada);
+        removerSocioProtector(empresaOriginal);
+        agregarSocioProtector((SocioProtector) empresaModificada);
+
+
+        log(empresaOriginal, empresaModificada, referencia, usuario);
+
+    }
+
+
+    public void modificarSocioParticipe(
+            final Integer cuit,
+            final String razonSocial,
+            final Date fechaInicio,
+            final String tipo,
+            final String actividadPrincipal,
+            final String direccion,
+            final Integer telefono,
+            final String correoElectronico,
+            final List<Accionista> accionistas,
+            final String referencia,
+            final String usuario
+
+    ) {
+        SocioParticipe empresaOriginal = (SocioParticipe) buscarEmpresa(cuit);
+
+        Empresa empresaModificada = SocioParticipe.Builder.newBuilder()
+                .withCuit(cuit)
+                .withRazonSocial(razonSocial)
+                .withFechaInicio(fechaInicio)
+                .withTipo(tipo)
+                .withActividadPrincipal(actividadPrincipal)
+                .withDireccion(direccion)
+                .withTelefono(telefono)
+                .withCorreoElectronico(correoElectronico)
+                .withAccionista(accionistas)
+                .withIdSocio(empresaOriginal.getIdSocio())
+                .withPostulante(true)
+                .build();
+
+        removerEmpresa(empresaOriginal);
+        agregarEmpresa(empresaModificada);
+        removerSocioParticipe(empresaOriginal);
+        agregarSocioParticipe((SocioParticipe) empresaModificada);
+
+        log(empresaOriginal, empresaModificada, referencia, usuario);
+
+
+    }
+
+    public String solicitarOperacionCheque(
+            final Integer cuit,
+            final TipoCheque tipo,
+            final String bancoDelCheque,
+            final Integer numeroDelCheque,
+            final Date fechaDeVencimiento,
+            final Integer cuitDelFirmante,
+            final Float importe,
+            final String id,
+            final String referencia,
+            final String usuario
+
+    ) {
+
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+
+        if (!lineaDeCredito.getTipoOperaciones().contains(tipo)) {
+            throw new RuntimeException("El socio no tiene la operacion en la linea de credito");
+        }
+        if (empresa.getPostulante()) {
+            throw new RuntimeException("El socio es postulante.");
+        }
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
+        float porcentaje = (importe * 100) / getFDR();
+
+        if (porcentaje > 5) {
+            throw new RuntimeException("Ningún socio puede operar por más del 5% del FDR");
+        }
+
+        if (excesoChequesFirmante(cuit, importe)) {
+            throw new RuntimeException("La SGR no puede recibir más del 5% del FDR en cheques de un mismo firmante");
+        }
+
+        Operacion operacionOriginal = (Operacion) lineaDeCredito.getOperaciones().stream().filter(x -> x.getId().equals(id));
+
+        if (operacionOriginal == null) {
+            throw new RuntimeException("No existe una operacion con el ID solicitado");
+        }
+
+        Tipo1 chequeModificado = Tipo1.Builder.newBuilder()
+                .withBancoCheque(bancoDelCheque)
+                .withNroCheque(numeroDelCheque)
+                .withFechaVencimiento(fechaDeVencimiento)
+                .withCuitFirmante(cuitDelFirmante)
+                .withCheque(tipo)
+                .withImporteTotal(importe)
+                .withId(operacionOriginal.getId())
+                .build();
+
+
+        chequeModificado.modificarEstado("Ingresado");
+
+        lineaDeCredito.removeOperacion(operacionOriginal);
+        lineaDeCredito.agregarOperacion(chequeModificado);
+
+        log(operacionOriginal, chequeModificado, referencia, usuario);
+
+        return chequeModificado.getId();
+
+    }
+
+    public String solicitarOperacionCCC(
+            final Integer cuit,
+            final String empresaCC,
+            final Date fechaVencimiento,
+            final CtaCorriente cuentaCr,
+            final Float importe,
+            final String id,
+            final String referencia,
+            final String usuario
+    ) {
+
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        if (!lineaDeCredito.getTipoOperaciones().contains(cuentaCr)) {
+            throw new RuntimeException("El socio no tiene la operacion en la linea de credito");
+        }
+        if (empresa.getPostulante()) {
+            throw new RuntimeException("El socio es postulante.");
+        }
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
+        float porcentaje = (importe * 100) / getFDR();
+
+        if (porcentaje > 5) {
+            throw new RuntimeException("Ningún socio puede operar por más del 5% del FDR");
+        }
+
+        Operacion operacionOriginal = (Operacion) lineaDeCredito.getOperaciones().stream().filter(x -> x.getId().equals(id));
+
+        if (operacionOriginal == null) {
+            throw new RuntimeException("No existe una operacion con el ID solicitado");
+        }
+
+        Tipo2 cuentaModificada = Tipo2.Builder.newBuilder()
+                .withEmpresaCC(empresaCC)
+                .withFechaVencimiento(fechaVencimiento)
+                .withCuenta(cuentaCr)
+                .withImporteTotal(importe)
+                .withId(id)
+                .build();
+
+        cuentaModificada.modificarEstado("Ingresado");
+        lineaDeCredito.removeOperacion(operacionOriginal);
+        lineaDeCredito.agregarOperacion(cuentaModificada);
+
+        log(operacionOriginal, cuentaModificada, referencia, usuario);
+
+
+        return cuentaModificada.getId();
+
+    }
+
+    public String solicitarOperacionPrestamo(
+            final Integer cuit,
+            final String bancoPrestamo,
+            final Float importeTotal,
+            final Float tasa,
+            final Date fechaAcreditacion,
+            final Integer cantidadCuotas,
+            final String sistema,
+            final String id,
+            final String referencia,
+            final String usuario
+
+    ) {
+
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        if (!lineaDeCredito.getTipoOperaciones().contains(Prestamo.Prestamo)) {
+            throw new RuntimeException("El socio no tiene la linea de credito");
+        }
+        if (empresa.getPostulante()) {
+            throw new RuntimeException("El socio es postulante.");
+        }
+
+        if (excesoPorcentajeFacturas(cuit)) {
+            throw new RuntimeException("Ningún socio puede operar si debe facturas por más del 10% del total de la línea asignada.");
+        }
+
+        float porcentaje = (importeTotal * 100) / getFDR();
+
+        if (porcentaje > 5) {
+            throw new RuntimeException("Ningún socio puede operar por más del 5% del FDR");
+        }
+
+        Operacion operacionOriginal = (Operacion) lineaDeCredito.getOperaciones().stream().filter(x -> x.getId().equals(id));
+
+        if (operacionOriginal == null) {
+            throw new RuntimeException("No existe una operacion con el ID solicitado");
+        }
+
+        Tipo3 prestamoModificado = Tipo3.Builder.newBuilder()
+                .withBancoPrestamo(bancoPrestamo)
+                .withImporteTotal(importeTotal)
+                .withTasa(tasa)
+                .withFechaAcreditacion(fechaAcreditacion)
+                .withCantidadCuotas(cantidadCuotas)
+                .withSistema(sistema)
+                .withId(id)
+                .build();
+
+        prestamoModificado.modificarEstado("Ingresado");
+        lineaDeCredito.removeOperacion(operacionOriginal);
+        lineaDeCredito.agregarOperacion(prestamoModificado);
+
+        log(operacionOriginal, prestamoModificado, referencia, usuario);
+        return prestamoModificado.getId();
+
+    }
+
+    public void modificarDocumento(
+            final Integer cuit,
+            final String tipo,
+            final String estado,
+            final String usuario,
+            final String referencia
+    ) {
+
+        Empresa empresa = buscarEmpresa(cuit);
+
+        Documento documentoOriginal = empresa.getDocumento();
+
+
+        Documento documentoModificado = Documento.Builder.newBuilder()
+                .withTipo(tipo)
+                .withEstado(estado)
+                .withFechaDeRecepcion(documentoOriginal.getFechaDeRecepcion())
+                .withUsuario(usuario)
+                .build();
+
+        empresa.addDocumento(documentoModificado);
+        log(documentoOriginal, documentoModificado, referencia, usuario);
+
+
     }
 
 

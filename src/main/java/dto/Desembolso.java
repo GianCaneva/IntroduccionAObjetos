@@ -3,7 +3,10 @@ package dto;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import sun.nio.ch.Util;
+import utils.Utils;
 
+import java.util.Date;
 import java.util.UUID;
 
 public class Desembolso {
@@ -13,6 +16,7 @@ public class Desembolso {
     private Float monto;
     private Float mora;
     private String tipo;
+    private Date fecha;
 
     public String getNroLineaCredito() {
         return nroLineaCredito;
@@ -30,6 +34,10 @@ public class Desembolso {
         return tipo;
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,6 +51,7 @@ public class Desembolso {
                 .append(getMonto(), that.getMonto())
                 .append(getMora(), that.getMora())
                 .append(getTipo(), that.getTipo())
+                .append(fecha, that.fecha)
                 .isEquals();
     }
 
@@ -53,20 +62,24 @@ public class Desembolso {
                 .append(getMonto())
                 .append(getMora())
                 .append(getTipo())
+                .append(fecha)
                 .toHashCode();
     }
 
     @Override
-    public String toString() {
+    public String
+    toString() {
         return new ToStringBuilder(this)
                 .append("nroLineaCredito", nroLineaCredito)
                 .append("monto", monto)
                 .append("mora", mora)
                 .append("tipo", tipo)
+                .append("fecha", fecha)
                 .toString();
     }
 
     public static final class Builder {
+
         private Float monto;
         private Float mora;
         private String tipo;
@@ -99,6 +112,7 @@ public class Desembolso {
             desembolso.mora = this.mora;
             desembolso.monto = this.monto;
             desembolso.tipo = this.tipo;
+            desembolso.fecha= Utils.getDate();
             return desembolso;
         }
     }
