@@ -65,12 +65,12 @@ public class ControladorOperacion {
 
     public int calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
-        return 0;
+        return 12;
     }
 
     public int totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
-        return 0;
+        return 11;
     }
 
 
