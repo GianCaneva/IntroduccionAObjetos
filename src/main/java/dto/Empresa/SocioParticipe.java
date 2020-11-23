@@ -8,7 +8,6 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class SocioParticipe extends Empresa {
 
