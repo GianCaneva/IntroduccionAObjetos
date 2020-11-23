@@ -63,11 +63,17 @@ public class ControladorOperacion {
 
     }
 
-    //
-//    private int calcularValorPromedioTasa(STRING Y 2 DROPS DOWNS){
-//    }//    private int calcularValorPromedioTasa(){
-//    }
-//
+    private int calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+
+        return 0;
+    }
+
+    private int totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+
+        return 0;
+    }
+
+
     private float calcularPorcentajeComision(final Enum tipoDeOperacion) {
         float valor = 0;
         if (tipoDeOperacion == TipoCheque.ChequeDeTerceros) {
