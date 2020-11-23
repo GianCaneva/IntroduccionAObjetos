@@ -19,7 +19,7 @@ public class ControladorOperacion {
 
     }
 
-    public Float calcularComisionesCheques(final Date dia) {
+    public static Float calcularComisionesCheques(final Date dia) {
         List<LineaDeCredito> lineaDeCreditoList = (List<LineaDeCredito>) ControladorSocio.getListaSocioParticipe().stream().map(x -> x.getLineaDeCredito());
         List<Operacion> listOperaciones = (List<Operacion>) lineaDeCreditoList.stream().map(x -> x.getOperaciones());
         List<Comision> comisionList = (List<Comision>) listOperaciones.stream().map(x -> x.getComision());
@@ -74,7 +74,7 @@ public class ControladorOperacion {
     }
 
 
-    public float calcularPorcentajeComision(final String tipoDeOperacion) {
+    public static float calcularPorcentajeComision(final String tipoDeOperacion) {
         float valor = 0;
         if (tipoDeOperacion == "ChequeDeTerceros") {
             valor = 3;

@@ -617,7 +617,7 @@ public class ControladorSocio {
 
     }
 
-    public String solicitarOperacionCheque(
+    public String modificarOperacionCheque(
             final Integer cuit,
             final TipoCheque tipo,
             final String bancoDelCheque,
@@ -683,7 +683,7 @@ public class ControladorSocio {
 
     }
 
-    public String solicitarOperacionCCC(
+    public String modificarOperacionCCC(
             final Integer cuit,
             final String empresaCC,
             final Date fechaVencimiento,
@@ -738,7 +738,7 @@ public class ControladorSocio {
 
     }
 
-    public String solicitarOperacionPrestamo(
+    public String modificarOperacionPrestamo(
             final Integer cuit,
             final String bancoPrestamo,
             final Float importeTotal,

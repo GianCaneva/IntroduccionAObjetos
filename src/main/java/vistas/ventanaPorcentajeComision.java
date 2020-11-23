@@ -45,28 +45,28 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import dto.enumeration.CtaCorriente;
-import dto.enumeration.Prestamo;
-import dto.enumeration.TipoCheque;
+//import dto.enumeration.CtaCorriente;
+//import dto.enumeration.Prestamo;
+//import dto.enumeration.TipoCheque;
 import controller.ControladorOperacion;
 
 
 
 public class ventanaPorcentajeComision extends JFrame implements ItemListener {
-    public enum type {
-        ChequeDeTerceros,
-        ChequePropio,
-        PagareBursatil,
-        TarjetaDeCredito,
-        CuentaCorrienteComercial,
-        Prestamo;
-
-
-
-
-
-
-        ;}
+//    public enum type {
+//        ChequeDeTerceros,
+//        ChequePropio,
+//        PagareBursatil,
+//        TarjetaDeCredito,
+//        CuentaCorrienteComercial,
+//        Prestamo;
+//
+//
+//
+//
+//
+//
+//        ;}
     private JFrame f = new JFrame();
     private JTextField jtCombo, jtMora, jtPordia;
     private JComboBox<String> jcOperaciones;
@@ -133,9 +133,9 @@ public class ventanaPorcentajeComision extends JFrame implements ItemListener {
             if (e.getSource() == jcOperaciones) {
             String seleccionado = (String) jcOperaciones.getSelectedItem();
             f.setTitle(seleccionado);
-            type seleccionadoToEnum = type.valueOf(seleccionado);
+          //  type seleccionadoToEnum = type.valueOf(seleccionado);//
 ////
-            float mora = ControladorOperacion.calcularPorcentajeComision(seleccionadoToEnum);
+            float mora = ControladorOperacion.calcularPorcentajeComision(seleccionado);
             jlPorcentaje.setText("El procetaje es "+ mora + "%");
 
             // NO ME ESTA TRAYENDO EL RESULTADO ED CALCULAR PORCENTAJE COMISION//
