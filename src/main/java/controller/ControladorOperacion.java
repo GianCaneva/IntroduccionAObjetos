@@ -19,7 +19,7 @@ public class ControladorOperacion {
 
     }
 
-    private Float calcularComisionesCheques(final Date dia) {
+    public Float calcularComisionesCheques(final Date dia) {
         List<LineaDeCredito> lineaDeCreditoList = (List<LineaDeCredito>) ControladorSocio.getListaSocioParticipe().stream().map(x -> x.getLineaDeCredito());
         List<Operacion> listOperaciones = (List<Operacion>) lineaDeCreditoList.stream().map(x -> x.getOperaciones());
         List<Comision> comisionList = (List<Comision>) listOperaciones.stream().map(x -> x.getComision());
@@ -39,7 +39,7 @@ public class ControladorOperacion {
 
     }
 
-    private List<Operacion> calcularCantidadOpMonetizadas(final Integer cuit, final Integer año, final Integer mes1, final Integer mes2) {
+    public List<Operacion> calcularCantidadOpMonetizadas(final Integer cuit, final Integer año, final Integer mes1, final Integer mes2) {
 
         if (mes1 > mes2) {
             throw new RuntimeException("Error. El mes 1 no puede ser mayor que el mes 2");
@@ -63,30 +63,30 @@ public class ControladorOperacion {
 
     }
 
-    private int calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+    public int calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
         return 0;
     }
 
-    private int totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+    public int totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
         return 0;
     }
 
 
-    private float calcularPorcentajeComision(final Enum tipoDeOperacion) {
+    public float calcularPorcentajeComision(final String tipoDeOperacion) {
         float valor = 0;
-        if (tipoDeOperacion == TipoCheque.ChequeDeTerceros) {
+        if (tipoDeOperacion == "ChequeDeTerceros") {
             valor = 3;
-        } else if (tipoDeOperacion == TipoCheque.ChequePropio) {
+        } else if (tipoDeOperacion == "ChequePropio") {
             valor = 3;
-        } else if (tipoDeOperacion == TipoCheque.PagareBursatil) {
+        } else if (tipoDeOperacion == "PagareBursatil") {
             valor = 3;
-        } else if (tipoDeOperacion == CtaCorriente.TarjetaDeCredito) {
+        } else if (tipoDeOperacion == "TarjetaDeCredito") {
             valor = 3;
-        } else if (tipoDeOperacion == CtaCorriente.CuentaCorrienteComercial) {
+        } else if (tipoDeOperacion == "CuentaCorrienteComercial") {
             valor = 3;
-        } else if (tipoDeOperacion == Prestamo.Prestamo) {
+        } else if (tipoDeOperacion == "Prestamo") {
             valor = 4;
         }
 
@@ -104,7 +104,7 @@ public class ControladorOperacion {
         return moraTotal;
     }
 
-    private Integer obtenerCantidadDeDiasEntreDosFechas(final Date date1) {
+    public Integer obtenerCantidadDeDiasEntreDosFechas(final Date date1) {
 
         Date dateActual = Utils.getDate();
 
