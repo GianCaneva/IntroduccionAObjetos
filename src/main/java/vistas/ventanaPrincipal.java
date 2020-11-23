@@ -47,30 +47,30 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
         menu2.add(mi1);
         menu3 = new JMenu("Consultas Generales");
         menu1.add(menu3);
-        mi2 = new JMenuItem("Comisiones calculadas por dia");
+        mi2 = new JMenuItem("Comisiones calculadas por dia"); //1
         menu3.add(mi2);
         mi2.addActionListener(this);
-        mi3 = new JMenuItem("Operaciones por Socio");
+        mi3 = new JMenuItem("Operaciones por Socio");  //2
         menu3.add(mi3);
         mi3.addActionListener(this);
-        mi4 = new JMenuItem("Valor promedio Tasa Descuentos");
+        mi4 = new JMenuItem("Valor promedio Tasa Descuentos"); //3
         menu3.add(mi4);
         mi4.addActionListener(this);
 
+//
+//        mi5 = new JMenuItem("Calculo de Comision"); ///4
+//        menu3.add(mi5);
+//        mi5.addActionListener(this);
 
-        mi5 = new JMenuItem("Calculo de Comision");
-        menu3.add(mi5);
-        mi5.addActionListener(this);
-
-        mi6 = new JMenuItem("Consulta Consolidada");
+        mi6 = new JMenuItem("Consulta Consolidada"); ///6
         menu3.add(mi6);
         mi6.addActionListener(this);
 
-        mi7 = new JMenuItem("Consulta Mora");
+        mi7 = new JMenuItem("Consulta Mora"); ///5
         menu3.add(mi7);
         mi7.addActionListener(this);
 
-        mi8 = new JMenuItem("Consulta Porcentaje Comision");
+        mi8 = new JMenuItem("Consulta Porcentaje Comision");//4
         menu3.add(mi8);
         mi8.addActionListener(this);
     }
@@ -114,12 +114,12 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
                                            } catch (Exception e) {
                                                e.printStackTrace();
                                            }
-                                       } else if (e.getSource() == mi5) {
-                                           try {
-                                               ventanaComision frame = new ventanaComision();
-                                           } catch (Exception e) {
-                                               e.printStackTrace();
-                                           }
+//                                       } else if (e.getSource() == mi5) {
+//                                           try {
+//                                               ventanaComision frame = new ventanaComision();
+//                                           } catch (Exception e) {
+//                                               e.printStackTrace();
+//                                           }
                                        } else if (e.getSource() == mi6) {
                                            try {
                                                ventanaConsultaConsolidad frame = new ventanaConsultaConsolidad();

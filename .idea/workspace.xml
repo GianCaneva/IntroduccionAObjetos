@@ -24,15 +24,13 @@
   <component name="ChangeListManager">
     <list default="true" id="62b4fbbf-6197-443f-b627-73b69d67c347" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaConsultaConsolidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaConsultaConsolidad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaOperacionesSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaOperacionesSocio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaSaldoMora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSaldoMora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaConsultaConsolidad$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaConsultaConsolidad$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaConsultaConsolidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaConsultaConsolidad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaOperacionesSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaOperacionesSocio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaPorcentajeComision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPorcentajeComision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaComision$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaComision$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaComision$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaComision.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaComision.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPorcentajeComision.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPorcentajeComision.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +71,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
-  <component name="RunManager" selected="Application.ventanaSaldoMora">
+  <component name="RunManager" selected="Application.ventanaPrincipal">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -124,6 +122,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ventanaPrincipal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vistas.ventanaPrincipal" />
+      <module name="IntroduccionAObjetos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vistas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ventanaSaldoMora" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="vistas.ventanaSaldoMora" />
       <module name="IntroduccionAObjetos" />
@@ -137,26 +148,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ventanaValorPromedio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vistas.ventanaValorPromedio" />
-      <module name="IntroduccionAObjetos" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="vistas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ventanaPrincipal" />
+        <item itemvalue="Application.ventanaComision" />
+        <item itemvalue="Application.ventanaOperacionesSocio" />
         <item itemvalue="Application.ventanaSaldoMora" />
         <item itemvalue="Application.ventanaConsultaConsolidad" />
-        <item itemvalue="Application.ventanaOperacionesSocio" />
-        <item itemvalue="Application.ventanaComision" />
-        <item itemvalue="Application.ventanaValorPromedio" />
       </list>
     </recent_temporary>
   </component>
@@ -204,22 +202,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="448" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606158449677" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606171241422">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606173471485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606171241422" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606171241422">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606173471485" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606173471485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606171241422" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606171241422">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606173471485" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606173471485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606171241422" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606171241422">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606173471485" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606173471485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606171241422" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606173471485" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1606159969171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -53,20 +53,7 @@ import controller.ControladorOperacion;
 
 
 public class ventanaPorcentajeComision extends JFrame implements ItemListener {
-//    public enum type {
-//        ChequeDeTerceros,
-//        ChequePropio,
-//        PagareBursatil,
-//        TarjetaDeCredito,
-//        CuentaCorrienteComercial,
-//        Prestamo;
-//
-//
-//
-//
-//
-//
-//        ;}
+
     private JFrame f = new JFrame();
     private JTextField jtCombo, jtMora, jtPordia;
     private JComboBox<String> jcOperaciones;

@@ -49,27 +49,10 @@ import static controller.ControladorOperacion.*;
 public class ventanaComision extends JFrame{
 
     private JFrame f = new JFrame("Calculo de comision");
-   // private JFormattedTextField jtFecha;
     private JLabel jlFecha,jlResultado;
     private JTextField jtFecha;
 
-    public static void main(String[] args) throws Exception {
-        EventQueue.invokeLater(new Runnable() {
 
-            public void run() {
-                try{ventanaComision tester = new ventanaComision();
-                    tester.setVisible(true);
-
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-
-            }
-        });
-
-
-
-    }
 
 
     public ventanaComision() {
@@ -80,10 +63,6 @@ public class ventanaComision extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(356, 360);
         getContentPane().setLayout(null);
-
-//////////////// FECHA ///////////////////
-
-        // jtFecha = new JTextField();
 
         jlFecha = new JLabel("Fecha: ");
         jlFecha.setBounds(10, 11, 46, 18);
@@ -136,8 +115,12 @@ public class ventanaComision extends JFrame{
         btnNewButton.setBounds(10, 46, 150, 40);
         getContentPane().add(btnNewButton);
 
-//        setVisible(true);
+       setVisible(true);
     }
 
 
-}
+ public static void main(String[] args) {
+    vistas.ventanaComision tester = new vistas.ventanaComision();
+
+
+}}
