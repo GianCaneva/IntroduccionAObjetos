@@ -1,0 +1,17 @@
+.idea/*
+.idea/codeStyles/*
+.idea/codeSyles/Project.xml
+*.iml
+target/*
+out/*
+.classpath
+.checkstyle
+.pmd
+.pmdruleset.xml
+.project
+.fbExcludeFilterFile
+.settings/*
+/target/
+.metadata
+.orig
+/keystore.jks
