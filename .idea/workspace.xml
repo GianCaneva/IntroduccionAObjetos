@@ -23,34 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62b4fbbf-6197-443f-b627-73b69d67c347" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPorcentajeComision.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPorcentajeComision.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSaldoMora.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSaldoMora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/IntroduccionAObjetos.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IntroduccionAObjetos.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sgr.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dto/Cambio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaComision$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaPrincipal.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPrincipal.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaValorPromedio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaValorPromedio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Desembolso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Desembolso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/LineaDeCredito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/LineaDeCredito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/enumeration/CtaCorriente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Enumeration/CtaCorriente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/enumeration/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Enumeration/Prestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/enumeration/TipoCheque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Enumeration/TipoCheque.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Contragarantia$Builder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Contragarantia.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/LineaDeCredito$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/LineaDeCredito$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/LineaDeCredito.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/LineaDeCredito.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Operacion/Comision$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Operacion/Comision$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Operacion/Comision.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Operacion/Comision.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/runner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/runner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaComision.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaComision.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,22 +208,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606143297985" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606155280354">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606155525683">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155280354" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606155280354">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606155525683">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155280354" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606155280354">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606155525683">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155280354" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606155280354">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606155525683">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155280354" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1606156110436">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606156110436" />
+    <state x="598" y="281" key="MultipleFileMergeDialog" timestamp="1606156110444">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606156110444" />
     <state x="398" y="65" key="SettingsEditor" timestamp="1605655396036">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
