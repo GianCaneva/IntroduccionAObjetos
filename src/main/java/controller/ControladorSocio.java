@@ -315,7 +315,7 @@ public class ControladorSocio {
     }
 
 
-    public void solicitarSocioParticipe(
+    public Integer solicitarSocioParticipe(
             final Integer cuit,
             final String razonSocial,
             final Date fechaInicio,
@@ -342,10 +342,10 @@ public class ControladorSocio {
 
         agregarEmpresa(newEmpresa);
         agregarSocioParticipe((SocioParticipe) newEmpresa);
-        idSocio = idSocio + 1;
+        return idSocio = idSocio + 1;
     }
 
-    public void solicitarSocioProtector(
+    public Integer solicitarSocioProtector(
             final Integer cuit,
             final String razonSocial,
             final Date fechaInicio,
@@ -372,7 +372,7 @@ public class ControladorSocio {
 
         agregarEmpresa(newEmpresa);
         agregarSocioProtector((SocioProtector) newEmpresa);
-        idSocio = idSocio + 1;
+        return idSocio = idSocio + 1;
     }
 
     public void agregarAccionista(final Integer cuitEmpresa, final Integer cuitAccionista, final String razonSocial, final Float participacion) {
@@ -538,7 +538,7 @@ public class ControladorSocio {
 
     }
 
-    public void modificarSocioProtector(
+    public Integer modificarSocioProtector(
             final Integer cuit,
             final String razonSocial,
             final Date fechaInicio,
@@ -575,11 +575,12 @@ public class ControladorSocio {
 
 
         log(empresaOriginal, empresaModificada, referencia, usuario);
+        return ((SocioProtector) empresaModificada).getIdSocio();
 
     }
 
 
-    public void modificarSocioParticipe(
+    public Integer modificarSocioParticipe(
             final Integer cuit,
             final String razonSocial,
             final Date fechaInicio,
@@ -613,6 +614,7 @@ public class ControladorSocio {
         agregarSocioParticipe((SocioParticipe) empresaModificada);
 
         log(empresaOriginal, empresaModificada, referencia, usuario);
+        return ((SocioParticipe) empresaModificada).getIdSocio();
 
 
     }
