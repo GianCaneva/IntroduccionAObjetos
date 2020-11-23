@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 
 
 public  class ventanaPrincipal extends JFrame implements ActionListener {
-    private JPanel mainPanel = new JPanel();
+    private JPanel mainPanel ;//= new JPanel();
     private JMenuBar mb;
     private JMenu menu1, menu2, menu3, menu4, menu5, menu6, menu7;
-    private JMenuItem mi1, mi2, mi3, mi4, mi5, mi6, mi7;
+    private JMenuItem mi1, mi2, mi3, mi4, mi5, mi6, mi7,mi8;
 
 
 
@@ -65,6 +65,14 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
         mi6 = new JMenuItem("Consulta Consolidada");
         menu3.add(mi6);
         mi6.addActionListener(this);
+
+        mi7 = new JMenuItem("Consulta Mora");
+        menu3.add(mi7);
+        mi7.addActionListener(this);
+
+        mi8 = new JMenuItem("Consulta Porcentaje Comision");
+        menu3.add(mi8);
+        mi8.addActionListener(this);
     }
 
     public static void main(String[] ar) {
@@ -115,6 +123,20 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
                                        } else if (e.getSource() == mi6) {
                                            try {
                                                ventanaConsultaConsolidad frame = new ventanaConsultaConsolidad();
+                                           } catch (Exception e) {
+                                               e.printStackTrace();
+                                           }
+
+                                       }else if (e.getSource() == mi7) {
+                                           try {
+                                               ventanaSaldoMora frame = new ventanaSaldoMora();
+                                           } catch (Exception e) {
+                                               e.printStackTrace();
+                                           }
+
+                                       }else if (e.getSource() == mi8) {
+                                           try {
+                                               ventanaPorcentajeComision frame = new ventanaPorcentajeComision();
                                            } catch (Exception e) {
                                                e.printStackTrace();
                                            }
