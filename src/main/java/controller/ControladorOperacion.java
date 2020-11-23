@@ -17,7 +17,7 @@ public class ControladorOperacion {
 
     }
 
-    private Integer calcularComisionesCheques(final Date dia) {
+    public static Integer calcularComisionesCheques(final Date dia) {
         List<LineaDeCredito> lineaDeCreditoList = (List<LineaDeCredito>) ControladorSocio.getListaSocioParticipe().stream().map(x -> x.getLineaDeCredito());
         List<Operacion> listOperaciones = (List<Operacion>) lineaDeCreditoList.stream().map(x -> x.getOperaciones());
         List<Comision> comisionList = (List<Comision>) listOperaciones.stream().map(x -> x.getComision());
@@ -65,7 +65,7 @@ public class ControladorOperacion {
 //    private int calcularValorPromedioTasa(){
 //    }
 //
-    private float calcularPorcentajeComision(final Enum tipoDeOperacion) {
+    public static float calcularPorcentajeComision(final Enum tipoDeOperacion) {
         float valor = 0;
         if (tipoDeOperacion == TipoCheque.ChequeDeTerceros) {
             valor = 3;

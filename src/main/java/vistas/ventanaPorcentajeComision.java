@@ -50,45 +50,64 @@ import dto.enumeration.Prestamo;
 import dto.enumeration.TipoCheque;
 import controller.ControladorOperacion;
 
-public class ventanaValorPromedio extends JFrame implements ItemListener {
 
+
+public class ventanaPorcentajeComision extends JFrame implements ItemListener {
+    public enum type {
+        ChequeDeTerceros,
+        ChequePropio,
+        PagareBursatil,
+        TarjetaDeCredito,
+        CuentaCorrienteComercial,
+        Prestamo;
+
+
+
+
+
+
+        ;}
     private JFrame f = new JFrame();
     private JTextField jtCombo, jtMora, jtPordia;
     private JComboBox<String> jcOperaciones;
     private JLabel jlTipo, jlPorcentaje;
     private String  valor, operacion;
-    private int a, b;
+    private double a, b;
     private ArrayList<String> operacionesArrayList;
     private float mora=0;
 
 
 
 
-    public ventanaValorPromedio(){
-
+    public ventanaPorcentajeComision() {
+        a = 10.3;
+        b = 5.4;
         // String[] operacionesArraylist = new String[""];
 
 //        f.setTitle("Calculo de Porcentaje Comision");
 
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.setSize(356,200);
+        f.setSize(356, 200);
         f.getContentPane().setLayout(null);
 
 
-        jlTipo=new JLabel();
+        jlTipo = new JLabel();
 //        mora = Double.toString(b);
 //        jlPorcentaje.setText(prueba);
-        jlTipo=new JLabel("Seleccione el tipo de empresa: ");
-        jlTipo.setBounds(10,10,250,14);
+        jlTipo = new JLabel("Seleccione el tipo de operacion: ");
+        jlTipo.setBounds(10, 10, 250, 14);
         f.add(jlTipo);
 
 
-        jcOperaciones=new JComboBox<String>();
-        jcOperaciones.setBounds(10,40,200,18);
+        jcOperaciones = new JComboBox<String>();
+        jcOperaciones.setBounds(10, 40, 200, 18);
         f.add(jcOperaciones);
-        jcOperaciones.addItem("Pequenia");
-        jcOperaciones.addItem("Mediana");
-        jcOperaciones.addItem("Grande");
+        jcOperaciones.addItem("ChequePropio");
+        jcOperaciones.addItem("ChequeDeTerceros");
+        jcOperaciones.addItem("PagareBursatil");
+        jcOperaciones.addItem("Prestamo");
+        jcOperaciones.addItem("TarjetaDeCredito");
+        jcOperaciones.addItem("TarjetaDeCredito");
         jcOperaciones.addItemListener(this);
 
 
@@ -99,23 +118,24 @@ public class ventanaValorPromedio extends JFrame implements ItemListener {
 
 //        mora = ControladorOperacion.calcularPorcentajeComision(seleccionadoToEnum);
 
-        jlPorcentaje=new JLabel();
-        jlPorcentaje.setBounds(10,65,250,14);
+        jlPorcentaje = new JLabel();
+        jlPorcentaje.setBounds(10, 65, 250, 14);
         f.add(jlPorcentaje);
 
 //
         f.setVisible(true);
 
 
-        }
+    }
 
 
     public void itemStateChanged(ItemEvent e) {
-        if (e.getSource() == jcOperaciones) {
+            if (e.getSource() == jcOperaciones) {
             String seleccionado = (String) jcOperaciones.getSelectedItem();
             f.setTitle(seleccionado);
-
-
+            type seleccionadoToEnum = type.valueOf(seleccionado);
+////
+            float mora = ControladorOperacion.calcularPorcentajeComision(seleccionadoToEnum);
             jlPorcentaje.setText("El procetaje es "+ mora + "%");
 
             // NO ME ESTA TRAYENDO EL RESULTADO ED CALCULAR PORCENTAJE COMISION//
@@ -130,6 +150,7 @@ public class ventanaValorPromedio extends JFrame implements ItemListener {
 
 
     public static void main(String[] args) {
-        vistas.ventanaValorPromedio tester = new vistas.ventanaValorPromedio();
+        vistas.ventanaPorcentajeComision tester = new vistas.ventanaPorcentajeComision();
 
-    }}
+    }
+}
