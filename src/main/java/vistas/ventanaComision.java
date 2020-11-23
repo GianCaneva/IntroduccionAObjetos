@@ -6,6 +6,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -45,49 +46,55 @@ import controller.*;
 
 import static controller.ControladorOperacion.*;
 
-public class ventanaComision {
+public class ventanaComision extends JFrame{
 
     private JFrame f = new JFrame("Calculo de comision");
    // private JFormattedTextField jtFecha;
     private JLabel jlFecha,jlResultado;
     private JTextField jtFecha;
 
-    public static void main(String[] args) {
-        ventanaComision tester = new ventanaComision();
+    public static void main(String[] args) throws Exception {
+        EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                try{ventanaComision tester = new ventanaComision();
+                    tester.setVisible(true);
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
 
     }
 
 
     public ventanaComision() {
         String entradaFecha;
-        int Comision;
-        f.setTitle("Calculo de comision");
+        Float Comision;
+        setTitle("Calculo de comision");
 
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.setSize(356, 360);
-        f.getContentPane().setLayout(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(356, 360);
+        getContentPane().setLayout(null);
 
 //////////////// FECHA ///////////////////
 
         // jtFecha = new JTextField();
 
         jlFecha = new JLabel("Fecha: ");
-        jlFecha.setBounds(10, 11, 46, 14);
-        f.getContentPane().add(jlFecha);
+        jlFecha.setBounds(10, 11, 46, 18);
+        getContentPane().add(jlFecha);
 
         jtFecha = new JTextField();
-        jtFecha.setBounds(50,11,80,14);
-        f.add(jtFecha);
-        entradaFecha=jtFecha.getText();
-        DateFormat format = new SimpleDateFormat("DD/MM/YYYY");
+        jtFecha.setBounds(50,11,80,18);
+        add(jtFecha);
 
-//        Date fecha=format.parse(entradaFecha);
 
-//        Comision= ControladorOperacion.calcularComisionesCheques(fecha);
 
-        jlResultado = new JLabel("El Total de comisiones calculadas por dia es  ");
-        jlResultado.setBounds(50,95,200,20);
-        f.add(jlResultado);
 
 
 
@@ -95,17 +102,41 @@ public class ventanaComision {
 
 //        JLabel lblNewLabel = new JLabel("Nombre");
 //        lblNewLabel.setBounds(183, 11, 46, 14);
-//        f.getContentPane().add(lblNewLabel);
+//        getContentPane().add(lblNewLabel);
 //
 //        textField = new JTextField();
 //        textField.setBounds(236, 8, 86, 20);
-//        f.getContentPane().add(textField);
+//        getContentPane().add(textField);
 //        textField.setColumns(10);
 
         JButton btnNewButton = new JButton("Realizar Calculo");
+        btnNewButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                String entradaFecha=jtFecha.getText();
+
+//                DateFormat format = new SimpleDateFormat("DD/MM/YYYY");
+                Date date1= null;
+                try {
+                    date1 = new SimpleDateFormat("dd/MM/yyyy").parse(entradaFecha);
+                } catch (ParseException parseException) {
+                    parseException.printStackTrace();
+                }
+
+//               Date fecha=format.parse(entradaFecha);
+
+                float Comision= ControladorOperacion.calcularComisionesCheques(date1);
+
+                jlResultado = new JLabel("El Total de comisiones calculadas por dia es  "+ Comision);
+                jlResultado.setBounds(50,95,200,20);
+                add(jlResultado);
+            }
+
+        });
         btnNewButton.setBounds(10, 46, 150, 40);
-        f.getContentPane().add(btnNewButton);
-        f.setVisible(true);
+        getContentPane().add(btnNewButton);
+
+//        setVisible(true);
     }
 
 
