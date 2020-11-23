@@ -84,7 +84,7 @@ public class ventanaPorcentajeComision extends JFrame implements ItemListener {
         b = 5.4;
         // String[] operacionesArraylist = new String[""];
 
-//        f.setTitle("Calculo de Porcentaje Comision");
+        f.setTitle("Calculo de Porcentaje Comision");
 
         f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         f.setSize(356, 200);
@@ -132,7 +132,7 @@ public class ventanaPorcentajeComision extends JFrame implements ItemListener {
     public void itemStateChanged(ItemEvent e) {
             if (e.getSource() == jcOperaciones) {
             String seleccionado = (String) jcOperaciones.getSelectedItem();
-            f.setTitle(seleccionado);
+
           //  type seleccionadoToEnum = type.valueOf(seleccionado);//
 ////
             float mora = ControladorOperacion.calcularPorcentajeComision(seleccionado);

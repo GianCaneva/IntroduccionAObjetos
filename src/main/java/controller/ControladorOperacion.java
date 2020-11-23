@@ -39,7 +39,7 @@ public class ControladorOperacion {
 
     }
 
-    public List<Operacion> calcularCantidadOpMonetizadas(final Integer cuit, final Integer año, final Integer mes1, final Integer mes2) {
+    public static List<Operacion> calcularCantidadOpMonetizadas(final Integer cuit, final Integer año, final Integer mes1, final Integer mes2) {
 
         if (mes1 > mes2) {
             throw new RuntimeException("Error. El mes 1 no puede ser mayor que el mes 2");
@@ -63,12 +63,12 @@ public class ControladorOperacion {
 
     }
 
-    public int calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+    public static float calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
         return 12;
     }
 
-    public int totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+    public static float totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
         return 11;
     }

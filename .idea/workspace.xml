@@ -24,7 +24,25 @@
   <component name="ChangeListManager">
     <list default="true" id="62b4fbbf-6197-443f-b627-73b69d67c347" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaOperacionesSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaOperacionesSocio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaPorcentajeComision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPorcentajeComision.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaValorPromedio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaValorPromedio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Accionista$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Accionista$Builder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Accionista.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/Empresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/Empresa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaOperacionesSocio$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaOperacionesSocio$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaOperacionesSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaOperacionesSocio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPorcentajeComision.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPorcentajeComision.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" afterDir="false" />
     </list>
@@ -67,7 +85,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
-  <component name="RunManager" selected="Application.ventanaValorPromedio">
+  <component name="RunManager" selected="Application.ventanaOperacionesSocio">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -79,8 +97,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VentanaValorPromedio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vistas.VentanaValorPromedio" />
+    <configuration name="ventanaComision" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vistas.ventanaComision" />
       <module name="IntroduccionAObjetos" />
       <extension name="coverage">
         <pattern>
@@ -92,8 +110,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ventanaComision" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vistas.ventanaComision" />
+    <configuration name="ventanaOperacionesSocio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vistas.ventanaOperacionesSocio" />
       <module name="IntroduccionAObjetos" />
       <extension name="coverage">
         <pattern>
@@ -146,11 +164,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ventanaValorPromedio" />
+        <item itemvalue="Application.ventanaOperacionesSocio" />
         <item itemvalue="Application.ventanaComision" />
-        <item itemvalue="Application.ventanaPrincipal" />
+        <item itemvalue="Application.ventanaValorPromedio" />
         <item itemvalue="Application.ventanaPorcentajeComision" />
-        <item itemvalue="Application.VentanaValorPromedio" />
+        <item itemvalue="Application.ventanaPrincipal" />
       </list>
     </recent_temporary>
   </component>
@@ -198,22 +216,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="448" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606158449677" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606161477270">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606169165904">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606161477270" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606161477270">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606169165904" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606169165904">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606161477270" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606161477270">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606169165904" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606169165903">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606161477270" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606161477270">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606169165903" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606169165904">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606161477270" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606169165904" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1606159969171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -254,26 +272,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="140" key="new project wizard/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605995939467" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java</url>
-          <line>127</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/vistas/ventanaValorPromedio.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
