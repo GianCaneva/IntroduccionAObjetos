@@ -23,7 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62b4fbbf-6197-443f-b627-73b69d67c347" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/Empresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/Empresa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +45,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -44,7 +56,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="D:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.1\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -56,6 +68,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
@@ -64,7 +77,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
-  <component name="RunManager" selected="Application.ventanaPorcentajeComision">
+  <component name="RunManager" selected="Application.ventanaPrincipal">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -76,8 +89,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VentanaValorPromedio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vistas.VentanaValorPromedio" />
+    <configuration name="ventanaComision" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vistas.ventanaComision" />
       <module name="IntroduccionAObjetos" />
       <extension name="coverage">
         <pattern>
@@ -89,8 +102,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ventanaComision" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vistas.ventanaComision" />
+    <configuration name="ventanaGestionEmpresa" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vistas.ventanaGestionEmpresa" />
       <module name="IntroduccionAObjetos" />
       <extension name="coverage">
         <pattern>
@@ -143,11 +156,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ventanaPrincipal" />
+        <item itemvalue="Application.ventanaGestionEmpresa" />
         <item itemvalue="Application.ventanaPorcentajeComision" />
         <item itemvalue="Application.ventanaComision" />
         <item itemvalue="Application.ventanaValorPromedio" />
-        <item itemvalue="Application.VentanaValorPromedio" />
-        <item itemvalue="Application.ventanaPrincipal" />
       </list>
     </recent_temporary>
   </component>
@@ -183,6 +196,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605655278063" />
+    <state x="692" y="345" width="525" height="424" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1606170484860">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="692" y="345" width="525" height="424" key="#com.intellij.ide.util.TreeClassChooserDialog/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606170484859" />
+    <state x="692" y="345" width="525" height="424" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1606170527773">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="692" y="345" width="525" height="424" key="#com.intellij.ide.util.TreeFileChooserDialog/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606170527773" />
     <state x="587" y="208" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1605655487823">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -191,22 +212,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606143297985" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606155525683">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="740" y="322" width="430" height="470" key="#com.intellij.uiDesigner.palette.ComponentItemDialog" timestamp="1606170534326">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="740" y="322" width="430" height="470" key="#com.intellij.uiDesigner.palette.ComponentItemDialog/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606170534326" />
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1606171762748">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606155525683">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606171762748" />
+    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1606171762748">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606155525683">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1874" height="275" key="GridCell.Tab.0.center/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606171762748" />
+    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1606171762748">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606155525683">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1874" height="275" key="GridCell.Tab.0.left/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606171762748" />
+    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1606171762748">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606171762748" />
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1606166199257">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606166199257" />
+    <state width="1874" height="340" key="GridCell.Tab.1.center" timestamp="1606166199257">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="340" key="GridCell.Tab.1.center/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606166199257" />
+    <state width="1874" height="340" key="GridCell.Tab.1.left" timestamp="1606166199256">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="340" key="GridCell.Tab.1.left/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606166199256" />
+    <state width="1874" height="340" key="GridCell.Tab.1.right" timestamp="1606166199257">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606166199257" />
     <state x="184" y="86" key="MergeDialog" timestamp="1606156110436">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -231,5 +276,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="140" key="new project wizard/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1605995939467" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java</url>
+          <line>329</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
