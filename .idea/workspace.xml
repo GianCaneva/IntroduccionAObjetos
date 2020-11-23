@@ -23,24 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62b4fbbf-6197-443f-b627-73b69d67c347" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dto/Cambio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaComision$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Desembolso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Desembolso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/LineaDeCredito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/LineaDeCredito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Operacion/Tipo3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/enumeration/CtaCorriente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Enumeration/CtaCorriente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/enumeration/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Enumeration/Prestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/enumeration/TipoCheque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Enumeration/TipoCheque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaComision.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaComision.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +44,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="D:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.1\plugins\maven\lib\maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
