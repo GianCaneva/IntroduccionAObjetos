@@ -94,7 +94,7 @@ public class ControladorOperacion {
 
     }
 
-    public Float obtenerMoraTotal(final Integer cuit) {
+    public static Float obtenerMoraTotal(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         Desembolso desembolso = empresa.getLineaDeCredito().getDesembolso();
         Float moraDiaria = desembolso.getMora();
@@ -104,7 +104,7 @@ public class ControladorOperacion {
         return moraTotal;
     }
 
-    public Integer obtenerCantidadDeDiasEntreDosFechas(final Date date1) {
+    public static Integer obtenerCantidadDeDiasEntreDosFechas(final Date date1) {
 
         Date dateActual = Utils.getDate();
 
@@ -120,17 +120,17 @@ public class ControladorOperacion {
         return cantidadDeDias;
     }
 
-    public Float obtenerMoraPorDia(final Integer cuit) {
+    public static Float obtenerMoraPorDia(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.getLineaDeCredito().getDesembolso().getMora();
     }
 
-    public Float calcularConsolidadaUtilizado(final Integer cuit) {
+    public static Float calcularConsolidadaUtilizado(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.calcularUtilizadoEnLinea();
     }
 
-    public Float calcularConsolidadaRiesgo(final Integer cuit) {
+    public static Float calcularConsolidadaRiesgo(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.calcularRiesgoVivo();
     }

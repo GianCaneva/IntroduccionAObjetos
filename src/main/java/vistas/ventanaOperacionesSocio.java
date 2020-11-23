@@ -95,7 +95,7 @@ public class ventanaOperacionesSocio extends JFrame  {
         // String[] operacionesArraylist = new String[""];
 
 //        setTitle("Calculo de Porcentaje Comision");
-        setTitle("Calculo de Valor Promedio");
+        setTitle("Operaciones Socio");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500,800);
         getContentPane().setLayout(null);

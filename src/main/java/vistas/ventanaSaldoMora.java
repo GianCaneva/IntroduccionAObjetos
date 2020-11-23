@@ -6,9 +6,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
@@ -42,69 +42,85 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.DefaultFormatterFactory;
+import controller.*;
 
-public class ventanaSaldoMora {
+import static controller.ControladorOperacion.*;
 
-    private JFrame f = new JFrame();
-    private JTextField jtCuil,jtMora,jtPordia;
-    private JLabel jlCuil,jlMora,jlPordia;
-    private String mora,pordia;
-    private double a,b;
+public class ventanaSaldoMora extends JFrame{
 
-    public static void main(String[] args) {
-        vistas.ventanaSaldoMora tester = new vistas.ventanaSaldoMora();
+    private JFrame f = new JFrame("Calculo de comision");
+    // private JFormattedTextField jtCuit;
+    private JLabel jlCuit,jlResultado,jlResultado2;
+    private JTextField jtCuit;
+
+    public static void main(String[] args) throws Exception {
+        EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                try{ventanaSaldoMora tester = new ventanaSaldoMora();
+                    tester.setVisible(true);
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
 
     }
 
 
     public ventanaSaldoMora() {
-        a=10.3;
-        b=5.4;
+        String entradaFecha;
+        Float Comision;
+        setTitle("Consulta Mora");
 
-        f.setTitle("Calculo de mora");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(356, 360);
+        getContentPane().setLayout(null);
 
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.setSize(356, 360);
-        f.getContentPane().setLayout(null);
+        jlCuit = new JLabel("Ingrese Cuit: ");
+        jlCuit.setBounds(10, 11, 90, 18);
+        getContentPane().add(jlCuit);
 
-
-        jlCuil = new JLabel("Cuil: ");
-        jlCuil.setBounds(10, 11, 46, 14);
-        f.getContentPane().add(jlCuil);
-        jtCuil = new JTextField();
-        jtCuil.setBounds(60, 11, 60, 18);
-        f.add(jtCuil);
-        f.getContentPane().add(jtCuil);
+        jtCuit = new JTextField();
+        jtCuit.setBounds(90,12,80,18);
+        add(jtCuit);
 
 
 
-        JButton btnNewButton = new JButton("Calcular mora");
-        btnNewButton.setBounds(10, 46, 150, 40);
-        f.getContentPane().add(btnNewButton);
-        f.setVisible(true);
 
 
-        pordia = Double.toString(a);
-        jlMora = new JLabel("Saldo de mora total: "+ pordia);
-        jlMora.setBounds(10,110,150,14);
-        f.add(jlMora);
 
-//        jlPordia = new JLabel();
-        mora=Double.toString(b);
-//        jlPordia.setText(prueba);
-        jlPordia = new JLabel("Saldo de mora por dia: "+ mora);
-        jlPordia.setBounds(10,140,190,14);
-        f.add(jlPordia);
+
+        JButton btnNewButton = new JButton("Realizar Calculo");
+        btnNewButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                int entradaCuit=Integer.parseInt(jtCuit.getText());
+                float resultado1= ControladorOperacion.obtenerMoraTotal(entradaCuit);
+                float resultado2= ControladorOperacion.obtenerMoraPorDia(entradaCuit);
+
+
+
+
 //
-//        jtMora = new JTextField(a);
-//        jtMora.setBounds(160,110,60,14);
 
+                jlResultado = new JLabel("El total de mora es "+ resultado1+"$");
+                jlResultado.setBounds(10,95,200,20);
+                add(jlResultado);
+                jlResultado2 = new JLabel("La mora por dia es "+ resultado2+"$");
+                jlResultado2.setBounds(10,130,200,20);
+                add(jlResultado2);
+            }
 
+        });
+        btnNewButton.setBounds(40, 46, 150, 40);
+        getContentPane().add(btnNewButton);
 
-
-
-
-
+//        setVisible(true);
     }
 
 
