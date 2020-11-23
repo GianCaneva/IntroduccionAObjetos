@@ -1,6 +1,7 @@
 package controller;
 
 import dto.*;
+import dto.Empresa.Accionista;
 import dto.Empresa.Empresa;
 import dto.Empresa.SocioParticipe;
 import dto.Empresa.SocioProtector;
@@ -13,7 +14,6 @@ import utils.Utils;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ControladorSocio {
     private static List<Empresa> listaEmpresas;
@@ -322,10 +322,9 @@ public class ControladorSocio {
             final String actividadPrincipal,
             final String direccion,
             final Integer telefono,
-            final String correoElectronico,
-            final List<Accionista> accionistas
+            final String correoElectronico
 
-    ) {
+            ) {
 
         Empresa newEmpresa = SocioParticipe.Builder.newBuilder()
                 .withCuit(cuit)
@@ -336,7 +335,6 @@ public class ControladorSocio {
                 .withDireccion(direccion)
                 .withTelefono(telefono)
                 .withCorreoElectronico(correoElectronico)
-                .withAccionista(accionistas)
                 .withIdSocio(idSocio)
                 .withPostulante(true)
                 .build();
@@ -354,10 +352,9 @@ public class ControladorSocio {
             final String actividadPrincipal,
             final String direccion,
             final Integer telefono,
-            final String correoElectronico,
-            final List<Accionista> accionistas
+            final String correoElectronico
 
-    ) {
+            ) {
 
         Empresa newEmpresa = SocioProtector.Builder.newBuilder()
                 .withCuit(cuit)
@@ -368,7 +365,6 @@ public class ControladorSocio {
                 .withDireccion(direccion)
                 .withTelefono(telefono)
                 .withCorreoElectronico(correoElectronico)
-                .withAccionista(accionistas)
                 .withIdSocio(idSocio)
                 .withPostulante(true)
                 .build();
@@ -376,6 +372,20 @@ public class ControladorSocio {
         agregarEmpresa(newEmpresa);
         agregarSocioProtector((SocioProtector) newEmpresa);
         idSocio = idSocio + 1;
+    }
+
+    public void agregarAccionista(final Integer cuitEmpresa, final Integer cuitAccionista, final String razonSocial, final Float participacion) {
+        Empresa empresa = buscarEmpresa(cuitEmpresa);
+        Accionista accionista = Accionista.Builder.newBuilder().withCuit(cuitAccionista).withRazonSocial(razonSocial).withParticipacion(participacion).build();
+
+        empresa.agregarAccionista(accionista);
+
+    }
+
+    public void eliminarAccionista(final Integer cuitEmpresa, final Integer cuitAccionista) {
+        Empresa empresa = buscarEmpresa(cuitEmpresa);
+        empresa.eliminarAccionista(cuitAccionista);
+
     }
 
 
@@ -536,7 +546,6 @@ public class ControladorSocio {
             final String direccion,
             final Integer telefono,
             final String correoElectronico,
-            final List<Accionista> accionistas,
             final String referencia,
             final String usuario
 
@@ -553,7 +562,6 @@ public class ControladorSocio {
                 .withDireccion(direccion)
                 .withTelefono(telefono)
                 .withCorreoElectronico(correoElectronico)
-                .withAccionista(accionistas)
                 .withIdSocio(empresaOriginal.getIdSocio())
                 .withPostulante(true)
                 .build();
@@ -579,7 +587,6 @@ public class ControladorSocio {
             final String direccion,
             final Integer telefono,
             final String correoElectronico,
-            final List<Accionista> accionistas,
             final String referencia,
             final String usuario
 
@@ -595,7 +602,6 @@ public class ControladorSocio {
                 .withDireccion(direccion)
                 .withTelefono(telefono)
                 .withCorreoElectronico(correoElectronico)
-                .withAccionista(accionistas)
                 .withIdSocio(empresaOriginal.getIdSocio())
                 .withPostulante(true)
                 .build();

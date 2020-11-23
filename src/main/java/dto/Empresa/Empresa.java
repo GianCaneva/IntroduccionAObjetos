@@ -1,6 +1,5 @@
 package dto.Empresa;
 
-import dto.Accionista;
 import dto.Documento;
 import dto.ParticipacionSGR;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -10,6 +9,7 @@ import utils.Utils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 public abstract class Empresa {
 
@@ -86,8 +86,8 @@ public abstract class Empresa {
         documento.aprobarDocumento();
     }
 
-    public void suscribirAcciones(final Integer cuitVendedor,final float porcentaje, final float precioUnitario){
-        if (!documento.getAprobado()){
+    public void suscribirAcciones(final Integer cuitVendedor, final float porcentaje, final float precioUnitario) {
+        if (!documento.getAprobado()) {
             throw new RuntimeException("Documentacion pendiente de aproabacion");
         }
 
@@ -161,5 +161,32 @@ public abstract class Empresa {
                 .append("participacionSGR", participacionSGR)
                 .append("postulante", postulante)
                 .toString();
+    }
+
+    public void agregarAccionista(final Accionista newAccionista) {
+        List<Integer> cuitDeAccionistas = (List<Integer>) accionista.stream().map(x -> x.getCuit());
+
+        if (cuitDeAccionistas.contains(newAccionista.getCuit())) {
+            throw new RuntimeException("El accionista ya se encuentra registrado");
+        }
+
+        accionista.add(newAccionista);
+    }
+
+    public void eliminarAccionista(final Integer cuitDeAccionista) {
+        boolean eliminado = false;
+
+        for (int i = 0; i < accionista.size(); i++) {
+            Accionista accionistaActual = this.accionista.get(i);
+            if (accionistaActual.getCuit() == cuitDeAccionista) {
+                accionista.remove(accionistaActual);
+                eliminado = true;
+            }
+        }
+
+        if (eliminado == false) {
+            throw new RuntimeException("No existe un accionista con el cuit solicitado");
+        }
+
     }
 }

@@ -1,6 +1,5 @@
 package dto.Empresa;
 
-import dto.Accionista;
 import dto.AporteDeCapital;
 import dto.Documento;
 import dto.ParticipacionSGR;
@@ -11,8 +10,6 @@ import utils.Utils;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 public class SocioProtector extends Empresa {
 
