@@ -8,6 +8,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -47,13 +48,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import controller.ControladorOperacion;
+import controller.ControladorOperacion;
 
 
 
 
 
 
-    public class ventanaValorPromedio extends JFrame implements ItemListener {
+    public class ventanaValorPromedio extends JFrame  {
         private JTextField jtCombo, jtMora, jtPordia,jtFecha1,jtFecha2;
         private JComboBox<String> jcOperaciones;
         private JLabel jlTipo, jlPorcentaje,jlFecha1,jlFecha2;
@@ -62,7 +64,7 @@ import controller.ControladorOperacion;
         private ArrayList<String> operacionesArrayList;
         private float mora=0;
 
-        private JLabel jlFecha,jlResultado;
+        private JLabel jlFecha,jlResultado1,jlResultado2;
         private JTextField jtFecha;
 
         public static void main(String[] args) throws Exception {
@@ -94,7 +96,7 @@ import controller.ControladorOperacion;
 //        setTitle("Calculo de Porcentaje Comision");
         setTitle("Calculo de Valor Promedio");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(356,250);
+        setSize(400,400);
         getContentPane().setLayout(null);
 
 
@@ -110,7 +112,7 @@ import controller.ControladorOperacion;
         jcOperaciones.addItem("Pequenia");
         jcOperaciones.addItem("Mediana");
         jcOperaciones.addItem("Grande");
-        jcOperaciones.addItemListener(this);
+//        jcOperaciones.addItemListener(this);
 
         jlFecha1=new JLabel("Desde: ");
         jlFecha1.setBounds(10,70,70,18);
@@ -128,8 +130,52 @@ import controller.ControladorOperacion;
 
 
         jlPorcentaje=new JLabel();
-        jlPorcentaje.setBounds(10,110,250,14);
+        jlPorcentaje.setBounds(10,160,250,14);
         add(jlPorcentaje);
+        JButton btnNewButton = new JButton("Realizar Calculo");
+        btnNewButton.setBounds(10, 110, 150, 40);
+        getContentPane().add(btnNewButton);
+
+
+
+
+        btnNewButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                String entradaFecha1=jtFecha1.getText();
+                String entradaFecha2=jtFecha2.getText();
+
+                Date date1= null;
+                try {
+                    date1 = new SimpleDateFormat("dd/MM/yyyy").parse(entradaFecha1);
+                } catch (ParseException parseException) {
+                    parseException.printStackTrace();
+                }
+                Date date2= null;
+                try {
+                    date2 = new SimpleDateFormat("dd/MM/yyyy").parse(entradaFecha2);
+                } catch (ParseException parseException) {
+                    parseException.printStackTrace();
+                }
+                String seleccionado = (String) jcOperaciones.getSelectedItem();
+
+                float resultado1 = ControladorOperacion.calcularValorPromedioTasa(seleccionado,date1,date2)  ;
+                float resultado2 = ControladorOperacion.totalChequesYPagares(seleccionado,date1,date2)  ;
+
+
+//                float Comision= ControladorOperacion.calcularComisionesCheques(date1);
+
+                jlResultado1 = new JLabel( "Valor promedio tasa dcto: " + resultado1);
+                jlResultado1.setBounds(10,180,200,100);
+                add(jlResultado1);
+                jlResultado2 = new JLabel( "Valor total cheques y pagare: " + resultado2);
+                jlResultado2.setBounds(10,200,200,100);
+                add(jlResultado2);
+             //   setVisible(true);
+            }
+
+        });
+
 
 //
         setVisible(true);
@@ -138,19 +184,6 @@ import controller.ControladorOperacion;
         }
 
 
-    public void itemStateChanged(ItemEvent e) {
-        if (e.getSource() == jcOperaciones) {
-            String seleccionado = (String) jcOperaciones.getSelectedItem();
-
-
-
-            jlPorcentaje.setText("En ese periodo el VP es "+ mora + "%");
-
-          
-
-
-        }
-    }
 
 
 

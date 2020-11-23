@@ -39,7 +39,7 @@ public class ControladorOperacion {
 
     }
 
-    public List<Operacion> calcularCantidadOpMonetizadas(final Integer cuit, final Integer año, final Integer mes1, final Integer mes2) {
+    public static List<Operacion> calcularCantidadOpMonetizadas(final Integer cuit, final Integer año, final Integer mes1, final Integer mes2) {
 
         if (mes1 > mes2) {
             throw new RuntimeException("Error. El mes 1 no puede ser mayor que el mes 2");
@@ -63,12 +63,12 @@ public class ControladorOperacion {
 
     }
 
-    public int calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+    public static float calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
         return 12;
     }
 
-    public int totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+    public static float totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
         return 11;
     }
@@ -94,7 +94,7 @@ public class ControladorOperacion {
 
     }
 
-    public Float obtenerMoraTotal(final Integer cuit) {
+    public static Float obtenerMoraTotal(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         Desembolso desembolso = empresa.getLineaDeCredito().getDesembolso();
         Float moraDiaria = desembolso.getMora();
@@ -104,7 +104,7 @@ public class ControladorOperacion {
         return moraTotal;
     }
 
-    public Integer obtenerCantidadDeDiasEntreDosFechas(final Date date1) {
+    public static Integer obtenerCantidadDeDiasEntreDosFechas(final Date date1) {
 
         Date dateActual = Utils.getDate();
 
@@ -120,17 +120,17 @@ public class ControladorOperacion {
         return cantidadDeDias;
     }
 
-    public Float obtenerMoraPorDia(final Integer cuit) {
+    public static Float obtenerMoraPorDia(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.getLineaDeCredito().getDesembolso().getMora();
     }
 
-    public Float calcularConsolidadaUtilizado(final Integer cuit) {
+    public static Float calcularConsolidadaUtilizado(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.calcularUtilizadoEnLinea();
     }
 
-    public Float calcularConsolidadaRiesgo(final Integer cuit) {
+    public static Float calcularConsolidadaRiesgo(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         return empresa.calcularRiesgoVivo();
     }
