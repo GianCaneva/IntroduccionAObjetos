@@ -45,21 +45,44 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import dto.enumeration.CtaCorriente;
-import dto.enumeration.Prestamo;
-import dto.enumeration.TipoCheque;
+
 import controller.ControladorOperacion;
 
-public class ventanaValorPromedio extends JFrame implements ItemListener {
 
-    private JFrame f = new JFrame();
-    private JTextField jtCombo, jtMora, jtPordia;
-    private JComboBox<String> jcOperaciones;
-    private JLabel jlTipo, jlPorcentaje;
-    private String  valor, operacion;
-    private int a, b;
-    private ArrayList<String> operacionesArrayList;
-    private float mora=0;
+
+
+
+
+    public class ventanaValorPromedio extends JFrame implements ItemListener {
+        private JTextField jtCombo, jtMora, jtPordia,jtFecha1,jtFecha2;
+        private JComboBox<String> jcOperaciones;
+        private JLabel jlTipo, jlPorcentaje,jlFecha1,jlFecha2;
+        private String  valor, operacion;
+        private int a, b;
+        private ArrayList<String> operacionesArrayList;
+        private float mora=0;
+
+        private JLabel jlFecha,jlResultado;
+        private JTextField jtFecha;
+
+        public static void main(String[] args) throws Exception {
+            EventQueue.invokeLater(new Runnable() {
+
+                public void run() {
+                    try{
+                        vistas.ventanaValorPromedio tester = new vistas.ventanaValorPromedio();
+                        tester.setVisible(true);
+
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+
+
+        }
 
 
 
@@ -68,43 +91,48 @@ public class ventanaValorPromedio extends JFrame implements ItemListener {
 
         // String[] operacionesArraylist = new String[""];
 
-//        f.setTitle("Calculo de Porcentaje Comision");
+//        setTitle("Calculo de Porcentaje Comision");
+        setTitle("Calculo de Valor Promedio");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(356,250);
+        getContentPane().setLayout(null);
 
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.setSize(356,200);
-        f.getContentPane().setLayout(null);
 
 
-        jlTipo=new JLabel();
-//        mora = Double.toString(b);
-//        jlPorcentaje.setText(prueba);
         jlTipo=new JLabel("Seleccione el tipo de empresa: ");
         jlTipo.setBounds(10,10,250,14);
-        f.add(jlTipo);
+        add(jlTipo);
 
 
         jcOperaciones=new JComboBox<String>();
         jcOperaciones.setBounds(10,40,200,18);
-        f.add(jcOperaciones);
+        add(jcOperaciones);
         jcOperaciones.addItem("Pequenia");
         jcOperaciones.addItem("Mediana");
         jcOperaciones.addItem("Grande");
         jcOperaciones.addItemListener(this);
 
+        jlFecha1=new JLabel("Desde: ");
+        jlFecha1.setBounds(10,70,70,18);
+        add(jlFecha1);
+        jtFecha1 = new JTextField();
+        jtFecha1.setBounds(65,70,70,18);
+        add(jtFecha1);
+        jlFecha2=new JLabel("Hasta: ");
+        jlFecha2.setBounds(140,70,70,18);
+        add(jlFecha2);
+        jtFecha2 = new JTextField();
+        jtFecha2.setBounds(180,70,70,18);
+        add(jtFecha2);
 
-//        jlPorcentaje = new JLabel();
-//        mora = Double.toString(b);
-//        jlPorcentaje.setText(prueba);
-//        type seleccionadoToEnum = type.valueOf(seleccionado);
 
-//        mora = ControladorOperacion.calcularPorcentajeComision(seleccionadoToEnum);
 
         jlPorcentaje=new JLabel();
-        jlPorcentaje.setBounds(10,65,250,14);
-        f.add(jlPorcentaje);
+        jlPorcentaje.setBounds(10,110,250,14);
+        add(jlPorcentaje);
 
 //
-        f.setVisible(true);
+        setVisible(true);
 
 
         }
@@ -113,15 +141,12 @@ public class ventanaValorPromedio extends JFrame implements ItemListener {
     public void itemStateChanged(ItemEvent e) {
         if (e.getSource() == jcOperaciones) {
             String seleccionado = (String) jcOperaciones.getSelectedItem();
-            f.setTitle(seleccionado);
 
 
-            jlPorcentaje.setText("El procetaje es "+ mora + "%");
 
-            // NO ME ESTA TRAYENDO EL RESULTADO ED CALCULAR PORCENTAJE COMISION//
-//            f.setVisible(true);
+            jlPorcentaje.setText("En ese periodo el VP es "+ mora + "%");
 
-
+          
 
 
         }
@@ -129,7 +154,5 @@ public class ventanaValorPromedio extends JFrame implements ItemListener {
 
 
 
-    public static void main(String[] args) {
-        vistas.ventanaValorPromedio tester = new vistas.ventanaValorPromedio();
 
-    }}
+   }

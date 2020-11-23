@@ -24,29 +24,9 @@
   <component name="ChangeListManager">
     <list default="true" id="62b4fbbf-6197-443f-b627-73b69d67c347" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorOperacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/Desembolso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/Desembolso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaPorcentajeComision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPorcentajeComision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorOperacion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Desembolso$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Desembolso$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Desembolso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Desembolso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/LineaDeCredito$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/LineaDeCredito$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/LineaDeCredito.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/LineaDeCredito.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo1$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo1$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo2$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo2$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo3$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Operacion/Tipo3$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/enumeration/CtaCorriente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/enumeration/CtaCorriente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/enumeration/Prestamo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/enumeration/Prestamo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/enumeration/TipoCheque.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/enumeration/TipoCheque.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaComision$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaComision$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaComision.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaComision.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPorcentajeComision$type.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPorcentajeComision.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPorcentajeComision.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaValorPromedio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaValorPromedio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +67,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
-  <component name="RunManager" selected="Application.ventanaComision">
+  <component name="RunManager" selected="Application.ventanaValorPromedio">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -166,10 +146,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ventanaValorPromedio" />
         <item itemvalue="Application.ventanaComision" />
         <item itemvalue="Application.ventanaPrincipal" />
         <item itemvalue="Application.ventanaPorcentajeComision" />
-        <item itemvalue="Application.ventanaValorPromedio" />
         <item itemvalue="Application.VentanaValorPromedio" />
       </list>
     </recent_temporary>
@@ -218,38 +198,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="448" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606158449677" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1606159709650">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606161477270">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159709650" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1606159709649">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606161477270" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606161477270">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159709649" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1606159709649">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606161477270" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606161477270">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159709649" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1606159709650">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606161477270" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606161477270">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159709650" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1606159714494">
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606161477270" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1606159969171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159714494" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1606159714494">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159969171" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1606159969171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159714494" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1606159714493">
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159969171" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1606159969171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159714493" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1606159714494">
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159969171" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1606159969171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159714494" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606159969171" />
     <state x="184" y="86" key="MergeDialog" timestamp="1606156110436">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -280,13 +260,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="7" />
+          <line>129</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/vistas/ventanaComision.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="11" />
+          <line>127</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/vistas/ventanaValorPromedio.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
