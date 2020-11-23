@@ -11,15 +11,16 @@ import dto.Enumeration.Prestamo;
 import dto.Enumeration.TipoCheque;
 import utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ControladorSocio {
-    private static List<Empresa> listaEmpresas;
-    private static List<SocioParticipe> listaSocioParticipe;
-    private static List<SocioProtector> listaSocioProtector;
-    private static List<Cambio> historial;
+    private static List<Empresa> listaEmpresas = new ArrayList<>();
+    private static List<SocioParticipe> listaSocioParticipe = new ArrayList<>();
+    private static List<SocioProtector> listaSocioProtector = new ArrayList<>();
+    private static List<Cambio> historial = new ArrayList<>();
     private Integer idSocio = 0;
 
     public ControladorSocio() {
