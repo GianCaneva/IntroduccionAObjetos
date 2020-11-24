@@ -58,7 +58,7 @@ public class ControladorSocio {
         listaSocioProtector.remove(socioParticipe);
     }
 
-    private void agregarCambio(final Cambio cambio) {
+    private static void agregarCambio(final Cambio cambio) {
         historial.add(cambio);
     }
 
@@ -112,9 +112,9 @@ public class ControladorSocio {
     }
 
 
-        public void operacionProsperada(
-            final Integer cuit,
-            final String operacionId) {
+        public static void operacionProsperada(
+                final Integer cuit,
+                final String operacionId) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         List<Operacion> operaciones = empresa.getLineaDeCredito().getOperaciones();
         Operacion operacion = buscarOperacion(operaciones, operacionId);
@@ -128,7 +128,7 @@ public class ControladorSocio {
         }
     }
 
-    public void operar(final String id, final Integer cuit) {
+    public static void operar(final String id, final Integer cuit) {
 
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         Desembolso desembolso = empresa.getLineaDeCredito().getDesembolso();
@@ -145,7 +145,7 @@ public class ControladorSocio {
 
     }
 
-    public String solicitarOperacionCheque(
+    public static String solicitarOperacionCheque(
             final Integer cuit,
             final TipoCheque tipo,
             final String bancoDelCheque,
@@ -194,7 +194,7 @@ public class ControladorSocio {
 
     }
 
-    public String solicitarOperacionCCC(
+    public static String solicitarOperacionCCC(
             final Integer cuit,
             final String empresaCC,
             final Date fechaVencimiento,
@@ -493,7 +493,7 @@ public class ControladorSocio {
         empresa.getLineaDeCredito().eliminarDesembolso();
     }
 
-    private Operacion buscarOperacion(final List<Operacion> operaciones, final String numOperacion) {
+    private static Operacion buscarOperacion(final List<Operacion> operaciones, final String numOperacion) {
 
         Operacion operacionDeRetorno = null;
         for (int i = 0; i < operaciones.size(); i++) {
@@ -505,7 +505,7 @@ public class ControladorSocio {
         return operacionDeRetorno;
     }
 
-    private Operacion buscarOperacion(final String numOperacion) {
+    private static Operacion buscarOperacion(final String numOperacion) {
 
         List<LineaDeCredito> lineaDeCredito = (List<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
         List<Operacion> operaciones = (List<Operacion>) lineaDeCredito.stream().map(x -> x.getOperaciones());
@@ -556,7 +556,7 @@ public class ControladorSocio {
     }
 
 
-    private boolean excesoChequesFirmante(final Integer firmante, final Float valorAgregado) {
+    private static boolean excesoChequesFirmante(final Integer firmante, final Float valorAgregado) {
         List<LineaDeCredito> lineaDeCredito = (List<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
         List<Operacion> operaciones = (List<Operacion>) lineaDeCredito.stream().map(x -> x.getOperaciones());
         List<Tipo1> operacionesDeTipoCheque = null;
@@ -605,7 +605,7 @@ public class ControladorSocio {
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    private void log(final Object originalObject, final Object newObject, final String referencia, final String usuario) {
+    private static void log(final Object originalObject, final Object newObject, final String referencia, final String usuario) {
         agregarCambio(Cambio.Builder.newBuilder()
                 .withOldObject(originalObject)
                 .withNuevoObject(newObject)
@@ -708,7 +708,7 @@ public class ControladorSocio {
 
     }
 
-    public String modificarOperacionCheque(
+    public static String modificarOperacionCheque(
             final Integer cuit,
             final TipoCheque tipo,
             final String bancoDelCheque,
@@ -774,7 +774,7 @@ public class ControladorSocio {
 
     }
 
-    public String modificarOperacionCCC(
+    public static String modificarOperacionCCC(
             final Integer cuit,
             final String empresaCC,
             final Date fechaVencimiento,
@@ -829,7 +829,7 @@ public class ControladorSocio {
 
     }
 
-    public String modificarOperacionPrestamo(
+    public static String modificarOperacionPrestamo(
             final Integer cuit,
             final String bancoPrestamo,
             final Float importeTotal,

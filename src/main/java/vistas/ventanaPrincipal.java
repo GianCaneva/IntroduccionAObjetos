@@ -298,7 +298,7 @@ public class ventanaPrincipal extends JFrame implements ActionListener {
 
                                        }else if (e.getSource() == mo6) {
                                            try {
-                                               ventanaModificarCheque frame = new ventanaModificarCheque();
+                                               ventanaModificarOperacionCheque frame = new ventanaModificarOperacionCheque();
                                            } catch (Exception e) {
                                                e.printStackTrace();
                                            }
@@ -319,7 +319,7 @@ public class ventanaPrincipal extends JFrame implements ActionListener {
 
                                        }else if (e.getSource() == mo9) {
                                            try {
-                                               ventanaOperacionProsperada frame = new ventanaOperacionProsperada();
+                                               ventanaOpProsperadas frame = new ventanaOpProsperadas();
                                            } catch (Exception e) {
                                                e.printStackTrace();
                                            }
@@ -368,7 +368,7 @@ public class ventanaPrincipal extends JFrame implements ActionListener {
 
                                        }else if (e.getSource() == mo16) {
                                            try {
-                                               ventanaOperarOP frame = new ventanaOperarOP();
+                                               ventanaOperaciones frame = new ventanaOperaciones();
                                            } catch (Exception e) {
                                                e.printStackTrace();
                                            }

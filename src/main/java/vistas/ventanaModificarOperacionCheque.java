@@ -52,11 +52,16 @@ import controller.ControladorOperacion;
 import controller.ControladorSocio;
 
 
-public class ventanaSolicitarOPch extends JFrame {
-    private JTextField jtCuit, jtBanco,jtImporte,jtTasa,jtFecha,jtCheque,jtCuitfirmante;
-    private JComboBox<String> jcOperaciones, jcOperaciones2, jcOperaciones3;
-    private JLabel jlCuit, jlOperacion,jlBanco,jlImporte,jlCheque,jlFecha,jlCuitfirmante;
+public class ventanaModificarOperacionCheque extends JFrame {
+    private JTextField jtCuit, jtBanco,jtImporte,jtTasa,jtFecha,jtCuotas,jtID;
+    private JComboBox<String> jcOperaciones, jcReferencia, jcUsuario;
+    private JLabel jlCuit, jlOperacion,jlBanco,jlImporte,jlTasa,jlFecha,jlCuotas,jlUsuario,jlReferencia,jlID;
     private String valor;
+    private JTextField jtCheque,jtCuitfirmante;
+    private JComboBox<String>  jcOperaciones2, jcOperaciones3;
+    private JLabel jlCheque,jlCuitfirmante;
+
+
 
 
 
@@ -65,7 +70,7 @@ public class ventanaSolicitarOPch extends JFrame {
 
             public void run() {
                 try {
-                    vistas.ventanaSolicitarOPch tester = new vistas.ventanaSolicitarOPch();
+                    vistas.ventanaModificarOperacionCheque tester = new vistas.ventanaModificarOperacionCheque();
                     tester.setVisible(true);
 
                 } catch (Exception e) {
@@ -79,12 +84,16 @@ public class ventanaSolicitarOPch extends JFrame {
     }
 
 
-    public ventanaSolicitarOPch() {
+    public ventanaModificarOperacionCheque() {
 
 
-        setTitle("Solicitar Operacion Cheque");
+
+
+
+
+        setTitle("Modificar Operacion Cheque");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(450, 330);
+        setSize(500, 450);
         getContentPane().setLayout(null);
 
 
@@ -150,10 +159,48 @@ public class ventanaSolicitarOPch extends JFrame {
 
 
 
+        jlReferencia = new JLabel("Seleccione Referencia:");
+        jlReferencia.setBounds(10,220,200,18);
+        add(jlReferencia);
 
 
-        JButton btnNewButton = new JButton("Solicitar");
-        btnNewButton.setBounds(100, 220, 190, 40);
+        jcReferencia = new JComboBox<String>();
+        jcReferencia.setBounds(150, 220, 300, 18);
+
+        add(jcReferencia);
+        jcReferencia.addItem("Actualizacion de numero telefonico");
+        jcReferencia.addItem("Cambio de Razon Social");
+        jcReferencia.addItem("Cambio de Domicilio");
+        jcReferencia.addItem("Cambio de Telefono");
+        jcReferencia.addItem("Cambio de Correo");
+        jcReferencia.addItem("Cambio de Segmento");
+        jcReferencia.addItem("Correcion de fecha de inicio de Actividad");
+        jcReferencia.addItem("Correcion de datos");
+
+
+
+
+        jlUsuario = new JLabel("Seleccione Usuario:");
+        jlUsuario.setBounds(10,250,200,18);
+        add(jlUsuario);
+
+
+        jcUsuario = new JComboBox<String>();
+        jcUsuario.setBounds(150, 250, 300, 18);
+        add(jcUsuario);
+        jcUsuario.addItem("x500400");
+        jcUsuario.addItem("x647423");
+        jcUsuario.addItem("x200242");
+        jcUsuario.addItem("x421000");
+
+
+
+
+
+
+
+        JButton btnNewButton = new JButton("Modificar");
+        btnNewButton.setBounds(200, 280, 190, 40);
         getContentPane().add(btnNewButton);
 
 
@@ -183,10 +230,16 @@ public class ventanaSolicitarOPch extends JFrame {
 
                 int entradaCuitFirmante = Integer.parseInt(jtCuitfirmante.getText());
                 float entradaImporte = Float.parseFloat(jtImporte.getText());
+                String ID= (String) jtID.getText();
+                String seleccionado2 = (String) jcReferencia.getSelectedItem();
+                String seleccionado3 = (String) jcUsuario.getSelectedItem();
 
 
-//                 ControladorSocio.solicitarOperacionCheque(entradaCuit,seleccionado,entradaBanco,entradaNumeroCheque,date1,entradaCuitFirmante,entradaImporte);
+
+//                 ControladorSocio.modificarOperacionCheque(entradaCuit,seleccionado,entradaBanco,entradaNumeroCheque,date1,entradaCuitFirmante,entradaImporte,ID,seleccionado2,seleccionado3);
 //                    FALTA SOLICITAR sTRING
+
+
 
             }
 

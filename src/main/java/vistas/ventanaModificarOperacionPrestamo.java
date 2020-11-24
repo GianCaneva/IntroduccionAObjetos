@@ -53,9 +53,9 @@ import controller.ControladorSocio;
 
 
 public class ventanaModificarOperacionPrestamo extends JFrame {
-    private JTextField jtCuit, jtBanco,jtImporte,jtTasa,jtFecha,jtCuotas;
+    private JTextField jtCuit, jtBanco,jtImporte,jtTasa,jtFecha,jtCuotas,jtID;
     private JComboBox<String> jcSistemas, jcReferencia, jcUsuario;
-    private JLabel jlCuit, jlSistema,jlBanco,jlImporte,jlTasa,jlFecha,jlCuotas,jlUsuario,jlReferencia;
+    private JLabel jlCuit, jlSistema,jlBanco,jlImporte,jlTasa,jlFecha,jlCuotas,jlUsuario,jlReferencia,jlID;
     private String valor;
 
 
@@ -94,7 +94,7 @@ public class ventanaModificarOperacionPrestamo extends JFrame {
         jtCuit = new JTextField();
         jtCuit.setBounds(170, 10, 80, 18);
         add(jtCuit);
-        jlBanco = new JLabel("Ingrese Banco: ");
+        jlBanco = new JLabel("Ingrese Empresa: ");
         jlBanco.setBounds(10,35,160,18);
         add(jlBanco);
         jtBanco = new JTextField();
@@ -126,6 +126,13 @@ public class ventanaModificarOperacionPrestamo extends JFrame {
         jtCuotas.setBounds(170,150,80,18);
         add(jtCuotas);
 
+        jlID = new JLabel("Ingrese ID:");
+        jlID.setBounds(10,180,160,18);
+        add(jlID);
+        jtID = new JTextField();
+        jtID.setBounds(170,180,80,18);
+        add(jtID);
+
 
 
 
@@ -136,27 +143,27 @@ public class ventanaModificarOperacionPrestamo extends JFrame {
 
 
         jlSistema = new JLabel("Seleccione sistema:");
-        jlSistema.setBounds(10,180,200,18);
+        jlSistema.setBounds(10,210,200,18);
         add(jlSistema);
 
 
         jcSistemas = new JComboBox<String>();
-        jcSistemas.setBounds(150, 180, 300, 18);
+        jcSistemas.setBounds(150, 210, 300, 18);
         add(jcSistemas);
         jcSistemas.addItem("Frances");
         jcSistemas.addItem("Aleman");
         jcSistemas.addItem("Americano");
 
 
-        
+
 
         jlReferencia = new JLabel("Seleccione Referencia:");
-        jlReferencia.setBounds(10,210,200,18);
+        jlReferencia.setBounds(10,240,200,18);
         add(jlReferencia);
 
 
         jcReferencia = new JComboBox<String>();
-        jcReferencia.setBounds(150, 210, 300, 18);
+        jcReferencia.setBounds(150, 240, 300, 18);
 
         add(jcReferencia);
         jcReferencia.addItem("Actualizacion de numero telefonico");
@@ -172,12 +179,12 @@ public class ventanaModificarOperacionPrestamo extends JFrame {
 
 
         jlUsuario = new JLabel("Seleccione Usuario:");
-        jlUsuario.setBounds(10,240,200,18);
+        jlUsuario.setBounds(10,270,200,18);
         add(jlUsuario);
 
 
         jcUsuario = new JComboBox<String>();
-        jcUsuario.setBounds(150, 240, 300, 18);
+        jcUsuario.setBounds(150, 270, 300, 18);
         add(jcUsuario);
         jcUsuario.addItem("x500400");
         jcUsuario.addItem("x647423");
@@ -191,7 +198,7 @@ public class ventanaModificarOperacionPrestamo extends JFrame {
 
 
         JButton btnNewButton = new JButton("Modificar");
-        btnNewButton.setBounds(200, 270, 190, 40);
+        btnNewButton.setBounds(200, 300, 190, 40);
         getContentPane().add(btnNewButton);
 
 
@@ -215,12 +222,12 @@ public class ventanaModificarOperacionPrestamo extends JFrame {
                 } catch (ParseException parseException) {
                     parseException.printStackTrace();
                 }
-
+                String ID= (String) jtID.getText();
                 String seleccionado2 = (String) jcReferencia.getSelectedItem();
                 String seleccionado3 = (String) jcUsuario.getSelectedItem();
-                String ID=
 
-                ControladorSocio.solicitarOperacionPrestamo(entradaCuit,entradaBanco,entradaImporte,entradaTasa,date1,entradaCantCuotas,seleccionado);
+
+                ControladorSocio.modificarOperacionPrestamo(entradaCuit,entradaBanco,entradaImporte,entradaTasa,date1,entradaCantCuotas,seleccionado,ID,seleccionado2,seleccionado3);
 
 
 

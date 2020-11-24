@@ -52,12 +52,16 @@ import controller.ControladorOperacion;
 import controller.ControladorSocio;
 
 
-public class ventanaSolicitarOPcc extends JFrame {
-    private JTextField jtCuit, jtBanco,jtImporte,jtTasa,jtFecha,jtCuotas;
+public class ventanaOpProsperadas extends JFrame {
+    private JTextField jtCuit, jtMonto, jtFecha;
     private JComboBox<String> jcOperaciones, jcOperaciones2, jcOperaciones3;
-    private JLabel jlCuit, jlOperacion,jlBanco,jlImporte,jlTasa,jlFecha,jlCuotas;
+    private JLabel jlCuit, jlOperacion, jlMonto, jlFecha1, jlFecha2;
     private String valor;
+    private int a, b;
+    private ArrayList<String> operacionesArrayList;
+    private float mora = 0;
 
+    private JLabel jlFecha, jlResultado1, jlResultado2;
 
 
     public static void main(String[] args) throws Exception {
@@ -65,7 +69,7 @@ public class ventanaSolicitarOPcc extends JFrame {
 
             public void run() {
                 try {
-                    vistas.ventanaSolicitarOPcc tester = new vistas.ventanaSolicitarOPcc();
+                    vistas.ventanaOpProsperadas tester = new vistas.ventanaOpProsperadas();
                     tester.setVisible(true);
 
                 } catch (Exception e) {
@@ -79,12 +83,14 @@ public class ventanaSolicitarOPcc extends JFrame {
     }
 
 
-    public ventanaSolicitarOPcc() {
+    public ventanaOpProsperadas() {
 
+        // String[] operacionesArraylist = new String[""];
 
-        setTitle("Solicitar Cuenta Corriente");
+//        setTitle("Calculo de Porcentaje Comision");
+        setTitle("OperacionesProsperadas");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(300, 300);
+        setSize(300, 200);
         getContentPane().setLayout(null);
 
 
@@ -92,76 +98,35 @@ public class ventanaSolicitarOPcc extends JFrame {
         jlCuit.setBounds(10, 10, 160, 18);
         add(jlCuit);
         jtCuit = new JTextField();
-        jtCuit.setBounds(170, 10, 80, 18);
+        jtCuit.setBounds(140, 10, 80, 18);
         add(jtCuit);
-        jlBanco = new JLabel("Ingrese Banco: ");
-        jlBanco.setBounds(10,35,160,18);
-        add(jlBanco);
-        jtBanco = new JTextField();
-        jtBanco.setBounds(170,35,80,18);
-        add(jtBanco);
-        jlImporte = new JLabel("Ingrese Importe:");
-        jlImporte.setBounds(10,60,160,18);
-        add(jlImporte);
-        jtImporte = new JTextField();
-        jtImporte.setBounds(170,60,80,18);
-        add(jtImporte);
-
-        jlFecha = new JLabel("Ingrese Fecha Vencimiento:");
-        jlFecha.setBounds(10,90,160,18);
-        add(jlFecha);
-        jtFecha = new JTextField();
-        jtFecha.setBounds(170,90,80,18);
-        add(jtFecha);
-
-
-        jlOperacion = new JLabel("Seleccione Tipo:");
-        jlOperacion.setBounds(10,120,200,18);
-        add(jlOperacion);
-
-
-        jcOperaciones = new JComboBox<String>();
-        jcOperaciones.setBounds(150, 120, 120, 18);
-        add(jcOperaciones);
-        jcOperaciones.addItem("CuentaCorrienteComercial");
-        jcOperaciones.addItem("TarjetaDeCredito");
+        jlMonto = new JLabel("Ingrese ID: ");
+        jlMonto.setBounds(10, 40, 160, 18);
+        add(jlMonto);
+        jtMonto = new JTextField();
+        jtMonto.setBounds(140, 40, 80, 18);
+        add(jtMonto);
 
 
 
-
-
-
-        JButton btnNewButton = new JButton("Solicitar");
-        btnNewButton.setBounds(45, 150, 190, 40);
+        JButton btnNewButton = new JButton("Operar");
+        btnNewButton.setBounds(45, 70, 190, 40);
         getContentPane().add(btnNewButton);
 
 
         btnNewButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-
-                int entradaCuit=Integer.parseInt(jtCuit.getText());
-                String entradaBanco = jtBanco.getText();
-                float entradaImporte = Float.parseFloat(jtImporte.getText());
+                int entradaCuit = Integer.parseInt(jtCuit.getText());
 
 
-                String seleccionado = (String) jcOperaciones.getSelectedItem();
-
-                String entradaFecha1=jtFecha.getText();
-
-
-                Date date1= null;
-                try {
-                    date1 = new SimpleDateFormat("dd/MM/yyyy").parse(entradaFecha1);
-                } catch (ParseException parseException) {
-                    parseException.printStackTrace();
-                }
-
-              // ControladorSocio.solicitarOperacionCCC(entradaCuit,entradaBanco,date1,seleccionado,entradaImporte);
-                //    FALTA SOLICITAR sTRING
+                String ID = jtMonto.getText();
 
 
 
+
+
+                ControladorSocio.operacionProsperada(entradaCuit,ID);
 
 
             }
@@ -169,7 +134,7 @@ public class ventanaSolicitarOPcc extends JFrame {
         });
 
 
-
+//
         setVisible(true);
 
 
