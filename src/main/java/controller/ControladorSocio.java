@@ -329,22 +329,23 @@ public class ControladorSocio {
             throw new RuntimeException("La empresa no es una socia participe, por lo tanto no tiene una linea de credito a la cual asignar operaciones");
         }
 
-        if (empresa.getLineaDeCredito() == null) {
+        LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
+        if (lineaDeCredito == null) {
             throw new RuntimeException("La empresa no tiene una linea de credito asignada");
         }
 
         if (tipoDeOperacion == "ChequeDeTerceros") {
-            empresa.getLineaDeCredito().agregarTipoDeOperacion(TipoCheque.ChequeDeTerceros);
+            lineaDeCredito.agregarTipoDeOperacion(TipoCheque.ChequeDeTerceros);
         } else if (tipoDeOperacion == "ChequePropio") {
-            empresa.getLineaDeCredito().agregarTipoDeOperacion(TipoCheque.ChequePropio);
+            lineaDeCredito.agregarTipoDeOperacion(TipoCheque.ChequePropio);
         } else if (tipoDeOperacion == "PagareBursatil") {
-            empresa.getLineaDeCredito().agregarTipoDeOperacion(TipoCheque.PagareBursatil);
+            lineaDeCredito.agregarTipoDeOperacion(TipoCheque.PagareBursatil);
         } else if (tipoDeOperacion == "TarjetaDeCredito") {
-            empresa.getLineaDeCredito().agregarTipoDeOperacion(CtaCorriente.TarjetaDeCredito);
+            lineaDeCredito.agregarTipoDeOperacion(CtaCorriente.TarjetaDeCredito);
         } else if (tipoDeOperacion == "CuentaCorrienteComercial") {
-            empresa.getLineaDeCredito().agregarTipoDeOperacion(CtaCorriente.CuentaCorrienteComercial);
+            lineaDeCredito.agregarTipoDeOperacion(CtaCorriente.CuentaCorrienteComercial);
         } else if (tipoDeOperacion == "Prestamo") {
-            empresa.getLineaDeCredito().agregarTipoDeOperacion(Prestamo.Prestamo);
+            lineaDeCredito.agregarTipoDeOperacion(Prestamo.Prestamo);
         }
 
     }
