@@ -157,7 +157,7 @@ public class ventanaSolicitarOPcc extends JFrame {
                     parseException.printStackTrace();
                 }
 
-              // ControladorSocio.solicitarOperacionCCC(entradaCuit,entradaBanco,date1,seleccionado,entradaImporte);
+               ControladorSocio.solicitarOperacionCCC(entradaCuit,entradaBanco,date1,seleccionado,entradaImporte);
                 //    FALTA SOLICITAR sTRING
 
 

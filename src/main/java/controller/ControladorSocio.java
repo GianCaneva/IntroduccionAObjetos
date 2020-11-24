@@ -62,7 +62,7 @@ public class ControladorSocio {
         historial.add(cambio);
     }
 
-    public void emicionDeFacturasPendientes() {
+    public static void emicionDeFacturasPendientes() {
         //Se asume que el primer dia de la semana es Lunes y que no existen los feriados.
         //En caso de que asi sea se debera esperar hasta la proxima semana.
         //1 representa el dia lunes, 2 martes etc y 0 el doming
@@ -100,7 +100,7 @@ public class ControladorSocio {
         }
     }
 
-    public void generarAportes(final Integer cuit, final Float monto) {
+    public static void generarAportes(final Integer cuit, final Float monto) {
 
         SocioProtector empresa = (SocioProtector) buscarEmpresa(cuit);
         if (!listaSocioProtector.contains(empresa)) {
@@ -111,7 +111,7 @@ public class ControladorSocio {
 
     }
 
-    public void retirarAportes(final Integer cuit, final Date fecha) {
+    public static void retirarAportes(final Integer cuit, final Date fecha) {
 
         SocioProtector empresa = (SocioProtector) buscarEmpresa(cuit);
         if (!listaSocioProtector.contains(empresa)) {
@@ -362,7 +362,7 @@ public class ControladorSocio {
     }
 
 
-    public void aprobarDocumento(final Integer cuit) {
+    public static void aprobarDocumento(final Integer cuit) {
         List<Integer> cuitAccionistas = new ArrayList<>();
         Empresa empresa = buscarEmpresa(cuit);
 
@@ -384,7 +384,7 @@ public class ControladorSocio {
     }
 
 
-    public void presentarDocumento(
+    public static void presentarDocumento(
             final Integer cuit,
             final String tipo,
             final String estado,
@@ -519,12 +519,12 @@ public class ControladorSocio {
         return empresaIndex;
     }
 
-    public void agregarDesembolsos(final Integer cuit, final Float monto, final Float mora, final String tipo) {
+    public static void agregarDesembolsos(final Integer cuit, final Float monto, final Float mora, final String tipo) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         empresa.getLineaDeCredito().agregarDesembolso(monto, mora, tipo);
     }
 
-    public void eliminarDesembolsos(final Integer cuit) {
+    public static void eliminarDesembolsos(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         empresa.getLineaDeCredito().eliminarDesembolso();
     }
@@ -977,7 +977,7 @@ public class ControladorSocio {
 
     }
 
-    public void modificarDocumento(
+    public static void modificarDocumento(
             final Integer cuit,
             final String tipo,
             final String estado,
