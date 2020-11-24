@@ -158,13 +158,23 @@ public class ControladorSocio {
 
     public static String solicitarOperacionCheque(
             final Integer cuit,
-            final TipoCheque tipo,
+            final String tipoParametro,
             final String bancoDelCheque,
             final Integer numeroDelCheque,
             final Date fechaDeVencimiento,
             final Integer cuitDelFirmante,
             final Float importe
     ) {
+
+        TipoCheque tipo = null;
+
+        if (tipoParametro == "ChequeDeTerceros") {
+            tipo = TipoCheque.ChequeDeTerceros;
+        } else if (tipoParametro == "ChequePropio") {
+            tipo = TipoCheque.ChequePropio;
+        } else if (tipoParametro == "PagareBursatil") {
+            tipo = TipoCheque.PagareBursatil;
+        }
 
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
 
@@ -209,9 +219,17 @@ public class ControladorSocio {
             final Integer cuit,
             final String empresaCC,
             final Date fechaVencimiento,
-            final CtaCorriente cuentaCr,
+            final String tipoParametro,
             final Float importe
     ) {
+
+        CtaCorriente cuentaCr = null;
+
+        if (tipoParametro == "TarjetaDeCredito") {
+            cuentaCr = CtaCorriente.TarjetaDeCredito;
+        } else if (tipoParametro == "CuentaCorrienteComercial") {
+            cuentaCr = CtaCorriente.CuentaCorrienteComercial;
+        }
 
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
 
@@ -580,11 +598,11 @@ public class ControladorSocio {
     private static Float getFDR() {
         float fdr = (float) 0;
 
-        List<Float> listaMontosTotales= new ArrayList<>();
+        List<Float> listaMontosTotales = new ArrayList<>();
         List<List<AporteDeCapital>> aportesDeCapital = listaSocioProtector.stream().map(x -> x.getCantidadAporteCapital()).collect(Collectors.toList());
         for (int i = 0; i < aportesDeCapital.size(); i++) {
             List<AporteDeCapital> aporteDeCapitals = aportesDeCapital.get(i);
-            for (int j = 0; j<aporteDeCapitals.size(); j++){
+            for (int j = 0; j < aporteDeCapitals.size(); j++) {
                 listaMontosTotales.add(aporteDeCapitals.get(j).getMonto());
 
             }
@@ -602,9 +620,9 @@ public class ControladorSocio {
         List<LineaDeCredito> lineaDeCredito = listaSocioParticipe.stream().map(SocioParticipe::getLineaDeCredito).collect(Collectors.toList());
         List<List<Operacion>> operaciones = lineaDeCredito.stream().map(x -> x.getOperaciones()).collect(Collectors.toList());
         List<Operacion> listaIntermedia = new ArrayList<>();
-        for (int i=0; i<operaciones.size();i++){
+        for (int i = 0; i < operaciones.size(); i++) {
             List<Operacion> operacions = operaciones.get(i);
-            for (int j=0; j<operacions.size();j++){
+            for (int j = 0; j < operacions.size(); j++) {
                 listaIntermedia.add(operacions.get(j));
             }
 
@@ -764,7 +782,7 @@ public class ControladorSocio {
 
     public static String modificarOperacionCheque(
             final Integer cuit,
-            final TipoCheque tipo,
+            final String tipoParametro,
             final String bancoDelCheque,
             final Integer numeroDelCheque,
             final Date fechaDeVencimiento,
@@ -775,6 +793,15 @@ public class ControladorSocio {
             final String usuario
 
     ) {
+        TipoCheque tipo = null;
+
+        if (tipoParametro == "ChequeDeTerceros") {
+            tipo = TipoCheque.ChequeDeTerceros;
+        } else if (tipoParametro == "ChequePropio") {
+            tipo = TipoCheque.ChequePropio;
+        } else if (tipoParametro == "PagareBursatil") {
+            tipo = TipoCheque.PagareBursatil;
+        }
 
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
 
@@ -832,12 +859,21 @@ public class ControladorSocio {
             final Integer cuit,
             final String empresaCC,
             final Date fechaVencimiento,
-            final CtaCorriente cuentaCr,
+            final String tipoParametro,
             final Float importe,
             final String id,
             final String referencia,
             final String usuario
     ) {
+
+        CtaCorriente cuentaCr = null;
+
+        if (tipoParametro == "TarjetaDeCredito") {
+            cuentaCr = CtaCorriente.TarjetaDeCredito;
+        } else if (tipoParametro == "CuentaCorrienteComercial") {
+            cuentaCr = CtaCorriente.CuentaCorrienteComercial;
+        }
+
 
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
 
