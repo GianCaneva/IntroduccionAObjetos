@@ -194,8 +194,6 @@ public class ventanaModificarOpcc extends JFrame {
                 int entradaCuit=Integer.parseInt(jtCuit.getText());
                 String entradaBanco = jtBanco.getText();
                 float entradaImporte = Float.parseFloat(jtImporte.getText());
-                float entradaTasa = Float.parseFloat(jtTasa.getText());
-                int entradaCantCuotas= Integer.parseInt(jtCuotas.getText());
                 String seleccionado = (String) jcOperaciones.getSelectedItem();
 
                 String entradaFecha1=jtFecha.getText();
@@ -212,7 +210,7 @@ public class ventanaModificarOpcc extends JFrame {
                 String seleccionado3 = (String) jcUsuario.getSelectedItem();
 
 
-              //  ControladorSocio.modificarOperacionCCC(entradaCuit,entradaBanco,date1,seleccionado,entradaImporte,ID,seleccionado2,seleccionado3);
+              ControladorSocio.modificarOperacionCCC(entradaCuit,entradaBanco,date1,seleccionado,entradaImporte,ID,seleccionado2,seleccionado3);
                 //CAMBIAR METODO PARA QUE RECIBA STRING
 
 

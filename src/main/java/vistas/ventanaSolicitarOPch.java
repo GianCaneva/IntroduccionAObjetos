@@ -185,7 +185,7 @@ public class ventanaSolicitarOPch extends JFrame {
                 float entradaImporte = Float.parseFloat(jtImporte.getText());
 
 
-//                 ControladorSocio.solicitarOperacionCheque(entradaCuit,seleccionado,entradaBanco,entradaNumeroCheque,date1,entradaCuitFirmante,entradaImporte);
+               ControladorSocio.solicitarOperacionCheque(entradaCuit,seleccionado,entradaBanco,entradaNumeroCheque,date1,entradaCuitFirmante,entradaImporte);
 //                    FALTA SOLICITAR sTRING
 
             }

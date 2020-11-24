@@ -9,7 +9,7 @@ import dto.Operacion.*;
 import dto.Enumeration.CtaCorriente;
 import dto.Enumeration.Prestamo;
 import dto.Enumeration.TipoCheque;
-import jdk.internal.jimage.ImageStrings;
+//import jdk.internal.jimage.ImageStrings;   //REVISAR SACO MAXI
 import utils.Utils;
 
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class ControladorSocio {
         historial.add(cambio);
     }
 
-    public void emicionDeFacturasPendientes() {
+    public static void emicionDeFacturasPendientes() {
         //Se asume que el primer dia de la semana es Lunes y que no existen los feriados.
         //En caso de que asi sea se debera esperar hasta la proxima semana.
         //1 representa el dia lunes, 2 martes etc y 0 el doming
@@ -101,7 +101,7 @@ public class ControladorSocio {
         }
     }
 
-    public void generarAportes(final Integer cuit, final Float monto) {
+    public static void generarAportes(final Integer cuit, final Float monto) {
 
         SocioProtector empresa = (SocioProtector) buscarEmpresa(cuit);
         if (!listaSocioProtector.contains(empresa)) {
@@ -112,7 +112,7 @@ public class ControladorSocio {
 
     }
 
-    public void retirarAportes(final Integer cuit, final Date fecha) {
+    public static void retirarAportes(final Integer cuit, final Date fecha) {
 
         SocioProtector empresa = (SocioProtector) buscarEmpresa(cuit);
         if (!listaSocioProtector.contains(empresa)) {
@@ -520,12 +520,12 @@ public class ControladorSocio {
         return empresaIndex;
     }
 
-    public void agregarDesembolsos(final Integer cuit, final Float monto, final Float mora, final String tipo) {
+    public static void agregarDesembolsos(final Integer cuit, final Float monto, final Float mora, final String tipo) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         empresa.getLineaDeCredito().agregarDesembolso(monto, mora, tipo);
     }
 
-    public void eliminarDesembolsos(final Integer cuit) {
+    public static void eliminarDesembolsos(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         empresa.getLineaDeCredito().eliminarDesembolso();
     }
