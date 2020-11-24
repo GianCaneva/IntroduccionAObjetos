@@ -1,12 +1,14 @@
 package vistas;
+import controller.ControladorOperacion;
+import controller.ControladorSocio;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.LayoutManager;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -16,6 +18,9 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,6 +30,74 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+
+public class ventanaEmpresa {
+
+    private JFrame f = new JFrame();
+    private JTextField jtCuil,jtMora,jtPordia;
+    private JLabel jlCuil,jlMora,jlPordia;
+    private String mora,pordia;
+    private double a,b;
+
+    public static void main(String[] args) {
+        vistas.ventanaEmpresa tester = new vistas.ventanaEmpresa();
+
+    }
+
+
+    public ventanaEmpresa() {
+        a=10.3;
+        b=5.4;
+
+        f.setTitle("Gestionar Empresa");
+
+        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        f.setSize(400, 400);
+        f.getContentPane().setLayout(null);
+
+        jlCuil = new JLabel("Cuil: ");
+        jlCuil.setBounds(10, 11, 46, 14);
+        f.getContentPane().add(jlCuil);
+        jtCuil = new JTextField();
+        jtCuil.setBounds(60, 11, 60, 18);
+        f.add(jtCuil);
+        f.getContentPane().add(jtCuil);
+
+
+
+        JButton btnNewButton = new JButton("Calcular mora");
+        btnNewButton.setBounds(10, 46, 150, 40);
+        f.getContentPane().add(btnNewButton);
+        f.setVisible(true);
+
+
+        pordia = Double.toString(a);
+        jlMora = new JLabel("Saldo de mora total: "+ pordia);
+        jlMora.setBounds(10,110,150,14);
+        f.add(jlMora);
+
+//        jlPordia = new JLabel();
+        mora=Double.toString(b);
+//        jlPordia.setText(prueba);
+        jlPordia = new JLabel("Saldo de mora por dia: "+ mora);
+        jlPordia.setBounds(10,140,190,14);
+        f.add(jlPordia);
+//
+//        jtMora = new JTextField(a);
+//        jtMora.setBounds(160,110,60,14);
+
+
+
+
+
+
+
+    }
+
+
+}
+
+/*
 //public class ventanaEmpresa extends JFrame {
 //    private JPanel  contentPane;
 //    private JTable table;
@@ -43,6 +116,7 @@ import javax.swing.JTextField;
 //
 //            }
 //        });
+//
 public class ventanaEmpresa implements ActionListener{
 
     private JButton  btIng, btLim, btDes,  btCargarEmp,btElim,btGarantias;
@@ -77,7 +151,12 @@ public class ventanaEmpresa implements ActionListener{
         jp1 = new JPanel( new GridLayout(3, 1, 25, 55));
 
 
-        btIng = new JButton("Agregar Empresa");
+        btIng = new JButton("Solicitar Socio Participe");
+        //btIng = new JButton("Modificar Socio Participe");
+        //btIng = new JButton("Solicitar Socio Protector");
+        //btIng = new JButton("Modificar Socio Protector");
+        //btIng = new JButton("Agregar Accionista");
+        //btIng = new JButton("Modificar Accionista");
         btLim = new JButton("Eliminar empresa");
         btDes = new JButton("Agregar Garantias");
         jp1.setBackground(Color.cyan);
@@ -253,7 +332,7 @@ public class ventanaEmpresa implements ActionListener{
 
     public static void main(String[] args) {
         ventanaEmpresa Vent1 = new ventanaEmpresa() {} ;
-    }
+                }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -268,6 +347,16 @@ public class ventanaEmpresa implements ActionListener{
                     //jtTipo//+ "Actividad Principal: "+jtActividadPrincipal+ "Direccion: "+ jtDireccion+ "Telefono: "+ jtTelefono + "Correo Electronico: "+ jtCorreoElectronico
                     + "\n");
                 VenIng.dispose();
+
+                Date date1 = null;
+                try {
+                    date1=new SimpleDateFormat("dd/MM/yyyy").parse(jtFechaInicio.getText());
+                } catch (ParseException parseException){
+                    parseException.printStackTrace();
+                }
+
+                ControladorSocio controladorSocio = new ControladorSocio();
+                controladorSocio.solicitarSocioParticipe( Integer.parseInt(jtCuit.getText().trim()), jtRazonsocial.getText(), date1, jtTipo.getText(), jtActividadPrincipal.getText(), jtDireccion.getText(), Integer.parseInt( jtTelefono.getText().trim()), jtCorreoElectronico.getText());
 
             }}
 
@@ -292,3 +381,5 @@ public class ventanaEmpresa implements ActionListener{
 
 }
 //    }
+
+*/

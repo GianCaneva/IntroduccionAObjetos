@@ -12,10 +12,11 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
     private JMenu menu1, menu2, menu3, menu4, menu5, menu6, menu7;
     private JMenuItem mi1, mi2, mi3, mi4, mi5, mi6, mi7,mi8;
 
-
+    private ventanaPrincipal self;
 
     public ventanaPrincipal(String title) {
         super(title);
+
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
        
@@ -73,6 +74,8 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
         mi8 = new JMenuItem("Consulta Porcentaje Comision");//4
         menu3.add(mi8);
         mi8.addActionListener(this);
+
+        this.self = this;
     }
 
     public static void main(String[] ar) {
@@ -87,7 +90,8 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
                                    public void run() {
                                        if (e.getSource() == mi1) {
                                            try {
-                                               ventanaEmpresa frame = new ventanaEmpresa();
+                                               ventanaGestionEmpresa frame = new ventanaGestionEmpresa(self,"Gestion Empresa");
+                                               frame.setVisible(true);
 
                                            } catch (Exception e) {
                                                e.printStackTrace();
