@@ -7,6 +7,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
@@ -21,7 +22,7 @@ public abstract class Empresa {
     protected String direccion;
     protected Integer telefono;
     protected String correoElectronico;
-    protected List<Accionista> accionista;
+    protected List<Accionista> accionista = new ArrayList<>();
     protected Documento documento;
     protected ParticipacionSGR participacionSGR;
     protected Boolean postulante = true;

@@ -28,8 +28,9 @@ public class agregarAccionista extends JInternalFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ventanaPrincipal vent = new ventanaPrincipal();
-                ControladorSocio controladorSocio = vent.devolverControladorSocio();
+                //ventanaPrincipal vent = new ventanaPrincipal();
+                //ControladorSocio controladorSocio = vent.devolverControladorSocio();
+                ControladorSocio controladorSocio = ventanaPrincipal.getVentanaPrincipal("Tabs").controladorSocio;
                 controladorSocio.agregarAccionista( Integer.parseInt(jtCuitEmpresa.getText().trim()), Integer.parseInt(jtCuitAccionista.getText().trim()),jtRazonSocial.getText(), Float.parseFloat(jtParticipacion.getText().trim()));
 
 

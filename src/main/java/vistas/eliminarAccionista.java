@@ -23,8 +23,9 @@ public class eliminarAccionista extends JInternalFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ventanaPrincipal vent = new ventanaPrincipal();
-                ControladorSocio controladorSocio = vent.devolverControladorSocio();
+                //ventanaPrincipal vent = new ventanaPrincipal();
+                //ControladorSocio controladorSocio = vent.devolverControladorSocio();
+                ControladorSocio controladorSocio = ventanaPrincipal.getVentanaPrincipal("Tabs").controladorSocio;
                 controladorSocio.eliminarAccionista( Integer.parseInt(jtCuitEmpresa.getText().trim()), Integer.parseInt(jtCuitAccionista.getText().trim()));
 
 

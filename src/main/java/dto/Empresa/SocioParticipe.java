@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -128,7 +129,7 @@ public class SocioParticipe extends Empresa {
         private static String direccion;
         private static Integer telefono;
         private static String correoElectronico;
-        private static List<Accionista> accionista;
+        private static List<Accionista> accionista = new ArrayList<>();
         private static Documento documento;
         private static ParticipacionSGR participacionSGR;
         private static Boolean postulante;

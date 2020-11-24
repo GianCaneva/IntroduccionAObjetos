@@ -9,21 +9,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public  class ventanaPrincipal extends JFrame implements ActionListener {
+public class ventanaPrincipal extends JFrame implements ActionListener {
     private JPanel mainPanel ;//= new JPanel();
     private JMenuBar mb;
     private JMenu menu1, menu2, menu3, menu4, menu5, menu6, menu7;
     private JMenuItem mi1, mi2, mi3, mi4, mi5, mi6, mi7,mi8,mo1,mo2,mo3,mo4,mo5,mo6,mo7,mo8,mo9,mo10,mo11,mo12,mo13,mo14,mo15,mo16,mo17,mo18,mo19;
 
     private ventanaPrincipal self;
-    ControladorSocio controladorSocio = new ControladorSocio();
+    static ControladorSocio controladorSocio;
     public ControladorSocio devolverControladorSocio(){
         return controladorSocio;
     }
-    public ventanaPrincipal(){
-
+    public static ventanaPrincipal miVentanaPrincipal;
+    public static ventanaPrincipal getVentanaPrincipal(final String title){
+        if(miVentanaPrincipal==null){
+            miVentanaPrincipal=new ventanaPrincipal(title);
+            controladorSocio = new ControladorSocio();
+        }
+        return miVentanaPrincipal;
     }
-    public ventanaPrincipal(String title) {
+    private ventanaPrincipal(String title) {
 
         super(title);
         //ControladorSocio controladorSocio = new ControladorSocio();
@@ -182,6 +187,7 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
     }
 
     public static void main(String[] ar) {
+
         ventanaPrincipal frame = new ventanaPrincipal("TPO Grupo3");
         frame.setVisible(true);
     }
