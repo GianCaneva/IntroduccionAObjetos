@@ -9,6 +9,7 @@ import dto.Operacion.*;
 import dto.Enumeration.CtaCorriente;
 import dto.Enumeration.Prestamo;
 import dto.Enumeration.TipoCheque;
+import jdk.internal.jimage.ImageStrings;
 import utils.Utils;
 
 import java.util.ArrayList;
@@ -69,13 +70,25 @@ public class ControladorSocio {
         if (Utils.getDate().getDay() != 1) {
             throw new RuntimeException("Error. Se debe esperar hasta el primer dia habil para hacer la emision de Facturas");
         }
+        List<Operacion> listOpsTotal = new ArrayList<>();
 
-        List<LineaDeCredito> lineaDeCreditoList = (List<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
-        List<Operacion> listOps = (List<Operacion>) lineaDeCreditoList.stream().map(LineaDeCredito::getOperaciones);
-        List<Operacion> listaDeOps = listOps.stream().filter(x -> x.getEstado() == "calculada").collect(Collectors.toList());
+        List<LineaDeCredito> lineaDeCreditoList = listaSocioParticipe.stream().map(SocioParticipe::getLineaDeCredito).collect(Collectors.toList());
+        List<List<Operacion>> listOps = lineaDeCreditoList.stream().map(LineaDeCredito::getOperaciones).collect(Collectors.toList());
 
-        for (int y = 0; y < listaDeOps.size(); y++) {
-            Operacion operacion = listaDeOps.get(y);
+        for (int i = 0; i < listOps.size(); i++) {
+            List<Operacion> operacions = listOps.get(i);
+
+            for (int j = 0; j < operacions.size(); j++) {
+                Operacion operacion = operacions.get(j);
+                if (operacion.getEstado() == "calculada") {
+                    listOpsTotal.add(operacion);
+                }
+            }
+        }
+
+
+        for (int y = 0; y < listOpsTotal.size(); y++) {
+            Operacion operacion = listOpsTotal.get(y);
             operacion.cambiarAFacturada();
             for (int j = 0; j < lineaDeCreditoList.size(); j++) {
                 List<Operacion> operaciones = lineaDeCreditoList.get(j).getOperaciones();
@@ -88,23 +101,21 @@ public class ControladorSocio {
         }
     }
 
-    public void generarAportes(final Integer cuit, final Float monto){
+    public void generarAportes(final Integer cuit, final Float monto) {
 
         SocioProtector empresa = (SocioProtector) buscarEmpresa(cuit);
-        if (!listaSocioProtector.contains(empresa)){
+        if (!listaSocioProtector.contains(empresa)) {
             throw new RuntimeException("La empresa no es una socia protectora como para generar aportes");
         }
 
         empresa.generarAporteCapital(monto);
 
-
     }
-
 
     public void retirarAportes(final Integer cuit, final Date fecha) {
 
         SocioProtector empresa = (SocioProtector) buscarEmpresa(cuit);
-        if (!listaSocioProtector.contains(empresa)){
+        if (!listaSocioProtector.contains(empresa)) {
             throw new RuntimeException("La empresa no es una socia protectora como para generar aportes");
         }
 
@@ -112,9 +123,9 @@ public class ControladorSocio {
     }
 
 
-        public static void operacionProsperada(
-                final Integer cuit,
-                final String operacionId) {
+    public static void operacionProsperada(
+            final Integer cuit,
+            final String operacionId) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         List<Operacion> operaciones = empresa.getLineaDeCredito().getOperaciones();
         Operacion operacion = buscarOperacion(operaciones, operacionId);
@@ -293,15 +304,15 @@ public class ControladorSocio {
     }
 
 
-    public static void agregarOperaciones(final Integer cuit, final String tipoDeOperacion){
+    public static void agregarOperaciones(final Integer cuit, final String tipoDeOperacion) {
 
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
 
-        if (!listaSocioParticipe.contains(empresa)){
+        if (!listaSocioParticipe.contains(empresa)) {
             throw new RuntimeException("La empresa no es una socia participe, por lo tanto no tiene una linea de credito a la cual asignar operaciones");
         }
 
-        if(empresa.getLineaDeCredito() == null){
+        if (empresa.getLineaDeCredito() == null) {
             throw new RuntimeException("La empresa no tiene una linea de credito asignada");
         }
 
@@ -335,11 +346,19 @@ public class ControladorSocio {
 
 
     public void aprobarDocumento(final Integer cuit) {
+        List<Integer> cuitAccionistas = new ArrayList<>();
         Empresa empresa = buscarEmpresa(cuit);
 
         if (empresa.getClass() == SocioProtector.class) {
-            List<Accionista> listaAccionistas = (List<Accionista>) listaSocioParticipe.stream().map(x -> x.getAccionista());
-            List<Integer> cuitAccionistas = (List<Integer>) listaAccionistas.stream().map(x -> x.getCuit());
+            List<List<Accionista>> listaAccionistas = listaSocioParticipe.stream().map(x -> x.getAccionista()).collect(Collectors.toList());
+
+            for (int i = 0; i < listaAccionistas.size(); i++) {
+                List<Accionista> accionistas = listaAccionistas.get(i);
+                for (int j = 0; j < accionistas.size(); j++) {
+                    Accionista accionista = accionistas.get(j);
+                    cuitAccionistas.add(accionista.getCuit());
+                }
+            }
             if (cuitAccionistas.contains(cuit)) {
                 throw new RuntimeException("Un socio no puede ser aprobado como protector si es accionista de una empresa socia partícipe de la SGR");
             }
@@ -378,7 +397,7 @@ public class ControladorSocio {
             final Integer telefono,
             final String correoElectronico
 
-            ) {
+    ) {
 
         Empresa newEmpresa = SocioParticipe.Builder.newBuilder()
                 .withCuit(cuit)
@@ -393,7 +412,7 @@ public class ControladorSocio {
                 .withPostulante(true)
                 .build();
 
-        if (existeCuit(cuit)){
+        if (existeCuit(cuit)) {
             throw new RuntimeException("Ya existe una empresa con el CUIT solicitado");
         }
 
@@ -412,7 +431,7 @@ public class ControladorSocio {
             final Integer telefono,
             final String correoElectronico
 
-            ) {
+    ) {
 
         Empresa newEmpresa = SocioProtector.Builder.newBuilder()
                 .withCuit(cuit)
@@ -428,7 +447,7 @@ public class ControladorSocio {
                 .build();
 
 
-        if (existeCuit(cuit)){
+        if (existeCuit(cuit)) {
             throw new RuntimeException("Ya existe una empresa con el CUIT solicitado");
         }
 
@@ -438,13 +457,13 @@ public class ControladorSocio {
         return idSocio = idSocio + 1;
     }
 
-    private Boolean existeCuit(final Integer cuit){
-        Boolean existe= false;
+    private Boolean existeCuit(final Integer cuit) {
+        Boolean existe = false;
 
-        for (int i=0; i<listaEmpresas.size(); i++){
+        for (int i = 0; i < listaEmpresas.size(); i++) {
             Empresa empresa = listaEmpresas.get(i);
-            if (empresa.getCuit()==cuit){
-                existe= true;
+            if (empresa.getCuit() == cuit) {
+                existe = true;
             }
         }
 
@@ -506,17 +525,31 @@ public class ControladorSocio {
     }
 
     private static Operacion buscarOperacion(final String numOperacion) {
-
-        List<LineaDeCredito> lineaDeCredito = (List<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
-        List<Operacion> operaciones = (List<Operacion>) lineaDeCredito.stream().map(x -> x.getOperaciones());
+        List<Operacion> listaDef = new ArrayList<>();
+        List<LineaDeCredito> lineaDeCredito = listaSocioParticipe.stream().map(SocioParticipe::getLineaDeCredito).collect(Collectors.toList());
+        List<List<Operacion>> operaciones = lineaDeCredito.stream().map(LineaDeCredito::getOperaciones).collect(Collectors.toList());
 
         Operacion operacionDeRetorno = null;
 
+
         for (int i = 0; i < operaciones.size(); i++) {
-            Operacion operacion = operaciones.get(i);
+            List<Operacion> operacions = operaciones.get(i);
+            for (int j = 0; j < operacions.size(); j++) {
+
+                listaDef.add(operacions.get(j));
+            }
+        }
+
+
+        for (int i = 0; i < listaDef.size(); i++) {
+            Operacion operacion = listaDef.get(i);
             if (operacion.getId() == numOperacion) {
                 operacionDeRetorno = operacion;
             }
+        }
+
+        if (operacionDeRetorno == null) {
+            throw new RuntimeException("No existe tal operacion");
         }
         return operacionDeRetorno;
     }
@@ -545,38 +578,59 @@ public class ControladorSocio {
     }
 
     private static Float getFDR() {
-        Float fdr = Float.valueOf(0);
-        List<AporteDeCapital> aportesDeCapital = (List<AporteDeCapital>) listaSocioProtector.stream().map(x -> x.getCantidadAporteCapital());
-        List<Float> montosTotales = (List<Float>) aportesDeCapital.stream().map(x -> x.getMonto());
+        float fdr = (float) 0;
 
-        for (int i = 0; i < montosTotales.size(); i++) {
-            fdr = fdr + montosTotales.get(i);
+        List<Float> listaMontosTotales= new ArrayList<>();
+        List<List<AporteDeCapital>> aportesDeCapital = listaSocioProtector.stream().map(x -> x.getCantidadAporteCapital()).collect(Collectors.toList());
+        for (int i = 0; i < aportesDeCapital.size(); i++) {
+            List<AporteDeCapital> aporteDeCapitals = aportesDeCapital.get(i);
+            for (int j = 0; j<aporteDeCapitals.size(); j++){
+                listaMontosTotales.add(aporteDeCapitals.get(j).getMonto());
+
+            }
+
+        }
+
+        for (int i = 0; i < listaMontosTotales.size(); i++) {
+            fdr = fdr + listaMontosTotales.get(i);
         }
         return fdr;
     }
 
 
     private static boolean excesoChequesFirmante(final Integer firmante, final Float valorAgregado) {
-        List<LineaDeCredito> lineaDeCredito = (List<LineaDeCredito>) listaSocioParticipe.stream().map(x -> x.getLineaDeCredito());
-        List<Operacion> operaciones = (List<Operacion>) lineaDeCredito.stream().map(x -> x.getOperaciones());
+        List<LineaDeCredito> lineaDeCredito = listaSocioParticipe.stream().map(SocioParticipe::getLineaDeCredito).collect(Collectors.toList());
+        List<List<Operacion>> operaciones = lineaDeCredito.stream().map(x -> x.getOperaciones()).collect(Collectors.toList());
+        List<Operacion> listaIntermedia = new ArrayList<>();
+        for (int i=0; i<operaciones.size();i++){
+            List<Operacion> operacions = operaciones.get(i);
+            for (int j=0; j<operacions.size();j++){
+                listaIntermedia.add(operacions.get(j));
+            }
+
+        }
+
         List<Tipo1> operacionesDeTipoCheque = null;
 
-        for (int i = 0; i < operaciones.size(); i++) {
-            Operacion operacion = operaciones.get(i);
+        for (int i = 0; i < listaIntermedia.size(); i++) {
+            Operacion operacion = listaIntermedia.get(i);
             if (operacion.getClass() == Tipo1.class) {
                 operacionesDeTipoCheque.add((Tipo1) operacion);
             }
         }
-        List<Tipo1> operacionesFirmante = (List<Tipo1>) operacionesDeTipoCheque.stream().filter(x -> x.getCuitFirmante() == firmante);
+        List<Tipo1> operacionesFirmante = null;
+        if (operacionesDeTipoCheque != null) {
+            operacionesFirmante = operacionesDeTipoCheque.stream().filter(x -> x.getCuitFirmante() == firmante).collect(Collectors.toList());
+        }
 
-        Float monto = Float.valueOf(0);
+        float monto = (float) 0;
         for (int i = 0; i < operacionesFirmante.size(); i++) {
             Tipo1 tipo1 = operacionesFirmante.get(i);
             monto = monto + tipo1.getImporteTotal();
         }
 
         monto = monto + valorAgregado;
-        Boolean valorDeRetorno = false;
+        boolean valorDeRetorno = false;
 
         if (((monto * 100) / getFDR()) > 5) {
             valorDeRetorno = true;

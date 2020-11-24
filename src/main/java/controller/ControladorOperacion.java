@@ -9,8 +9,11 @@ import dto.Operacion.Operacion;
 import dto.Operacion.Tipo1;
 import utils.Utils;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ControladorOperacion {
 
@@ -20,14 +23,24 @@ public class ControladorOperacion {
     }
 
     public static Float calcularComisionesCheques(final Date dia) {
-        List<LineaDeCredito> lineaDeCreditoList = (List<LineaDeCredito>) ControladorSocio.getListaSocioParticipe().stream().map(x -> x.getLineaDeCredito());
-        List<Operacion> listOperaciones = (List<Operacion>) lineaDeCreditoList.stream().map(x -> x.getOperaciones());
-        List<Comision> comisionList = (List<Comision>) listOperaciones.stream().map(x -> x.getComision());
+        List<Comision> listaTotalDeComision = new ArrayList<>();
+
+        List<LineaDeCredito> lineaDeCreditoList = ControladorSocio.getListaSocioParticipe().stream().map(SocioParticipe::getLineaDeCredito).collect(Collectors.toList());
+        List<List<Operacion>> listOperaciones = lineaDeCreditoList.stream().map(LineaDeCredito::getOperaciones).collect(Collectors.toList());
+
+        for (int i = 0; i < listOperaciones.size(); i++) {
+            List<Operacion> operacions = listOperaciones.get(i);
+            for (int j = 0; j < operacions.size(); j++) {
+                Operacion operacion = operacions.get(j);
+                listaTotalDeComision.add(operacion.getComision());
+
+            }
+        }
 
         Float cantidadComisionCheques = (float) 0;
 
-        for (int i = 0; i < comisionList.size(); i++) {
-            Comision comision = comisionList.get(i);
+        for (int i = 0; i < listaTotalDeComision.size(); i++) {
+            Comision comision = listaTotalDeComision.get(i);
             Date fechaComision = comision.getFechaComision();
             if (fechaComision.getDay() == dia.getDay() &&
                     fechaComision.getYear() == dia.getYear() &&
@@ -49,7 +62,7 @@ public class ControladorOperacion {
         SocioParticipe empresa = (SocioParticipe) ControladorSocio.buscarEmpresa(cuit);
         List<Operacion> operaciones = empresa.getLineaDeCredito().getOperaciones();
 
-        List<Operacion> operacionesMonetizadas = (List<Operacion>) operaciones.stream().filter(x -> x.getEstado() == "Monetizado");
+        List<Operacion> operacionesMonetizadas = operaciones.stream().filter(x -> x.getEstado() == "Monetizado").collect(Collectors.toList());
 
         for (int i = 0; i < operacionesMonetizadas.size(); i++) {
             Operacion operacion = operacionesMonetizadas.get(i);
@@ -65,24 +78,24 @@ public class ControladorOperacion {
 
     public static float calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
-        List<Empresa> listaEmpresas = ControladorSocio.getListaEmpresas();
-        List<SocioParticipe> empresasDeTipo = (List<SocioParticipe>) listaEmpresas.stream().filter(x -> x.getTipo() == tipoDeEmpresa);
+        List<SocioParticipe> listaEmpresas = Collections.singletonList((SocioParticipe) ControladorSocio.getListaEmpresas());
+        List<SocioParticipe> empresasDeTipo = listaEmpresas.stream().filter(x -> x.getTipo() == tipoDeEmpresa).collect(Collectors.toList());
 
-        List<LineaDeCredito> lineaDeCreditoDeTipo = (List<LineaDeCredito>) empresasDeTipo.stream().map(x -> x.getLineaDeCredito());
+        List<LineaDeCredito> lineaDeCreditoDeTipo = empresasDeTipo.stream().map(SocioParticipe::getLineaDeCredito).collect(Collectors.toList());
 
-        Float totalRecaudado = Float.valueOf(0);
+        Float totalRecaudado = (float) 0;
 
         for (int i = 0; i < lineaDeCreditoDeTipo.size(); i++) {
             List<Operacion> operaciones = lineaDeCreditoDeTipo.get(i).getOperaciones();
             for (int j = 0; j < operaciones.size(); j++) {
                 Operacion operacion = operaciones.get(j);
-                if (operacion.getClass()== Tipo1.class){
-                    if(operacion.getFecha().getDay() > periodo1.getDay() &
+                if (operacion.getClass() == Tipo1.class) {
+                    if (operacion.getFecha().getDay() > periodo1.getDay() &
                             operacion.getFecha().getMonth() > periodo1.getMonth() &
                             operacion.getFecha().getYear() > periodo1.getYear() &
                             operacion.getFecha().getDay() < periodo2.getDay() &
                             operacion.getFecha().getMonth() < periodo2.getMonth() &
-                            operacion.getFecha().getYear() < periodo2.getYear()){
+                            operacion.getFecha().getYear() < periodo2.getYear()) {
 
                         totalRecaudado = operacion.getImporteTotal();
                     }
@@ -90,27 +103,28 @@ public class ControladorOperacion {
             }
         }
 
-        return (float) (totalRecaudado*(0.01));    }
+        return (float) (totalRecaudado * (0.01));
+    }
 
     public static float totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
-        List<Empresa> listaEmpresas = ControladorSocio.getListaEmpresas();
-        List<SocioParticipe> empresasDeTipo = (List<SocioParticipe>) listaEmpresas.stream().filter(x -> x.getTipo() == tipoDeEmpresa);
+        List<SocioParticipe> listaEmpresas = Collections.singletonList((SocioParticipe) ControladorSocio.getListaEmpresas());
+        List<SocioParticipe> empresasDeTipo = listaEmpresas.stream().filter(x -> x.getTipo() == tipoDeEmpresa).collect(Collectors.toList());
 
-        List<LineaDeCredito> lineaDeCreditoDeTipo = (List<LineaDeCredito>) empresasDeTipo.stream().map(x -> x.getLineaDeCredito());
+        List<LineaDeCredito> lineaDeCreditoDeTipo = empresasDeTipo.stream().map(SocioParticipe::getLineaDeCredito).collect(Collectors.toList());
 
-        Float totalRecaudado = Float.valueOf(0);
+        Float totalRecaudado = (float) 0;
 
         for (int i = 0; i < lineaDeCreditoDeTipo.size(); i++) {
             List<Operacion> operaciones = lineaDeCreditoDeTipo.get(i).getOperaciones();
             for (int j = 0; j < operaciones.size(); j++) {
                 Operacion operacion = operaciones.get(j);
-                if (operacion.getClass()== Tipo1.class){
-                    if(operacion.getFecha().getDay() > periodo1.getDay() &
+                if (operacion.getClass() == Tipo1.class) {
+                    if (operacion.getFecha().getDay() > periodo1.getDay() &
                             operacion.getFecha().getMonth() > periodo1.getMonth() &
                             operacion.getFecha().getYear() > periodo1.getYear() &
                             operacion.getFecha().getDay() < periodo2.getDay() &
                             operacion.getFecha().getMonth() < periodo2.getMonth() &
-                            operacion.getFecha().getYear() < periodo2.getYear()){
+                            operacion.getFecha().getYear() < periodo2.getYear()) {
 
                         totalRecaudado = operacion.getImporteTotal();
                     }

@@ -9,6 +9,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SocioParticipe extends Empresa {
 
@@ -44,7 +45,7 @@ public class SocioParticipe extends Empresa {
 
         float riesgoVivo = 0;
         List<Operacion> operaciones = getLineaDeCredito().getOperaciones();
-        List<Operacion> operacionesMonetizadas = (List<Operacion>) operaciones.stream().filter(x -> x.getEstado() == "Monetizado");
+        List<Operacion> operacionesMonetizadas = operaciones.stream().filter(x -> x.getEstado() == "Monetizado").collect(Collectors.toList());
 
 
         for (int i = 0; i < operacionesMonetizadas.size(); i++) {
@@ -66,14 +67,13 @@ public class SocioParticipe extends Empresa {
 
 
     public Float calcularUtilizadoEnLinea() {
-        Float utilizadoEnLinea = Float.valueOf(0);
+        float utilizadoEnLinea = (float) 0;
 
         List<Operacion> operacionConCertificado =
-                (List<Operacion>) lineaDeCredito.getOperaciones()
-                .stream().filter(x -> x.getEstado() == "Con certificado emitido");
-        List<Float> floatStream = (List<Float>) operacionConCertificado.stream().map(x -> x.getImporteTotal());
+                lineaDeCredito.getOperaciones().stream().filter(x -> x.getEstado() == "Con certificado emitido").collect(Collectors.toList());
+        List<Float> floatStream = operacionConCertificado.stream().map(Operacion::getImporteTotal).collect(Collectors.toList());
 
-        for (int a = 0; a>floatStream.size(); a++){
+        for (int a = 0; a<floatStream.size(); a++){
             utilizadoEnLinea= utilizadoEnLinea + floatStream.get(a);
         }
 

@@ -10,7 +10,7 @@ import utils.Utils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 public abstract class Empresa {
 
@@ -165,7 +165,7 @@ public abstract class Empresa {
     }
 
     public void agregarAccionista(final Accionista newAccionista) {
-        List<Integer> cuitDeAccionistas = (List<Integer>) accionista.stream().map(x -> x.getCuit());
+        List<Integer> cuitDeAccionistas =  accionista.stream().map(Accionista::getCuit).collect(Collectors.toList());
 
         if (cuitDeAccionistas.contains(newAccionista.getCuit())) {
             throw new RuntimeException("El accionista ya se encuentra registrado");
