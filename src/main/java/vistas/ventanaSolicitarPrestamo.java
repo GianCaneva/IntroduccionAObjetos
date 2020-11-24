@@ -1,2 +1,4 @@
-package vistas;public class ventanaSolicitarPrestamo {
+package vistas;
+
+public class ventanaSolicitarPrestamo {
 }

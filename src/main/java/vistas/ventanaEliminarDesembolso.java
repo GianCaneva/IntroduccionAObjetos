@@ -1,2 +1,4 @@
-package vistas;public class ventanaEliminarDesembolso {
+package vistas;
+
+public class ventanaEliminarDesembolso {
 }

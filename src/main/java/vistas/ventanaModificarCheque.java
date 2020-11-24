@@ -1,2 +1,4 @@
-package vistas;public class ventanaModificarCheque {
+package vistas;
+
+public class ventanaModificarCheque {
 }

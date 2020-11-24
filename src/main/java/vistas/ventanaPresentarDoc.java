@@ -1,2 +1,4 @@
-package vistas;public class ventanaPresentarDoc {
+package vistas;
+
+public class ventanaPresentarDoc {
 }

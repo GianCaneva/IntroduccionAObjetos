@@ -95,7 +95,7 @@ public class ventanaSaldoMora extends JFrame{
 
 
 
-        JButton btnNewButton = new JButton("Realizar Calculo");
+        JButton btnNewButton = new JButton("Realizar consulta");
         btnNewButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -120,7 +120,7 @@ public class ventanaSaldoMora extends JFrame{
         btnNewButton.setBounds(40, 46, 150, 40);
         getContentPane().add(btnNewButton);
 
-//        setVisible(true);
+        setVisible(true);
     }
 
 

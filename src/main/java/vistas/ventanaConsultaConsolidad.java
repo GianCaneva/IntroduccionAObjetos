@@ -53,20 +53,9 @@ public class ventanaConsultaConsolidad extends JFrame{
     private JLabel jlCuit,jlResultado,jlResultado2;
     private JTextField jtCuit;
 
-    public static void main(String[] args) throws Exception {
-        EventQueue.invokeLater(new Runnable() {
 
-            public void run() {
-                try{ventanaConsultaConsolidad tester = new ventanaConsultaConsolidad();
-                    tester.setVisible(true);
-
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-
-            }
-        });
-
+    public static void main(String[] args) {
+        vistas.ventanaConsultaConsolidad tester = new vistas.ventanaConsultaConsolidad();
 
 
     }
@@ -95,7 +84,7 @@ public class ventanaConsultaConsolidad extends JFrame{
 
 
 
-        JButton btnNewButton = new JButton("Realizar Calculo");
+        JButton btnNewButton = new JButton("Realizar consulta");
         btnNewButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -120,7 +109,7 @@ public class ventanaConsultaConsolidad extends JFrame{
         btnNewButton.setBounds(40, 46, 150, 40);
         getContentPane().add(btnNewButton);
 
-//        setVisible(true);
+        setVisible(true);
     }
 
 

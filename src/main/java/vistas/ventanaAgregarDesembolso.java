@@ -1,2 +1,4 @@
-package vistas;public class ventanaAgregarDesembolso {
+package vistas;
+
+public class ventanaAgregarDesembolso {
 }

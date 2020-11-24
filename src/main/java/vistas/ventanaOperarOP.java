@@ -1,2 +1,4 @@
-package vistas;public class ventanaOperarOP {
+package vistas;
+
+public class ventanaOperarOP {
 }

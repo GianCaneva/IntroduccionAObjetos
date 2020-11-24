@@ -1,2 +1,4 @@
-package vistas;public class ventanaEmisionFacturas {
+package vistas;
+
+public class ventanaEmisionFacturas {
 }

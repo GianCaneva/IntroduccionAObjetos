@@ -1,2 +1,4 @@
-package vistas;public class ventanaModificarDoc {
+package vistas;
+
+public class ventanaModificarDoc {
 }

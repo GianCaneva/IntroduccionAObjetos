@@ -1,2 +1,4 @@
-package vistas;public class ventanaSolicitarOPch {
+package vistas;
+
+public class ventanaSolicitarOPch {
 }

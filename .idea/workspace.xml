@@ -23,19 +23,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62b4fbbf-6197-443f-b627-73b69d67c347" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/agregarAccionista.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/agregarAccionista.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/modificarAccionista.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/modificarAccionista.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/solapaCargarSocioParticipe.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/solapaCargarSocioParticipe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/solapaCargarSocioProtector.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/solapaCargarSocioProtector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/solapaModificarSocioParticipe.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/solapaModificarSocioParticipe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/solapaModificarSocioProtector.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/solapaModificarSocioProtector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaAgregarDesembolso.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaAgregarDesembolso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaAprobardoc.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaAprobardoc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaEliminarDesembolso.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaEliminarDesembolso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaEmisionFacturas.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaEmisionFacturas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaGestionEmpresa.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaGestionEmpresa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaLineaCredito.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaLineaCredito.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaModificarCheque.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaModificarCheque.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaModificarDoc.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaModificarDoc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaModificarOpcc.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaModificarOpcc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaModificarOperacion.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaModificarOperacion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaOperacionProsperada.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaOperacionProsperada.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaOperarOP.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaOperarOP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPresentarDoc.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPresentarDoc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSolicitarOPcc.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSolicitarOPcc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSolicitarOPch.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSolicitarOPch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSolicitarPrestamo.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSolicitarPrestamo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSuscribirAcciones.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSuscribirAcciones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/Empresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/Empresa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaConsultaConsolidad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaConsultaConsolidad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaEmpresa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/vistas/ventanaSaldoMora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/vistas/ventanaSaldoMora.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaConsultaConsolidad$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaConsultaConsolidad$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaConsultaConsolidad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaConsultaConsolidad.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaSaldoMora.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaSaldoMora.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +108,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1kREDIv4lPQpjhnAaw7Yl6jOWFZ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -89,8 +139,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ventanaComision" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vistas.ventanaComision" />
+    <configuration name="ventanaGestionEmpresa" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vistas.ventanaGestionEmpresa" />
       <module name="IntroduccionAObjetos" />
       <extension name="coverage">
         <pattern>
@@ -102,8 +152,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ventanaGestionEmpresa" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vistas.ventanaGestionEmpresa" />
+    <configuration name="ventanaLineaCredito" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vistas.ventanaLineaCredito" />
+      <module name="IntroduccionAObjetos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vistas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ventanaOperacionesSocio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vistas.ventanaOperacionesSocio" />
       <module name="IntroduccionAObjetos" />
       <extension name="coverage">
         <pattern>
@@ -141,26 +204,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ventanaValorPromedio" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="vistas.ventanaValorPromedio" />
-      <module name="IntroduccionAObjetos" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="vistas.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ventanaPrincipal" />
+        <item itemvalue="Application.ventanaLineaCredito" />
+        <item itemvalue="Application.ventanaOperacionesSocio" />
         <item itemvalue="Application.ventanaGestionEmpresa" />
         <item itemvalue="Application.ventanaPorcentajeComision" />
-        <item itemvalue="Application.ventanaComision" />
-        <item itemvalue="Application.ventanaValorPromedio" />
       </list>
     </recent_temporary>
   </component>
@@ -216,25 +266,25 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="740" y="322" width="430" height="470" key="#com.intellij.uiDesigner.palette.ComponentItemDialog/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606170534326" />
-    <state width="1874" height="275" key="GridCell.Tab.0.bottom" timestamp="1606171762748">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1606178393587">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606178393587" />
     <state width="1874" height="275" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606171762748" />
-    <state width="1874" height="275" key="GridCell.Tab.0.center" timestamp="1606171762748">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1606178393587">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606178393587" />
     <state width="1874" height="275" key="GridCell.Tab.0.center/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606171762748" />
-    <state width="1874" height="275" key="GridCell.Tab.0.left" timestamp="1606171762748">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1606178393587">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606178393587" />
     <state width="1874" height="275" key="GridCell.Tab.0.left/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606171762748" />
-    <state width="1874" height="275" key="GridCell.Tab.0.right" timestamp="1606171762748">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1606178393587">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606155525683" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606178393587" />
     <state width="1874" height="275" key="GridCell.Tab.0.right/0.27.1920.1053/1920.201.1920.1080@0.27.1920.1053" timestamp="1606171762748" />
     <state width="1874" height="340" key="GridCell.Tab.1.bottom" timestamp="1606166199257">
       <screen x="0" y="27" width="1920" height="1053" />

@@ -1,2 +1,4 @@
-package vistas;public class ventanaModificarOpcc {
+package vistas;
+
+public class ventanaModificarOpcc {
 }

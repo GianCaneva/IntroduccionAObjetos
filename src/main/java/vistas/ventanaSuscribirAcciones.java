@@ -1,2 +1,4 @@
-package vistas;public class ventanaSuscribirAcciones {
+package vistas;
+
+public class ventanaSuscribirAcciones {
 }

@@ -1,2 +1,4 @@
-package vistas;public class ventanaSolicitarOPcc {
+package vistas;
+
+public class ventanaSolicitarOPcc {
 }

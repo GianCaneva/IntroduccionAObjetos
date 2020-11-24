@@ -1,2 +1,4 @@
-package vistas;public class ventanaOperacionProsperada {
+package vistas;
+
+public class ventanaOperacionProsperada {
 }
