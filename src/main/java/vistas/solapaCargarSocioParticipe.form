@@ -11,7 +11,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="df0ae" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="df0ae" class="javax.swing.JTextField" binding="jtCuit">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -27,7 +27,7 @@
           <text value="Cuit:"/>
         </properties>
       </component>
-      <component id="6e078" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="6e078" class="javax.swing.JTextField" binding="jtRazonSocial">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -43,7 +43,7 @@
           <text value="Razon Social:"/>
         </properties>
       </component>
-      <component id="9cc68" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="9cc68" class="javax.swing.JTextField" binding="jtFechaInicio">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -59,7 +59,7 @@
           <text value="Fecha de Inicio:"/>
         </properties>
       </component>
-      <component id="d8ee2" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="d8ee2" class="javax.swing.JComboBox" binding="jcbTipo">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -79,7 +79,7 @@
           <text value="Tipo:"/>
         </properties>
       </component>
-      <component id="af4e7" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="af4e7" class="javax.swing.JTextField" binding="jtActividadPrincipal">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -95,7 +95,7 @@
           <text value="Actividad Principal:"/>
         </properties>
       </component>
-      <component id="76b87" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+      <component id="76b87" class="javax.swing.JTextField" binding="jtDireccion">
         <constraints>
           <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -111,7 +111,7 @@
           <text value="Dirección:"/>
         </properties>
       </component>
-      <component id="97c34" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+      <component id="97c34" class="javax.swing.JTextField" binding="jtTelefono">
         <constraints>
           <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -127,7 +127,7 @@
           <text value="Telefono:"/>
         </properties>
       </component>
-      <component id="f2cad" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+      <component id="f2cad" class="javax.swing.JTextField" binding="jtCorreoElectronico">
         <constraints>
           <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -145,7 +145,7 @@
       </component>
       <component id="d9ffa" class="javax.swing.JButton" binding="confirmarButton" default-binding="true">
         <constraints>
-          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="31" use-parent-layout="false"/>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="30" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Confirmar"/>

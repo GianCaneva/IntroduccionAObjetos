@@ -1,13 +1,248 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="vistas.solapaModificarSocioParticipe">
-  <grid id="27dc6" row-count="1" column-count="1" layout-manager="GridLayoutManager">
+  <grid id="27dc6" binding="pnlPrincipal" layout-manager="GridLayoutManager" row-count="12" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
-      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+      <xy x="20" y="20" width="944" height="439"/>
     </constraints>
     <properties/>
     <border type="none"/>
-    <children/>
+    <children>
+      <component id="e29b4" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <font size="18" style="0"/>
+          <foreground color="-12561989"/>
+          <text value="Modificar Socio Participe "/>
+        </properties>
+      </component>
+      <component id="342d9" class="javax.swing.JTextField" binding="jtCuit">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="d14a7" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Cuit:"/>
+        </properties>
+      </component>
+      <component id="fa2eb" class="javax.swing.JTextField" binding="jtRazonSocial">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="af66d" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Razon Social:"/>
+        </properties>
+      </component>
+      <component id="a1956" class="javax.swing.JTextField" binding="jtFechaInicio">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="795f2" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Fecha de Inicio:"/>
+        </properties>
+      </component>
+      <component id="c7d03" class="javax.swing.JComboBox" binding="jcbTipo">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Pequeña"/>
+            <item value="Mediana"/>
+            <item value="Grande"/>
+          </model>
+        </properties>
+      </component>
+      <component id="bf657" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Tipo:"/>
+        </properties>
+      </component>
+      <component id="9620a" class="javax.swing.JTextField" binding="jtActividadPrincipal">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="d978b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Acitividad Principal:"/>
+        </properties>
+      </component>
+      <component id="f2304" class="javax.swing.JTextField" binding="jtDireccion">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="96998" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Dirección:"/>
+        </properties>
+      </component>
+      <component id="2d82" class="javax.swing.JTextField" binding="jtTelefono">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="9c682" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Telefono:"/>
+        </properties>
+      </component>
+      <component id="23cf8" class="javax.swing.JTextField" binding="jtCorreoElectronico">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="c899" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Correo Electronico:"/>
+        </properties>
+      </component>
+      <component id="b36d2" class="javax.swing.JComboBox" binding="jcbReferencia">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="Actualizacion de numero telefonico"/>
+            <item value="Cambio de Razon Social"/>
+            <item value="Cambio de Domicilio"/>
+            <item value="Cambio de Telefono"/>
+            <item value="Cambio de Correo"/>
+            <item value="Cambio de Segmento"/>
+            <item value="Correcion de fecha de inicio de Actividad"/>
+            <item value="Correcion de datos"/>
+          </model>
+        </properties>
+      </component>
+      <component id="84f59" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Referencia"/>
+        </properties>
+      </component>
+      <component id="420a8" class="javax.swing.JComboBox" binding="jcbUsuario">
+        <constraints>
+          <grid row="10" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model>
+            <item value="x500400"/>
+            <item value="x647423"/>
+            <item value="x200242"/>
+            <item value="x421000"/>
+          </model>
+        </properties>
+      </component>
+      <component id="3f2ae" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="19"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Usuario"/>
+        </properties>
+      </component>
+      <component id="950eb" class="javax.swing.JButton" binding="modificarButton" default-binding="true">
+        <constraints>
+          <grid row="11" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="30" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Modificar"/>
+        </properties>
+      </component>
+      <component id="3d12d" class="javax.swing.JButton" binding="limpiarFormularioButton" default-binding="true">
+        <constraints>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false">
+            <preferred-size width="161" height="30"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Limpiar Formulario"/>
+        </properties>
+      </component>
+      <component id="25447" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="(Debe ingresar numero de CUIT, que ya se encuentre cargado)"/>
+        </properties>
+      </component>
+    </children>
   </grid>
 </form>
