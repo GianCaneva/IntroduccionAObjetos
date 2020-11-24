@@ -88,7 +88,31 @@ public class ControladorSocio {
         }
     }
 
-    public void operacionProsperada(
+    public void generarAportes(final Integer cuit, final Float monto){
+
+        SocioProtector empresa = (SocioProtector) buscarEmpresa(cuit);
+        if (!listaSocioProtector.contains(empresa)){
+            throw new RuntimeException("La empresa no es una socia protectora como para generar aportes");
+        }
+
+        empresa.generarAporteCapital(monto);
+
+
+    }
+
+
+    public void retirarAportes(final Integer cuit, final Date fecha) {
+
+        SocioProtector empresa = (SocioProtector) buscarEmpresa(cuit);
+        if (!listaSocioProtector.contains(empresa)){
+            throw new RuntimeException("La empresa no es una socia protectora como para generar aportes");
+        }
+
+        empresa.retirarAporteCapital(fecha);
+    }
+
+
+        public void operacionProsperada(
             final Integer cuit,
             final String operacionId) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
