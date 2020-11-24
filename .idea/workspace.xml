@@ -23,19 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62b4fbbf-6197-443f-b627-73b69d67c347" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/ControladorSocio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/Empresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/Empresa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioParticipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector$Builder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dto/Empresa/SocioProtector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaEmpresa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/vistas/ventanaValorPromedio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,10 +269,18 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java</url>
+          <line>824</line>
+          <properties class="controller.ControladorSocio" method="modificarDocumento">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/controller/ControladorSocio.java</url>
           <line>329</line>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
