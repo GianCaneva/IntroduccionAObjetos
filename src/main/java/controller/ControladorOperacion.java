@@ -4,15 +4,13 @@ import dto.Desembolso;
 import dto.Empresa.Empresa;
 import dto.Empresa.SocioParticipe;
 import dto.LineaDeCredito;
-import dto.Operacion.*;
-import dto.Enumeration.CtaCorriente;
-import dto.Enumeration.Prestamo;
-import dto.Enumeration.TipoCheque;
+import dto.Operacion.Comision;
+import dto.Operacion.Operacion;
+import dto.Operacion.Tipo1;
 import utils.Utils;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class ControladorOperacion {
 
@@ -67,8 +65,32 @@ public class ControladorOperacion {
 
     public static float calcularValorPromedioTasa(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
 
-        return 12;
-    }
+        List<Empresa> listaEmpresas = ControladorSocio.getListaEmpresas();
+        List<SocioParticipe> empresasDeTipo = (List<SocioParticipe>) listaEmpresas.stream().filter(x -> x.getTipo() == tipoDeEmpresa);
+
+        List<LineaDeCredito> lineaDeCreditoDeTipo = (List<LineaDeCredito>) empresasDeTipo.stream().map(x -> x.getLineaDeCredito());
+
+        Float totalRecaudado = Float.valueOf(0);
+
+        for (int i = 0; i < lineaDeCreditoDeTipo.size(); i++) {
+            List<Operacion> operaciones = lineaDeCreditoDeTipo.get(i).getOperaciones();
+            for (int j = 0; j < operaciones.size(); j++) {
+                Operacion operacion = operaciones.get(j);
+                if (operacion.getClass()== Tipo1.class){
+                    if(operacion.getFecha().getDay() > periodo1.getDay() &
+                            operacion.getFecha().getMonth() > periodo1.getMonth() &
+                            operacion.getFecha().getYear() > periodo1.getYear() &
+                            operacion.getFecha().getDay() < periodo2.getDay() &
+                            operacion.getFecha().getMonth() < periodo2.getMonth() &
+                            operacion.getFecha().getYear() < periodo2.getYear()){
+
+                        totalRecaudado = operacion.getImporteTotal();
+                    }
+                }
+            }
+        }
+
+        return (float) (totalRecaudado*(0.01));    }
 
     public static float totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
         List<Empresa> listaEmpresas = ControladorSocio.getListaEmpresas();
@@ -91,14 +113,9 @@ public class ControladorOperacion {
                             operacion.getFecha().getYear() < periodo2.getYear()){
 
                         totalRecaudado = operacion.getImporteTotal();
-
                     }
-
                 }
-
             }
-
-
         }
 
         return totalRecaudado;
