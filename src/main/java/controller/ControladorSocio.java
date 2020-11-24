@@ -5,11 +5,10 @@ import dto.Empresa.Accionista;
 import dto.Empresa.Empresa;
 import dto.Empresa.SocioParticipe;
 import dto.Empresa.SocioProtector;
-import dto.Operacion.*;
 import dto.Enumeration.CtaCorriente;
 import dto.Enumeration.Prestamo;
 import dto.Enumeration.TipoCheque;
-import jdk.internal.jimage.ImageStrings;
+import dto.Operacion.*;
 import utils.Utils;
 
 import java.util.ArrayList;
