@@ -178,7 +178,8 @@ public class ventanaSolicitarPrestamo extends JFrame {
                 }
 
                 ControladorSocio.solicitarOperacionPrestamo(entradaCuit,entradaBanco,entradaImporte,entradaTasa,date1,entradaCantCuotas,seleccionado);
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
 

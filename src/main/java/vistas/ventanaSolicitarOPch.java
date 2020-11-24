@@ -187,6 +187,8 @@ public class ventanaSolicitarOPch extends JFrame {
 
                ControladorSocio.solicitarOperacionCheque(entradaCuit,seleccionado,entradaBanco,entradaNumeroCheque,date1,entradaCuitFirmante,entradaImporte);
 //                    FALTA SOLICITAR sTRING
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
             }
 

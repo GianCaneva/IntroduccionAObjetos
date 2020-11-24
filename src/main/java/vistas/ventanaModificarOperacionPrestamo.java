@@ -228,7 +228,8 @@ public class ventanaModificarOperacionPrestamo extends JFrame {
 
 
                 ControladorSocio.modificarOperacionPrestamo(entradaCuit,entradaBanco,entradaImporte,entradaTasa,date1,entradaCantCuotas,seleccionado,ID,seleccionado2,seleccionado3);
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
 

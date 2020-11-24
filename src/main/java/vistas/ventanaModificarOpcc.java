@@ -214,7 +214,8 @@ public class ventanaModificarOpcc extends JFrame {
                 //CAMBIAR METODO PARA QUE RECIBA STRING
 
 
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
             }

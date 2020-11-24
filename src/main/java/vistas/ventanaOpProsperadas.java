@@ -127,7 +127,8 @@ public class ventanaOpProsperadas extends JFrame {
 
 
                 ControladorSocio.operacionProsperada(entradaCuit,ID);
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
             }
 

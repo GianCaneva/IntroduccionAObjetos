@@ -171,7 +171,8 @@ public class ventanaPresentarDoc extends JFrame {
 
                 ControladorSocio.presentarDocumento(entradaCuit,entradaTipo,entradaEstado,entradaUsuario);
 //                    FALTA SOLICITAR sTRING
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
             }

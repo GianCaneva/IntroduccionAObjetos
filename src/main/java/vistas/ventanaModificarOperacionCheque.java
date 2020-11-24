@@ -239,7 +239,8 @@ public class ventanaModificarOperacionCheque extends JFrame {
                 ControladorSocio.modificarOperacionCheque(entradaCuit,seleccionado,entradaBanco,entradaNumeroCheque,date1,entradaCuitFirmante,entradaImporte,ID,seleccionado2,seleccionado3);
 //                    FALTA SOLICITAR sTRING
 
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
             }
 

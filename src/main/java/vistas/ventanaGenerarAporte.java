@@ -132,7 +132,8 @@ public class ventanaGenerarAporte extends JFrame {
 
                 ControladorSocio.generarAportes(entradaCuit,entradaMonto);
 //                    FALTA SOLICITAR sTRING
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
             }

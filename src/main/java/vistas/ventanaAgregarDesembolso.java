@@ -155,7 +155,8 @@ public class ventanaAgregarDesembolso extends JFrame {
                 ControladorSocio.agregarDesembolsos(entradaCuit,entradaMonto,entradaMora,seleccionado);
 //                    FALTA SOLICITAR sTRING
 //                dispose();
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 //
 //                    ventanaOK frame = new ventanaOK();

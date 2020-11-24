@@ -114,6 +114,8 @@ public class ventanaSaldoMora extends JFrame{
                 jlResultado2 = new JLabel("La mora por dia es "+ resultado2+"$");
                 jlResultado2.setBounds(10,130,200,20);
                 add(jlResultado2);
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
             }
 
         });

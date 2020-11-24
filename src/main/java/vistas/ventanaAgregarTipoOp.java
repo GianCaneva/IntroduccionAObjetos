@@ -109,7 +109,7 @@ public class ventanaAgregarTipoOp extends JFrame {
         jcOperaciones.addItem("PagareBursatil");
         jcOperaciones.addItem("Prestamo");
         jcOperaciones.addItem("TarjetaDeCredito");
-        jcOperaciones.addItem("TarjetaDeCredito");
+        jcOperaciones.addItem("CuentaCorriente");
 
 
 
@@ -128,7 +128,8 @@ public class ventanaAgregarTipoOp extends JFrame {
                 String seleccionado = (String) jcOperaciones.getSelectedItem();
 
             ControladorSocio.agregarOperaciones(entradaCuit,seleccionado);
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
             }

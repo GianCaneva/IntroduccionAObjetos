@@ -194,7 +194,8 @@ public class ventanaModificarDoc extends JFrame {
                 ControladorSocio.modificarDocumento(entradaCuit,entradaTipo,entradaEstado,entradaUsuario,entradaReferencia);
 //                    FALTA SOLICITAR sTRING
 
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
             }
 

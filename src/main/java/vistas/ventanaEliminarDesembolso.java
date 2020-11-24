@@ -125,7 +125,8 @@ public class ventanaEliminarDesembolso extends JFrame {
                 ControladorSocio.eliminarDesembolsos(entradaCuit);
 //                    FALTA SOLICITAR sTRING
 
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
             }
 

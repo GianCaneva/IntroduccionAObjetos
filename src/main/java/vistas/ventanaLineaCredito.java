@@ -158,7 +158,8 @@ public class ventanaLineaCredito extends JFrame {
 
                ControladorSocio.asignarLineaDeCredito( entradaCuit,entradaMonto,date1) ;
 
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
 

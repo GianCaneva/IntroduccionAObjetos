@@ -202,7 +202,8 @@ public class ventanaOperacionesSocio extends JFrame  {
                 ListaOperaciones.setBounds(10,160,160,300);
                 add(ListaOperaciones);
 
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 //
 //                jlResultado1= new JLabel("mostrar " +entradaCuit+" "+entradaAnio+" "+entradaMes1+" "+entradaMes2  );

@@ -121,7 +121,8 @@ public class ventanaAprobardoc extends JFrame {
 
                 ControladorSocio.aprobarDocumento(entradaCuit);
 //                    FALTA SOLICITAR sTRING
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
             }

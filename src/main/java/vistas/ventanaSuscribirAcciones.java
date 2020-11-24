@@ -163,9 +163,11 @@ public class ventanaSuscribirAcciones extends JFrame {
 
 
 
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
-                ControladorSocio.suscribirAccion(entradaCuit,entradaCuitVendedor,porcentaje,precio,entradaCantidad) ;
+               ControladorSocio.suscribirAccion(entradaCuit,entradaCuitVendedor,porcentaje,precio,entradaCantidad) ;
 
 
 

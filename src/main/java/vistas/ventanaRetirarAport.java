@@ -137,7 +137,8 @@ public class ventanaRetirarAport extends JFrame {
 
                 ControladorSocio.retirarAportes(entradaCuit,date1);
 //                    FALTA SOLICITAR sTRING
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
             }

@@ -104,7 +104,8 @@ public class ventanaEmisionFacturas extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 ControladorSocio.emicionDeFacturasPendientes();
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
             }
 

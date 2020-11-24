@@ -161,7 +161,8 @@ public class ventanaSolicitarOPcc extends JFrame {
                 //    FALTA SOLICITAR sTRING
 
 
-
+                ventanaOK tester = new ventanaOK();
+                tester.setVisible(true);
 
 
             }
