@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,9 +16,9 @@ public class LineaDeCredito {
     private Date fechaVigencia;
     private Integer nroLineaCredito;
     private Boolean estado;
-    private List<Enum> tipoOperaciones;
-    private List<Operacion> operaciones;
-    private List<Factura> facturaList;
+    private List<Enum> tipoOperaciones = new ArrayList<>();
+    private List<Operacion> operaciones = new ArrayList<>();
+    private List<Factura> facturaList = new ArrayList<>();
     private Desembolso desembolso;
 
     private LineaDeCredito() {

@@ -8,6 +8,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class SocioProtector extends Empresa {
 
     private Integer idSocio;
     private Integer accionesB;
-    private List<AporteDeCapital> cantidadAporteCapital;
-    private List<AporteDeCapital> aportesExtraidos;
+    private List<AporteDeCapital> cantidadAporteCapital = new ArrayList<>();
+    private List<AporteDeCapital> aportesExtraidos = new ArrayList<>();
     private Float desembolso;
 
     private SocioProtector() {
@@ -127,7 +128,7 @@ public class SocioProtector extends Empresa {
         private static String direccion;
         private static Integer telefono;
         private static String correoElectronico;
-        private static List<Accionista> accionista;
+        private static List<Accionista> accionista = new ArrayList<>();
         private static Documento documento;
         private static ParticipacionSGR participacionSGR;
 

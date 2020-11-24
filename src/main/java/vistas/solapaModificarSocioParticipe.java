@@ -42,8 +42,9 @@ public class solapaModificarSocioParticipe extends JInternalFrame{
                     parseException.printStackTrace();
                 }
 
-                ventanaPrincipal vent = new ventanaPrincipal();
-                ControladorSocio controladorSocio = vent.devolverControladorSocio();
+                //ventanaPrincipal vent = new ventanaPrincipal();
+                //ControladorSocio controladorSocio = vent.devolverControladorSocio();
+                ControladorSocio controladorSocio = ventanaPrincipal.getVentanaPrincipal("Tabs").controladorSocio;
                 controladorSocio.modificarSocioParticipe( Integer.parseInt(jtCuit.getText().trim()), jtRazonSocial.getText(), date1, jcbTipo.getSelectedItem().toString(), jtActividadPrincipal.getText(), jtDireccion.getText(), Integer.parseInt( jtTelefono.getText().trim()), jtCorreoElectronico.getText(),jcbReferencia.getSelectedItem().toString(),jcbUsuario.getSelectedItem().toString());
 
 
