@@ -54,11 +54,11 @@ import controller.ControladorSocio;
 
 public class ventanaPresentarDoc extends JFrame {
     private JTextField jtCuit, jtBanco,jtImporte,jtMonto,jtFecha,jtCuotas,jtMora;
-    private JComboBox<String> jcOperaciones, jcReferencia, jcUsuario;
-    private JLabel jlCuit, jlOperacion,jlBanco,jlImporte,jlTasa,jlMonto,jlMora,jlUsuario,jlReferencia,jlID;
+    private JComboBox<String> jcTipo, jcEstado, jcUsuario;
+    private JLabel jlCuit, jlOperacion,jlEstado,jlImporte,jlTasa,jlMonto,jlMora,jlUsuario,jlReferencia,jlID;
     private String valor;
     private JTextField jtCheque,jtCuitfirmante;
-    private JComboBox<String>  jcOperaciones2, jcOperaciones3;
+    private JComboBox<String>  jcTipo2, jcTipo3;
     private JLabel jlCheque,jlCuitfirmante;
 
 
@@ -91,9 +91,9 @@ public class ventanaPresentarDoc extends JFrame {
 
 
 
-        setTitle("Agregar Desembolso");
+        setTitle("Cargar Documentacion");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 300);
+        setSize(500, 260);
         getContentPane().setLayout(null);
 
 
@@ -101,39 +101,51 @@ public class ventanaPresentarDoc extends JFrame {
         jlCuit.setBounds(10, 10, 160, 18);
         add(jlCuit);
         jtCuit = new JTextField();
-        jtCuit.setBounds(210, 10, 200, 18);
+        jtCuit.setBounds(150, 10, 200, 18);
         add(jtCuit);
-
-        jlMonto = new JLabel("Ingrese Monto:");
-        jlMonto.setBounds(10,40,160,18);
-        add(jlMonto);
-        jtMonto=new JTextField();
-        jtMonto.setBounds(210,40,200,18);
-        add(jtMonto);
-
-        jlMora = new JLabel("Ingrese Mora: ");
-        jlMora.setBounds(10,70,160,18);
-        add(jlMora);
-        jtMora = new JTextField();
-        jtMora.setBounds(210,70,200,18);
-        add(jtMora);
-
-
 
 
         jlOperacion = new JLabel("Seleccione Tipo: ");
-        jlOperacion.setBounds(10, 100, 100, 18);
+        jlOperacion.setBounds(10, 40, 100, 18);
         add(jlOperacion);
 
-        jcOperaciones = new JComboBox<String>();
-        jcOperaciones.setBounds(210, 100, 200, 18);
-        add(jcOperaciones);
-        jcOperaciones.addItem("ChequePropio");
-        jcOperaciones.addItem("ChequeDeTerceros");
-        jcOperaciones.addItem("PagareBursatil");
-        jcOperaciones.addItem("Prestamo");
-        jcOperaciones.addItem("TarjetaDeCredito");
-        jcOperaciones.addItem("TarjetaDeCredito");
+        jcTipo = new JComboBox<String>();
+        jcTipo.setBounds(150, 40, 200, 18);
+        add(jcTipo);
+        jcTipo.addItem("Estatuto");
+        jcTipo.addItem("Contrato Social");
+        jcTipo.addItem("Ultimos 3 balances certificados");
+        jcTipo.addItem("Manifestacion de bienes de socios");
+
+
+
+        jlEstado = new JLabel("Seleccione Estado: ");
+        jlEstado.setBounds(10, 70, 120, 18);
+        add(jlEstado);
+
+        jcEstado = new JComboBox<String>();
+        jcEstado.setBounds(150, 70, 200, 18);
+        add(jcEstado);
+        jcEstado.addItem("ingresado");
+        jcEstado.addItem("controlado");
+        jcEstado.addItem("rechazado");
+
+
+
+        jlUsuario = new JLabel("Seleccione Usuario:");
+        jlUsuario.setBounds(10,100,200,18);
+        add(jlUsuario);
+
+
+        jcUsuario = new JComboBox<String>();
+        jcUsuario.setBounds(150, 100, 200, 18);
+        add(jcUsuario);
+        jcUsuario.addItem("x500400");
+        jcUsuario.addItem("x647423");
+        jcUsuario.addItem("x200242");
+        jcUsuario.addItem("x421000");
+
+
 
 
 
@@ -141,7 +153,7 @@ public class ventanaPresentarDoc extends JFrame {
 
 
         JButton btnNewButton = new JButton("Agregar");
-        btnNewButton.setBounds(200, 130, 190, 40);
+        btnNewButton.setBounds(150, 130, 190, 40);
         getContentPane().add(btnNewButton);
 
 
@@ -150,13 +162,14 @@ public class ventanaPresentarDoc extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 int entradaCuit=Integer.parseInt(jtCuit.getText());
-                String seleccionado = (String) jcOperaciones.getSelectedItem();
-                float entradaMonto = Integer.parseInt(jtMonto.getText());
-                float entradaMora = Float.parseFloat(jtMora.getText());
+                String entradaTipo = (String) jcTipo.getSelectedItem();
+                String entradaEstado = (String) jcEstado.getSelectedItem();
+                String entradaUsuario = (String) jcUsuario.getSelectedItem();
+                
 
 
 
-                ControladorSocio.agregarDesembolsos(entradaCuit,entradaMonto,entradaMora,seleccionado);
+                ControladorSocio.presentarDocumento(entradaCuit,entradaTipo,entradaEstado,entradaUsuario);
 //                    FALTA SOLICITAR sTRING
 
 

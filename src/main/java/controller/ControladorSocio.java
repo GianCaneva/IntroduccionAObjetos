@@ -363,7 +363,7 @@ public class ControladorSocio {
     }
 
 
-    public void aprobarDocumento(final Integer cuit) {
+    public static void aprobarDocumento(final Integer cuit) {
         List<Integer> cuitAccionistas = new ArrayList<>();
         Empresa empresa = buscarEmpresa(cuit);
 
@@ -385,7 +385,7 @@ public class ControladorSocio {
     }
 
 
-    public void presentarDocumento(
+    public static void presentarDocumento(
             final Integer cuit,
             final String tipo,
             final String estado,
@@ -978,7 +978,7 @@ public class ControladorSocio {
 
     }
 
-    public void modificarDocumento(
+    public static void modificarDocumento(
             final Integer cuit,
             final String tipo,
             final String estado,
