@@ -13,7 +13,7 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
     private JPanel mainPanel ;//= new JPanel();
     private JMenuBar mb;
     private JMenu menu1, menu2, menu3, menu4, menu5, menu6, menu7;
-    private JMenuItem mi1, mi2, mi3, mi4, mi5, mi6, mi7,mi8,mo1,mo2,mo3,mo4,mo5,mo6,mo7,mo8,mo9,mo10,mo11,mo12,mo13,mo14,mo15,mo16,mo17;
+    private JMenuItem mi1, mi2, mi3, mi4, mi5, mi6, mi7,mi8,mo1,mo2,mo3,mo4,mo5,mo6,mo7,mo8,mo9,mo10,mo11,mo12,mo13,mo14,mo15,mo16,mo17,mo18,mo19;
 
     private ventanaPrincipal self;
     ControladorSocio controladorSocio = new ControladorSocio();
@@ -65,6 +65,10 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
         mo1 = new JMenuItem("Asignar linea de credito");
         menu4.add(mo1);
         mo1.addActionListener(this);
+
+        mo17 = new JMenuItem("Agregar tipo Operaciones a LC");
+        menu4.add(mo17);
+        mo17.addActionListener(this);
 
         mo2 = new JMenuItem("Suscribir acciones");
         menu4.add(mo2);
@@ -127,6 +131,14 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
         mo16 = new JMenuItem("Operar");
         menu4.add(mo16);
         mo16.addActionListener(this);
+
+        mo18 = new JMenuItem("Generar Aporte");
+        menu4.add(mo18);
+        mo18.addActionListener(this);
+
+        mo19 = new JMenuItem("Retirar Aporte");
+        menu4.add(mo19);
+        mo19.addActionListener(this);
 
 
 
@@ -243,6 +255,13 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
                                                e.printStackTrace();
                                            }
 
+
+                                       }else if (e.getSource() == mo17) {
+                                           try {
+                                               ventanaAgregarTipoOp frame = new ventanaAgregarTipoOp();
+                                           } catch (Exception e) {
+                                               e.printStackTrace();
+                                           }
                                        }else if (e.getSource() == mo2) {
                                            try {
                                                ventanaSuscribirAcciones frame = new ventanaSuscribirAcciones();
@@ -344,6 +363,20 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
                                        }else if (e.getSource() == mo16) {
                                            try {
                                                ventanaOperarOP frame = new ventanaOperarOP();
+                                           } catch (Exception e) {
+                                               e.printStackTrace();
+                                           }
+
+                                       }else if (e.getSource() == mo18) {
+                                           try {
+                                               ventanaGenerarAporte frame = new ventanaGenerarAporte();
+                                           } catch (Exception e) {
+                                               e.printStackTrace();
+                                           }
+
+                                       }else if (e.getSource() == mo19) {
+                                           try {
+                                               ventanaRetirarAport frame = new ventanaRetirarAport();
                                            } catch (Exception e) {
                                                e.printStackTrace();
                                            }

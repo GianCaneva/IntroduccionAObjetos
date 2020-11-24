@@ -282,7 +282,7 @@ public class ControladorSocio {
     }
 
 
-    public void asignarLineaDeCredito(
+    public static void asignarLineaDeCredito(
             final Integer cuit,
             final float monto,
             final Date date) {
@@ -293,7 +293,7 @@ public class ControladorSocio {
     }
 
 
-    public void agregarOperaciones(final Integer cuit, final String tipoDeOperacion){
+    public static void agregarOperaciones(final Integer cuit, final String tipoDeOperacion){
 
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
 

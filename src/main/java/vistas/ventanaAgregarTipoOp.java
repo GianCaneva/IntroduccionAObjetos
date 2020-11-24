@@ -52,16 +52,12 @@ import controller.ControladorOperacion;
 import controller.ControladorSocio;
 
 
-public class ventanaLineaCredito extends JFrame {
+public class ventanaAgregarTipoOp extends JFrame {
     private JTextField jtCuit, jtMonto,jtFecha;
     private JComboBox<String> jcOperaciones, jcOperaciones2, jcOperaciones3;
     private JLabel jlCuit, jlOperacion, jlMonto, jlFecha1, jlFecha2;
     private String valor;
-    private int a, b;
-    private ArrayList<String> operacionesArrayList;
-    private float mora = 0;
 
-    private JLabel jlFecha, jlResultado1, jlResultado2;
 
 
     public static void main(String[] args) throws Exception {
@@ -69,7 +65,7 @@ public class ventanaLineaCredito extends JFrame {
 
             public void run() {
                 try {
-                    vistas.ventanaLineaCredito tester = new vistas.ventanaLineaCredito();
+                    vistas.ventanaAgregarTipoOp tester = new vistas.ventanaAgregarTipoOp();
                     tester.setVisible(true);
 
                 } catch (Exception e) {
@@ -83,11 +79,9 @@ public class ventanaLineaCredito extends JFrame {
     }
 
 
-    public ventanaLineaCredito() {
+    public ventanaAgregarTipoOp() {
 
-        // String[] operacionesArraylist = new String[""];
 
-//        setTitle("Calculo de Porcentaje Comision");
         setTitle("Asignar Linea Credito");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(300, 250);
@@ -98,68 +92,42 @@ public class ventanaLineaCredito extends JFrame {
         jlCuit.setBounds(10, 10, 160, 18);
         add(jlCuit);
         jtCuit = new JTextField();
-        jtCuit.setBounds(170, 10, 80, 18);
+        jtCuit.setBounds(150, 10, 80, 18);
         add(jtCuit);
-        jlMonto = new JLabel("Ingrese Monto: ");
-        jlMonto.setBounds(10,35,160,18);
-        add(jlMonto);
-        jtMonto = new JTextField();
-        jtMonto.setBounds(170,35,80,18);
-        add(jtMonto);
-        jlFecha = new JLabel("Ingrese Fecha vencimiento:");
-        jlFecha.setBounds(10,60,160,18);
-        add(jlFecha);
-        jtFecha = new JTextField();
-        jtFecha.setBounds(170,60,80,18);
-        add(jtFecha);
 
 
-//        jlOperacion = new JLabel("Seleccione Operacion:");
-//        jlOperacion.setBounds(10,105,200,18);
-//        add(jlOperacion);
+        jlOperacion = new JLabel("Seleccione Operacion:");
+        jlOperacion.setBounds(10,45,200,18);
+        add(jlOperacion);
 
-//
-//        jcOperaciones = new JComboBox<String>();
-//        jcOperaciones.setBounds(10, 130, 200, 18);
-//        add(jcOperaciones);
-//        jcOperaciones.addItem("ChequePropio");
-//        jcOperaciones.addItem("ChequeDeTerceros");
-//        jcOperaciones.addItem("PagareBursatil");
-//        jcOperaciones.addItem("Prestamo");
-//        jcOperaciones.addItem("TarjetaDeCredito");
-//        jcOperaciones.addItem("TarjetaDeCredito");
-//        jcOperaciones.addItemListener((ItemListener) this);
+
+        jcOperaciones = new JComboBox<String>();
+        jcOperaciones.setBounds(150, 45, 120, 18);
+        add(jcOperaciones);
+        jcOperaciones.addItem("ChequePropio");
+        jcOperaciones.addItem("ChequeDeTerceros");
+        jcOperaciones.addItem("PagareBursatil");
+        jcOperaciones.addItem("Prestamo");
+        jcOperaciones.addItem("TarjetaDeCredito");
+        jcOperaciones.addItem("TarjetaDeCredito");
 
 
 
-        JButton btnNewButton = new JButton("Asignar Linea Credito");
+
+        JButton btnNewButton = new JButton("Agregar Operacion");
         btnNewButton.setBounds(45, 110, 190, 40);
         getContentPane().add(btnNewButton);
-
 
 
         btnNewButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
+
                 int entradaCuit=Integer.parseInt(jtCuit.getText());
-                float entradaMonto=Float.parseFloat(jtMonto.getText());
 
-                String entradaFecha1=jtFecha.getText();
+                String seleccionado = (String) jcOperaciones.getSelectedItem();
 
-
-                Date date1= null;
-                try {
-                    date1 = new SimpleDateFormat("dd/MM/yyyy").parse(entradaFecha1);
-                } catch (ParseException parseException) {
-                    parseException.printStackTrace();
-                }
-
-
-
-               ControladorSocio.asignarLineaDeCredito( entradaCuit,entradaMonto,date1) ;
-
-
-
+            ControladorSocio.agregarOperaciones(entradaCuit,seleccionado);
 
 
 
@@ -168,7 +136,7 @@ public class ventanaLineaCredito extends JFrame {
         });
 
 
-//
+
         setVisible(true);
 
 
