@@ -53,9 +53,9 @@ import controller.ControladorSocio;
 
 
 public class ventanaSuscribirAcciones extends JFrame {
-    private JTextField jtCuit, jtVendedor,jtprecio,jtPorcentaje;
+    private JTextField jtCuit, jtVendedor,jtprecio,jtPorcentaje,jtCantidad;
     private JComboBox<String> jcOperaciones, jcOperaciones2, jcOperaciones3;
-    private JLabel jlCuit, jlprecio, jlVendedor, jlPorcentaje1, jlPorcentaje2;
+    private JLabel jlCuit, jlprecio, jlVendedor, jlCantidad, jlPorcentaje2;
     private String valor;
     private int a, b;
     private ArrayList<String> operacionesArrayList;
@@ -119,6 +119,14 @@ public class ventanaSuscribirAcciones extends JFrame {
         jtprecio.setBounds(170,90,80,18);
         add(jtprecio);
 
+        jlCantidad = new JLabel("Ingrese Cantidad Acciones:");
+        jlCantidad.setBounds(10,120,160,18);
+        add(jlCantidad);
+        jtCantidad = new JTextField();
+        jtCantidad.setBounds(170,120,80,18);
+        add(jtCantidad);
+
+
 
 //        jlOperacion = new JLabel("Seleccione Operacion:");
 //        jlOperacion.setBounds(10,105,200,18);
@@ -139,7 +147,7 @@ public class ventanaSuscribirAcciones extends JFrame {
 
 
         JButton btnNewButton = new JButton("Suscribir acciones");
-        btnNewButton.setBounds(45, 130, 190, 40);
+        btnNewButton.setBounds(45, 150, 190, 40);
         getContentPane().add(btnNewButton);
 
 
@@ -151,13 +159,13 @@ public class ventanaSuscribirAcciones extends JFrame {
                 int entradaCuitVendedor=Integer.parseInt(jtVendedor.getText());
                 float porcentaje = Float.parseFloat(jtPorcentaje.getText());
                 float precio = Float.parseFloat(jtprecio.getText());
+                int entradaCantidad=Integer.parseInt(jtCantidad.getText());
 
 
 
 
 
-
-                ControladorSocio.suscribirAccion(entradaCuit,entradaCuitVendedor,porcentaje,precio) ;
+                ControladorSocio.suscribirAccion(entradaCuit,entradaCuitVendedor,porcentaje,precio,entradaCantidad) ;
 
 
 

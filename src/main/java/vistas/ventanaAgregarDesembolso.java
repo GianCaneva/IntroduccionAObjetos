@@ -65,20 +65,14 @@ public class ventanaAgregarDesembolso extends JFrame {
 
 
 
-    public static void main(String[] args) throws Exception {
-        EventQueue.invokeLater(new Runnable() {
+    public static void main(String[] args) {
 
-            public void run() {
-                try {
+
+
                     vistas.ventanaAgregarDesembolso tester = new vistas.ventanaAgregarDesembolso();
                     tester.setVisible(true);
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
 
-            }
-        });
 
 
     }
@@ -95,6 +89,8 @@ public class ventanaAgregarDesembolso extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(500, 300);
         getContentPane().setLayout(null);
+
+        setVisible(true);
 
 
         jlCuit = new JLabel("Ingrese Cuit: ");
@@ -158,16 +154,22 @@ public class ventanaAgregarDesembolso extends JFrame {
 
                 ControladorSocio.agregarDesembolsos(entradaCuit,entradaMonto,entradaMora,seleccionado);
 //                    FALTA SOLICITAR sTRING
+//                dispose();
+
+
+//
+//                    ventanaOK frame = new ventanaOK();
+//                    frame.setVisible(true);
 
 
 
             }
 
+
         });
 
 
 
-        setVisible(true);
 
 
     }
