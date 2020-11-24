@@ -9,12 +9,16 @@ public class ventanaGestionEmpresa extends JDialog{
     private JTabbedPane tabbedPane1;
     private JDesktopPane desktopPaneCargarSocioProtector;
     private JDesktopPane desktopPaneModificarSocioProtector;
+    private JDesktopPane desktopPaneCargarSocioParticipe;
+    private JDesktopPane desktopPaneModificarSocioParticipe;
+    private JDesktopPane desktopPaneAgregarAccionista;
+    private JDesktopPane desktopPaneModificarAccionista;
 
     public ventanaGestionEmpresa(Window owner, String titulo){
         super(owner, titulo);
         this.setContentPane(pnlGestionEmpresa);
         this.setModal(true);
-        this.setSize(400,400);
+        this.setSize(600,600);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
