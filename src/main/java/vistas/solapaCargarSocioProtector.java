@@ -24,16 +24,12 @@ public class solapaCargarSocioProtector extends JInternalFrame {
     private JButton jbConfirmar;
     private JButton limpiarFormularioButton;
 
-    //pequeño
-    //mediano
-    //grande
     public solapaCargarSocioProtector(String titulo){
         super(titulo);
 
         this.setContentPane(pnlPrincipal);
         this.setBorder(null);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
-
 
         jbConfirmar.addActionListener(new ActionListener() {
             @Override
@@ -48,7 +44,8 @@ public class solapaCargarSocioProtector extends JInternalFrame {
                     parseException.printStackTrace();
                 }
 
-                ControladorSocio controladorSocio = new ControladorSocio();
+                ventanaPrincipal vent = new ventanaPrincipal();
+                ControladorSocio controladorSocio = vent.devolverControladorSocio();
                 referencia=controladorSocio.solicitarSocioProtector( Integer.parseInt(jtCuit.getText().trim()), jtRazonSocial.getText(), date1, jcbTipo.getSelectedItem().toString(), jtActividadPrincipal.getText(), jtDireccion.getText(), Integer.parseInt( jtTelefono.getText().trim()), jtCorreoElectronico.getText());
 
 

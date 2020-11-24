@@ -16,11 +16,17 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
     private JMenuItem mi1, mi2, mi3, mi4, mi5, mi6, mi7,mi8,mo1,mo2,mo3,mo4,mo5,mo6,mo7,mo8,mo9,mo10,mo11,mo12,mo13,mo14,mo15,mo16,mo17;
 
     private ventanaPrincipal self;
+    ControladorSocio controladorSocio = new ControladorSocio();
+    public ControladorSocio devolverControladorSocio(){
+        return controladorSocio;
+    }
+    public ventanaPrincipal(){
 
+    }
     public ventanaPrincipal(String title) {
 
         super(title);
-        ControladorSocio controladorSocio = new ControladorSocio();
+        //ControladorSocio controladorSocio = new ControladorSocio();
         ControladorOperacion controladorOperacion=new ControladorOperacion();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setContentPane(mainPanel);
