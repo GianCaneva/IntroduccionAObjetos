@@ -278,7 +278,7 @@ public  class ventanaPrincipal extends JFrame implements ActionListener {
 
                                        }else if (e.getSource() == mo4) {
                                            try {
-                                               ventanaModificarOperacion frame = new ventanaModificarOperacion();
+                                               ventanaModificarOperacionPrestamo frame = new ventanaModificarOperacionPrestamo();
                                            } catch (Exception e) {
                                                e.printStackTrace();
                                            }

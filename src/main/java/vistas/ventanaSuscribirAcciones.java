@@ -53,9 +53,9 @@ import controller.ControladorSocio;
 
 
 public class ventanaSuscribirAcciones extends JFrame {
-    private JTextField jtCuit, jtMonto,jtprecio,jtPorcentaje;
+    private JTextField jtCuit, jtVendedor,jtprecio,jtPorcentaje;
     private JComboBox<String> jcOperaciones, jcOperaciones2, jcOperaciones3;
-    private JLabel jlCuit, jlprecio, jlMonto, jlPorcentaje1, jlPorcentaje2;
+    private JLabel jlCuit, jlprecio, jlVendedor, jlPorcentaje1, jlPorcentaje2;
     private String valor;
     private int a, b;
     private ArrayList<String> operacionesArrayList;
@@ -88,7 +88,7 @@ public class ventanaSuscribirAcciones extends JFrame {
         // String[] operacionesArraylist = new String[""];
 
 //        setTitle("Calculo de Porcentaje Comision");
-        setTitle("Asignar Linea Credito");
+        setTitle("Suscribir Acciones");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(300, 250);
         getContentPane().setLayout(null);
@@ -100,12 +100,12 @@ public class ventanaSuscribirAcciones extends JFrame {
         jtCuit = new JTextField();
         jtCuit.setBounds(170, 10, 80, 18);
         add(jtCuit);
-        jlMonto = new JLabel("Ingrese Monto: ");
-        jlMonto.setBounds(10,35,160,18);
-        add(jlMonto);
-        jtMonto = new JTextField();
-        jtMonto.setBounds(170,35,80,18);
-        add(jtMonto);
+        jlVendedor = new JLabel("Ingrese Cuit Vendedor: ");
+        jlVendedor.setBounds(10,35,160,18);
+        add(jlVendedor);
+        jtVendedor = new JTextField();
+        jtVendedor.setBounds(170,35,80,18);
+        add(jtVendedor);
         jlPorcentaje = new JLabel("Ingrese Porcentaje:");
         jlPorcentaje.setBounds(10,60,160,18);
         add(jlPorcentaje);
@@ -117,7 +117,7 @@ public class ventanaSuscribirAcciones extends JFrame {
         add(jlprecio);
         jtprecio = new JTextField();
         jtprecio.setBounds(170,90,80,18);
-        add(jtPorcentaje);
+        add(jtprecio);
 
 
 //        jlOperacion = new JLabel("Seleccione Operacion:");
@@ -138,7 +138,7 @@ public class ventanaSuscribirAcciones extends JFrame {
 
 
 
-        JButton btnNewButton = new JButton("Asignar Linea Credito");
+        JButton btnNewButton = new JButton("Suscribir acciones");
         btnNewButton.setBounds(45, 130, 190, 40);
         getContentPane().add(btnNewButton);
 
@@ -148,21 +148,16 @@ public class ventanaSuscribirAcciones extends JFrame {
 
             public void actionPerformed(ActionEvent e) {
                 int entradaCuit=Integer.parseInt(jtCuit.getText());
-                float entradaMonto=Float.parseFloat(jtMonto.getText());
-
-                String entradaFecha1=jtPorcentaje.getText();
-
-
-                Date date1= null;
-                try {
-                    date1 = new SimpleDateFormat("dd/MM/yyyy").parse(entradaFecha1);
-                } catch (ParseException parseException) {
-                    parseException.printStackTrace();
-                }
+                int entradaCuitVendedor=Integer.parseInt(jtVendedor.getText());
+                float porcentaje = Float.parseFloat(jtPorcentaje.getText());
+                float precio = Float.parseFloat(jtprecio.getText());
 
 
 
-                ControladorSocio.asignarLineaDeCredito( entradaCuit,entradaMonto,date1) ;
+
+
+
+                ControladorSocio.suscribirAccion(entradaCuit,entradaCuitVendedor,porcentaje,precio) ;
 
 
 

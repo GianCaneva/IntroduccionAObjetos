@@ -52,10 +52,10 @@ import controller.ControladorOperacion;
 import controller.ControladorSocio;
 
 
-public class ventanaSolicitarPrestamo extends JFrame {
+public class ventanaModificarOperacionPrestamo extends JFrame {
     private JTextField jtCuit, jtBanco,jtImporte,jtTasa,jtFecha,jtCuotas;
-    private JComboBox<String> jcOperaciones, jcOperaciones2, jcOperaciones3;
-    private JLabel jlCuit, jlOperacion,jlBanco,jlImporte,jlTasa,jlFecha,jlCuotas; 
+    private JComboBox<String> jcSistemas, jcReferencia, jcUsuario;
+    private JLabel jlCuit, jlSistema,jlBanco,jlImporte,jlTasa,jlFecha,jlCuotas,jlUsuario,jlReferencia;
     private String valor;
 
 
@@ -65,7 +65,7 @@ public class ventanaSolicitarPrestamo extends JFrame {
 
             public void run() {
                 try {
-                    vistas.ventanaSolicitarPrestamo tester = new vistas.ventanaSolicitarPrestamo();
+                    vistas.ventanaModificarOperacionPrestamo tester = new vistas.ventanaModificarOperacionPrestamo();
                     tester.setVisible(true);
 
                 } catch (Exception e) {
@@ -79,12 +79,12 @@ public class ventanaSolicitarPrestamo extends JFrame {
     }
 
 
-    public ventanaSolicitarPrestamo() {
+    public ventanaModificarOperacionPrestamo() {
 
 
-        setTitle("Solicitar Prestamo");
+        setTitle("Modificar Prestamo");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(300, 300);
+        setSize(500, 450);
         getContentPane().setLayout(null);
 
 
@@ -135,24 +135,63 @@ public class ventanaSolicitarPrestamo extends JFrame {
 
 
 
-        jlOperacion = new JLabel("Seleccione sistema:");
-        jlOperacion.setBounds(10,180,200,18);
-        add(jlOperacion);
+        jlSistema = new JLabel("Seleccione sistema:");
+        jlSistema.setBounds(10,180,200,18);
+        add(jlSistema);
 
 
-        jcOperaciones = new JComboBox<String>();
-        jcOperaciones.setBounds(150, 180, 120, 18);
-        add(jcOperaciones);
-        jcOperaciones.addItem("Frances");
-        jcOperaciones.addItem("Aleman");
-        jcOperaciones.addItem("Americano");
+        jcSistemas = new JComboBox<String>();
+        jcSistemas.setBounds(150, 180, 300, 18);
+        add(jcSistemas);
+        jcSistemas.addItem("Frances");
+        jcSistemas.addItem("Aleman");
+        jcSistemas.addItem("Americano");
+
+
+        
+
+        jlReferencia = new JLabel("Seleccione Referencia:");
+        jlReferencia.setBounds(10,210,200,18);
+        add(jlReferencia);
+
+
+        jcReferencia = new JComboBox<String>();
+        jcReferencia.setBounds(150, 210, 300, 18);
+
+        add(jcReferencia);
+        jcReferencia.addItem("Actualizacion de numero telefonico");
+        jcReferencia.addItem("Cambio de Razon Social");
+        jcReferencia.addItem("Cambio de Domicilio");
+        jcReferencia.addItem("Cambio de Telefono");
+        jcReferencia.addItem("Cambio de Correo");
+        jcReferencia.addItem("Cambio de Segmento");
+        jcReferencia.addItem("Correcion de fecha de inicio de Actividad");
+        jcReferencia.addItem("Correcion de datos");
+
+
+
+
+        jlUsuario = new JLabel("Seleccione Usuario:");
+        jlUsuario.setBounds(10,240,200,18);
+        add(jlUsuario);
+
+
+        jcUsuario = new JComboBox<String>();
+        jcUsuario.setBounds(150, 240, 300, 18);
+        add(jcUsuario);
+        jcUsuario.addItem("x500400");
+        jcUsuario.addItem("x647423");
+        jcUsuario.addItem("x200242");
+        jcUsuario.addItem("x421000");
 
 
 
 
 
-        JButton btnNewButton = new JButton("Solicitar");
-        btnNewButton.setBounds(45, 210, 190, 40);
+
+
+        JButton btnNewButton = new JButton("Modificar");
+        btnNewButton.setBounds(200, 270, 190, 40);
         getContentPane().add(btnNewButton);
 
 
@@ -165,7 +204,7 @@ public class ventanaSolicitarPrestamo extends JFrame {
                 float entradaImporte = Float.parseFloat(jtImporte.getText());
                 float entradaTasa = Float.parseFloat(jtTasa.getText());
                 int entradaCantCuotas= Integer.parseInt(jtCuotas.getText());
-                String seleccionado = (String) jcOperaciones.getSelectedItem();
+                String seleccionado = (String) jcSistemas.getSelectedItem();
 
                 String entradaFecha1=jtFecha.getText();
 
@@ -176,6 +215,10 @@ public class ventanaSolicitarPrestamo extends JFrame {
                 } catch (ParseException parseException) {
                     parseException.printStackTrace();
                 }
+
+                String seleccionado2 = (String) jcReferencia.getSelectedItem();
+                String seleccionado3 = (String) jcUsuario.getSelectedItem();
+                String ID=
 
                 ControladorSocio.solicitarOperacionPrestamo(entradaCuit,entradaBanco,entradaImporte,entradaTasa,date1,entradaCantCuotas,seleccionado);
 

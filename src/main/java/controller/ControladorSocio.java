@@ -235,7 +235,7 @@ public class ControladorSocio {
 
     }
 
-    public String solicitarOperacionPrestamo(
+    public static String solicitarOperacionPrestamo(
             final Integer cuit,
             final String bancoPrestamo,
             final Float importeTotal,
@@ -322,7 +322,7 @@ public class ControladorSocio {
     }
 
 
-    public void suscribirAccion(
+    public static void suscribirAccion(
             final Integer cuit,
             final Integer cuitVendedor,
             final Float porcentaje,
@@ -521,7 +521,7 @@ public class ControladorSocio {
         return operacionDeRetorno;
     }
 
-    private boolean excesoPorcentajeFacturas(final Integer cuit) {
+    private static boolean excesoPorcentajeFacturas(final Integer cuit) {
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
         LineaDeCredito lineaDeCredito = empresa.getLineaDeCredito();
         List<Factura> facturaList = lineaDeCredito.getFacturaList();
@@ -544,7 +544,7 @@ public class ControladorSocio {
 
     }
 
-    private Float getFDR() {
+    private static Float getFDR() {
         Float fdr = Float.valueOf(0);
         List<AporteDeCapital> aportesDeCapital = (List<AporteDeCapital>) listaSocioProtector.stream().map(x -> x.getCantidadAporteCapital());
         List<Float> montosTotales = (List<Float>) aportesDeCapital.stream().map(x -> x.getMonto());
