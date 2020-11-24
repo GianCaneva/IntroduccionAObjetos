@@ -58,6 +58,12 @@ public class LineaDeCredito {
     public void agregarOperacion(final Operacion operacion) {
         operaciones.add(operacion);
     }
+
+    public void agregarTipoDeOperacion(final Enum tipo){
+        tipoOperaciones.add(tipo);
+    }
+
+
     public void removeOperacion(final Operacion operacion) {
         operaciones.remove(operacion);
     }

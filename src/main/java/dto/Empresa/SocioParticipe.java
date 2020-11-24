@@ -27,7 +27,7 @@ public class SocioParticipe extends Empresa {
         return lineaDeCredito;
     }
 
-    public void asignarLineaDeCredito(final Float monto, final Date date, final List<Enum> operaciones) {
+    public void asignarLineaDeCredito(final Float monto, final Date date) {
         if (postulante) {
             throw new RuntimeException("El socio no se encuentra habilitado para operar");
         }
@@ -35,7 +35,6 @@ public class SocioParticipe extends Empresa {
                 .withMonto(monto)
                 .withFechaVigencia(date)
                 .withEstado(true)
-                .withTipoOperaciones(operaciones)
                 .build();
     }
 

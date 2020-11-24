@@ -15,7 +15,7 @@ public class SocioProtector extends Empresa {
 
     private Integer idSocio;
     private Integer accionesB;
-    private List<AporteDeCapital> cantidadAporteCapìtal;
+    private List<AporteDeCapital> cantidadAporteCapital;
     private List<AporteDeCapital> aportesExtraidos;
     private Float desembolso;
 
@@ -30,8 +30,8 @@ public class SocioProtector extends Empresa {
         return accionesB;
     }
 
-    public List<AporteDeCapital> getCantidadAporteCapìtal() {
-        return cantidadAporteCapìtal;
+    public List<AporteDeCapital> getCantidadAporteCapital() {
+        return cantidadAporteCapital;
     }
 
     public Float getDesembolso() {
@@ -52,7 +52,7 @@ public class SocioProtector extends Empresa {
                 .withMonto(monto)
                 .withFechaAporte(Utils.getDate())
                 .build();
-        cantidadAporteCapìtal.add(aporteDeCapital);
+        cantidadAporteCapital.add(aporteDeCapital);
     }
 
     public void retirarAporteCapital(final Date fechaDeAporte) throws RuntimeException {
@@ -61,7 +61,7 @@ public class SocioProtector extends Empresa {
             throw new RuntimeException("Al momento de la fecha el socio no se encuentra habilitado para operar");
         }
 
-        AporteDeCapital aporteDeCapital = cantidadAporteCapìtal.stream()
+        AporteDeCapital aporteDeCapital = cantidadAporteCapital.stream()
                 .filter(x -> x.getFechaAporte().equals(fechaDeAporte))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("No existe un aporte de capital realizado para tal fecha"));
@@ -70,7 +70,7 @@ public class SocioProtector extends Empresa {
             throw new RuntimeException("No han pasado el minimo de dos años para realizar la extraccion");
         }
         aportesExtraidos.add(aporteDeCapital);
-        cantidadAporteCapìtal.remove(aporteDeCapital);
+        cantidadAporteCapital.remove(aporteDeCapital);
     }
 
 
@@ -87,7 +87,7 @@ public class SocioProtector extends Empresa {
                 .append(getIdSocio(), that.getIdSocio())
                 .append(getPostulante(), that.getPostulante())
                 .append(getAccionesB(), that.getAccionesB())
-                .append(getCantidadAporteCapìtal(), that.getCantidadAporteCapìtal())
+                .append(getCantidadAporteCapital(), that.getCantidadAporteCapital())
                 .append(getAportesExtraidos(), that.getAportesExtraidos())
                 .append(getDesembolso(), that.getDesembolso())
                 .isEquals();
@@ -100,7 +100,7 @@ public class SocioProtector extends Empresa {
                 .append(getIdSocio())
                 .append(getPostulante())
                 .append(getAccionesB())
-                .append(getCantidadAporteCapìtal())
+                .append(getCantidadAporteCapital())
                 .append(getAportesExtraidos())
                 .append(getDesembolso())
                 .toHashCode();
@@ -112,7 +112,7 @@ public class SocioProtector extends Empresa {
                 .append("idSocio", idSocio)
                 .append("postulante", postulante)
                 .append("accionesB", accionesB)
-                .append("cantidadAporteCapìtal", cantidadAporteCapìtal)
+                .append("cantidadAporteCapital", cantidadAporteCapital)
                 .append("aportesExtraidos", aportesExtraidos)
                 .append("desembolso", desembolso)
                 .toString();
@@ -134,7 +134,7 @@ public class SocioProtector extends Empresa {
         private static Integer idSocio;
         private static Boolean postulante;
         private static Integer accionesB;
-        private static List<AporteDeCapital> cantidadAporteCapìtal;
+        private static List<AporteDeCapital> cantidadAporteCapital;
         private static float desembolso;
 
 
@@ -216,8 +216,8 @@ public class SocioProtector extends Empresa {
             return this;
         }
 
-        public Builder withCantidadAporteCapìtal(final List<AporteDeCapital> cantidadAporteCapìtal) {
-            this.cantidadAporteCapìtal = cantidadAporteCapìtal;
+        public Builder withCantidadAporteCapital(final List<AporteDeCapital> cantidadAporteCapital) {
+            this.cantidadAporteCapital = cantidadAporteCapital;
             return this;
         }
 
@@ -244,7 +244,7 @@ public class SocioProtector extends Empresa {
             idSocio = socioProtector.getIdSocio();
             postulante = socioProtector.getPostulante();
             accionesB = socioProtector.getAccionesB();
-            cantidadAporteCapìtal = socioProtector.getCantidadAporteCapìtal();
+            cantidadAporteCapital = socioProtector.getCantidadAporteCapital();
             desembolso = socioProtector.getDesembolso();
 
             return this;
@@ -269,7 +269,7 @@ public class SocioProtector extends Empresa {
             socioProtector.idSocio = idSocio;
             socioProtector.postulante = postulante;
             socioProtector.accionesB = accionesB;
-            socioProtector.cantidadAporteCapìtal = cantidadAporteCapìtal;
+            socioProtector.cantidadAporteCapital = cantidadAporteCapital;
             socioProtector.desembolso = desembolso;
 
             return socioProtector;

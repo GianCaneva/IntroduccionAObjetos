@@ -285,11 +285,40 @@ public class ControladorSocio {
     public void asignarLineaDeCredito(
             final Integer cuit,
             final float monto,
-            final Date date,
-            final List<Enum> operaciones) {
+            final Date date) {
+
         SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
 
-        empresa.asignarLineaDeCredito(monto, date, operaciones);
+        empresa.asignarLineaDeCredito(monto, date);
+    }
+
+
+    public void agregarOperaciones(final Integer cuit, final String tipoDeOperacion){
+
+        SocioParticipe empresa = (SocioParticipe) buscarEmpresa(cuit);
+
+        if (!listaSocioParticipe.contains(empresa)){
+            throw new RuntimeException("La empresa no es una socia participe, por lo tanto no tiene una linea de credito a la cual asignar operaciones");
+        }
+
+        if(empresa.getLineaDeCredito() == null){
+            throw new RuntimeException("La empresa no tiene una linea de credito asignada");
+        }
+
+        if (tipoDeOperacion == "ChequeDeTerceros") {
+            empresa.getLineaDeCredito().agregarTipoDeOperacion(TipoCheque.ChequeDeTerceros);
+        } else if (tipoDeOperacion == "ChequePropio") {
+            empresa.getLineaDeCredito().agregarTipoDeOperacion(TipoCheque.ChequePropio);
+        } else if (tipoDeOperacion == "PagareBursatil") {
+            empresa.getLineaDeCredito().agregarTipoDeOperacion(TipoCheque.PagareBursatil);
+        } else if (tipoDeOperacion == "TarjetaDeCredito") {
+            empresa.getLineaDeCredito().agregarTipoDeOperacion(CtaCorriente.TarjetaDeCredito);
+        } else if (tipoDeOperacion == "CuentaCorrienteComercial") {
+            empresa.getLineaDeCredito().agregarTipoDeOperacion(CtaCorriente.CuentaCorrienteComercial);
+        } else if (tipoDeOperacion == "Prestamo") {
+            empresa.getLineaDeCredito().agregarTipoDeOperacion(Prestamo.Prestamo);
+        }
+
     }
 
 
@@ -517,7 +546,7 @@ public class ControladorSocio {
 
     private Float getFDR() {
         Float fdr = Float.valueOf(0);
-        List<AporteDeCapital> aportesDeCapital = (List<AporteDeCapital>) listaSocioProtector.stream().map(x -> x.getCantidadAporteCapìtal());
+        List<AporteDeCapital> aportesDeCapital = (List<AporteDeCapital>) listaSocioProtector.stream().map(x -> x.getCantidadAporteCapital());
         List<Float> montosTotales = (List<Float>) aportesDeCapital.stream().map(x -> x.getMonto());
 
         for (int i = 0; i < montosTotales.size(); i++) {
@@ -613,6 +642,12 @@ public class ControladorSocio {
                 .withCorreoElectronico(correoElectronico)
                 .withIdSocio(empresaOriginal.getIdSocio())
                 .withPostulante(true)
+                .withAccionesB(empresaOriginal.getAccionesB())
+                .withCantidadAporteCapital(empresaOriginal.getCantidadAporteCapital())
+                .withDesembolso(empresaOriginal.getDesembolso())
+                .withAccionista(empresaOriginal.getAccionista())
+                .withDocumento(empresaOriginal.getDocumento())
+                .withParticipacionSGR(empresaOriginal.getParticipacionSGR())
                 .build();
 
 
@@ -654,6 +689,12 @@ public class ControladorSocio {
                 .withCorreoElectronico(correoElectronico)
                 .withIdSocio(empresaOriginal.getIdSocio())
                 .withPostulante(true)
+                .withAccionista(empresaOriginal.getAccionista())
+                .withDocumento(empresaOriginal.getDocumento())
+                .withParticipacionSGR(empresaOriginal.getParticipacionSGR())
+                .withPostulante(empresaOriginal.getPostulante())
+                .withAccionesA(empresaOriginal.getAccionesA())
+                .withLineaDeCredito(empresaOriginal.getLineaDeCredito())
                 .build();
 
         removerEmpresa(empresaOriginal);

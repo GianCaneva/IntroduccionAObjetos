@@ -1,6 +1,7 @@
 package controller;
 
 import dto.Desembolso;
+import dto.Empresa.Empresa;
 import dto.Empresa.SocioParticipe;
 import dto.LineaDeCredito;
 import dto.Operacion.*;
@@ -11,6 +12,7 @@ import utils.Utils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ControladorOperacion {
 
@@ -69,8 +71,39 @@ public class ControladorOperacion {
     }
 
     public static float totalChequesYPagares(final String tipoDeEmpresa, final Date periodo1, final Date periodo2) {
+        List<Empresa> listaEmpresas = ControladorSocio.getListaEmpresas();
+        List<SocioParticipe> empresasDeTipo = (List<SocioParticipe>) listaEmpresas.stream().filter(x -> x.getTipo() == tipoDeEmpresa);
 
-        return 11;
+        List<LineaDeCredito> lineaDeCreditoDeTipo = (List<LineaDeCredito>) empresasDeTipo.stream().map(x -> x.getLineaDeCredito());
+
+        Float totalRecaudado = Float.valueOf(0);
+
+        for (int i = 0; i < lineaDeCreditoDeTipo.size(); i++) {
+            List<Operacion> operaciones = lineaDeCreditoDeTipo.get(i).getOperaciones();
+            for (int j = 0; j < operaciones.size(); j++) {
+                Operacion operacion = operaciones.get(j);
+                if (operacion.getClass()== Tipo1.class){
+                    if(operacion.getFecha().getDay() > periodo1.getDay() &
+                            operacion.getFecha().getMonth() > periodo1.getMonth() &
+                            operacion.getFecha().getYear() > periodo1.getYear() &
+                            operacion.getFecha().getDay() < periodo2.getDay() &
+                            operacion.getFecha().getMonth() < periodo2.getMonth() &
+                            operacion.getFecha().getYear() < periodo2.getYear()){
+
+                        totalRecaudado = operacion.getImporteTotal();
+
+                    }
+
+                }
+
+            }
+
+
+        }
+
+        return totalRecaudado;
+
+
     }
 
 
