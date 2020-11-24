@@ -315,7 +315,7 @@ public class ControladorSocio {
     }
 
 
-    public void solicitarSocioParticipe(
+    public Integer solicitarSocioParticipe(
             final Integer cuit,
             final String razonSocial,
             final Date fechaInicio,
@@ -340,12 +340,16 @@ public class ControladorSocio {
                 .withPostulante(true)
                 .build();
 
+        if (existeCuit(cuit)){
+            throw new RuntimeException("Ya existe una empresa con el CUIT solicitado");
+        }
+
         agregarEmpresa(newEmpresa);
         agregarSocioParticipe((SocioParticipe) newEmpresa);
-        idSocio = idSocio + 1;
+        return idSocio = idSocio + 1;
     }
 
-    public void solicitarSocioProtector(
+    public Integer solicitarSocioProtector(
             final Integer cuit,
             final String razonSocial,
             final Date fechaInicio,
@@ -370,9 +374,29 @@ public class ControladorSocio {
                 .withPostulante(true)
                 .build();
 
+
+        if (existeCuit(cuit)){
+            throw new RuntimeException("Ya existe una empresa con el CUIT solicitado");
+        }
+
+
         agregarEmpresa(newEmpresa);
         agregarSocioProtector((SocioProtector) newEmpresa);
-        idSocio = idSocio + 1;
+        return idSocio = idSocio + 1;
+    }
+
+    private Boolean existeCuit(final Integer cuit){
+        Boolean existe= false;
+
+        for (int i=0; i<listaEmpresas.size(); i++){
+            Empresa empresa = listaEmpresas.get(i);
+            if (empresa.getCuit()==cuit){
+                existe= true;
+            }
+        }
+
+        return existe;
+
     }
 
     public void agregarAccionista(final Integer cuitEmpresa, final Integer cuitAccionista, final String razonSocial, final Float participacion) {
@@ -538,7 +562,7 @@ public class ControladorSocio {
 
     }
 
-    public void modificarSocioProtector(
+    public Integer modificarSocioProtector(
             final Integer cuit,
             final String razonSocial,
             final Date fechaInicio,
@@ -575,11 +599,12 @@ public class ControladorSocio {
 
 
         log(empresaOriginal, empresaModificada, referencia, usuario);
+        return ((SocioProtector) empresaModificada).getIdSocio();
 
     }
 
 
-    public void modificarSocioParticipe(
+    public Integer modificarSocioParticipe(
             final Integer cuit,
             final String razonSocial,
             final Date fechaInicio,
@@ -613,6 +638,7 @@ public class ControladorSocio {
         agregarSocioParticipe((SocioParticipe) empresaModificada);
 
         log(empresaOriginal, empresaModificada, referencia, usuario);
+        return ((SocioParticipe) empresaModificada).getIdSocio();
 
 
     }

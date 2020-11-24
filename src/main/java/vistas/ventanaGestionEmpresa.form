@@ -58,7 +58,16 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <grid id="656f6" class="javax.swing.JDesktopPane" binding="desktopPaneCargarSocioParticipe" layout-manager="CardLayout" hgap="0" vgap="0">
+                <constraints>
+                  <card name="Card1"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
           </grid>
           <grid id="c1d88" layout-manager="CardLayout" hgap="0" vgap="0">
             <constraints>
@@ -66,7 +75,16 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <grid id="58782" class="javax.swing.JDesktopPane" binding="desktopPaneModificarSocioParticipe" layout-manager="CardLayout" hgap="0" vgap="0">
+                <constraints>
+                  <card name="Card1"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
           </grid>
           <grid id="cee5f" layout-manager="CardLayout" hgap="0" vgap="0">
             <constraints>
@@ -74,7 +92,16 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <grid id="b3436" class="javax.swing.JDesktopPane" binding="desktopPaneAgregarAccionista" layout-manager="CardLayout" hgap="0" vgap="0">
+                <constraints>
+                  <card name="Card1"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
           </grid>
           <grid id="743fc" layout-manager="CardLayout" hgap="0" vgap="0">
             <constraints>
@@ -82,7 +109,16 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <grid id="43e8e" class="javax.swing.JDesktopPane" binding="desktopPaneModificarAccionista" layout-manager="CardLayout" hgap="0" vgap="0">
+                <constraints>
+                  <card name="Card1"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
           </grid>
         </children>
       </tabbedpane>
