@@ -55,25 +55,15 @@ import controller.ControladorSocio;
 public class ventanaSolicitarOPcc extends JFrame {
     private JTextField jtCuit, jtBanco,jtImporte,jtTasa,jtFecha,jtCuotas;
     private JComboBox<String> jcOperaciones, jcOperaciones2, jcOperaciones3;
-    private JLabel jlCuit, jlOperacion,jlBanco,jlImporte,jlTasa,jlFecha,jlCuotas;
+    private JLabel jlCuit, jlOperacion,jlBanco,jlImporte,jlIDdevolucion,jlFecha,jlCuotas;
     private String valor;
 
 
 
-    public static void main(String[] args) throws Exception {
-        EventQueue.invokeLater(new Runnable() {
+    public static void main(String[] args) {
 
-            public void run() {
-                try {
                     vistas.ventanaSolicitarOPcc tester = new vistas.ventanaSolicitarOPcc();
                     tester.setVisible(true);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
 
 
     }
@@ -84,7 +74,7 @@ public class ventanaSolicitarOPcc extends JFrame {
 
         setTitle("Solicitar Cuenta Corriente");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(300, 300);
+        setSize(300, 360);
         getContentPane().setLayout(null);
 
 
@@ -136,6 +126,7 @@ public class ventanaSolicitarOPcc extends JFrame {
         getContentPane().add(btnNewButton);
 
 
+
         btnNewButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -157,15 +148,17 @@ public class ventanaSolicitarOPcc extends JFrame {
                     parseException.printStackTrace();
                 }
 
-               ControladorSocio.solicitarOperacionCCC(entradaCuit,entradaBanco,date1,seleccionado,entradaImporte);
+                String devolucionID = ControladorSocio.solicitarOperacionCCC(entradaCuit,entradaBanco,date1,seleccionado,entradaImporte);
                 //    FALTA SOLICITAR sTRING
 
 
-                ventanaOK tester = new ventanaOK();
-                tester.setVisible(true);
+                JOptionPane.showMessageDialog(null,"Su ID de Operacion es:"+ devolucionID);
+
+
 
 
             }
+
 
         });
 
